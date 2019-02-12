@@ -30,7 +30,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
-        'c5d290c1539ac056e229e8883be71297' => __DIR__ . '/../..' . '/app/http/helpers/dashboard_common_helper.php',
+        'd6115ccb6d181ea070494e32d4db20fe' => __DIR__ . '/../..' . '/app/http/helpers/common_helper.php',
         '24b0759ab88333f4127fb815860c1479' => __DIR__ . '/../..' . '/app/http/helpers/bs_helper.php',
     );
 
@@ -3044,6 +3044,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'PhpParser\\Parser\\Tokens' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Parser/Tokens.php',
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
+        'PrivilegeSeeder' => __DIR__ . '/../..' . '/database/seeds/PrivilegeSeeder.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',

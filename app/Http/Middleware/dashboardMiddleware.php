@@ -6,15 +6,17 @@ use Closure;
 
 class dashboardMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
+
     public function handle($request, Closure $next,$privilege = null)
     {
+
+        if(!auth()->check())
+        {
+            return redirect("dashboard/login")->with("error",__("dashboard.access_denied"));
+        }
+
+
+
 
         if($privilege)
         {

@@ -1,10 +1,7 @@
 
 				</div>
 			</div>
-			<!-- end: PAGE -->
 		</div>
-		<!-- end: MAIN CONTAINER -->
-		<!-- start: FOOTER -->
 		<div class="footer clearfix">
 			<div class="footer-inner">
 				{{ date("Y") }} &copy; QueueLines.
@@ -13,15 +10,7 @@
 				<span class="go-top"><i class="clip-chevron-up"></i></span>
 			</div>
 		</div>
-		<!-- end: FOOTER -->
 
-		<!-- start: MAIN JAVASCRIPTS -->
-		<!--[if lt IE 9]>
-		<script src="assets/plugins/respond.min.js"></script>
-		<script src="assets/plugins/excanvas.min.js"></script>
-		<![endif]-->
-        
-        
 		<script src="{{ url('/dashboard') }}/assets/js/jquery.js"></script>
 		<script src="{{ url('/dashboard') }}/assets/js/jquery-ui.min.js"></script>
 		<script src="{{ url('/dashboard') }}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -34,8 +23,6 @@
 		<script src="{{ url('/dashboard') }}/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
 		<script src="{{ url('/dashboard') }}/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
 		<script src="{{ url('/dashboard') }}/assets/js/main.js"></script>
-		<!-- end: MAIN JAVASCRIPTS -->
-		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script src="{{ url('/dashboard') }}/assets/plugins/flot/jquery.flot.js"></script>
 		<script src="{{ url('/dashboard') }}/assets/plugins/flot/jquery.flot.pie.js"></script>
 		<script src="{{ url('/dashboard') }}/assets/plugins/flot/jquery.flot.resize.min.js"></script>
@@ -53,7 +40,6 @@
 
 		<script src="{{ url('/dashboard') }}/assets/js/form-elements.js"></script>
 
-		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();
@@ -62,5 +48,4 @@
 			});
 		</script>
 	</body>
-	<!-- end: BODY -->
 </html>

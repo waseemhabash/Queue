@@ -33,7 +33,7 @@
     },
     "autoload": {
         "files": [
-            "app/http/helpers/dashboard_common_helper.php",
+            "app/http/helpers/common_helper.php",
             "app/http/helpers/bs_helper.php"
         ],
         "psr-4": {

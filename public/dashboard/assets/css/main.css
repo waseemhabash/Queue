@@ -1,16 +1,8 @@
-/* ---------------------------------------------------------------------- */
-/*	Import fonts
-/* ---------------------------------------------------------------------- */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900);
 
-/* ---------------------------------------------------------------------- */
-/*	Basic Elements & Classes
-/* ---------------------------------------------------------------------- */
 body {
 	color: #000000;
 	direction: ltr;
-	font-family: 'Open+Sans', sans-serif;
+	font-family: 'Cairo', sans-serif;
 	font-size: 13px;
 	padding: 0px !important;
 	margin: 0px !important;
@@ -47,6 +39,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	border-radius: 0 0 0 0 !important;
 	color: #858585;
 	font-family: inherit;
+	direction: rtl;
 	font-size: 14px;
 	line-height: 1.2;
 	padding: 5px 4px;
