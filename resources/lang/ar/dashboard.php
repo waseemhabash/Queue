@@ -15,5 +15,11 @@ return [
     "role_management" => "إدارة الأدوار",
     "admins" => "المسؤولين",
     "search" => "بحث",
+    "options" => "خيارت",
+    "edit" => "تعديل",
+    "delete" => "حذف",
+    "addX" => "إضافة :X",
+    "role" => "دور",
+    "name" => "الاسم",
 
 ];

@@ -2,48 +2,46 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 
 class RoleController extends Controller
 {
-    
+
     public function index()
     {
-        //
-    }
+        $roles = Role::orderBy("name", "desc")->get();
 
+        return view("dashboard.roles.index", compact("roles"));
+
+    }
 
     public function create()
     {
-        //
+
     }
 
-    public function store(Request $request)
+    public function store()
+    {
+
+    }
+
+    public function show(Role $role)
     {
         //
     }
 
-
-    public function show($id)
+    public function edit(Role $role)
     {
         //
     }
 
-
-    public function edit($id)
+    public function update(Role $role)
     {
         //
     }
 
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //
     }
