@@ -7,6 +7,7 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
     /**
      * Admins
      */
+    
 
     Route::resource("admins", "dashboard\AdminController")->middleware("dashboardMiddleware:admin_management");
 

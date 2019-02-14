@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\User;
 class AdminController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $users=User::where("type","admin")->where('id',"!=",auth()->id());
+        return view('dashboard.admins.index');
     }
 
     /**
