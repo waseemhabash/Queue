@@ -6,6 +6,9 @@
 		<title>Queue Lines</title>
 		<meta charset="utf-8" />
 
+		<link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+
 		<link rel="stylesheet" href="{{ url('/dashboard') }}/assets/plugins/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ url('/dashboard') }}/assets/plugins/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="{{ url('/dashboard') }}/assets/fonts/style.css">

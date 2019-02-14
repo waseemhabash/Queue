@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+
 class HomeController extends Controller
 {
 
     public function index()
     {
-
         session()->put("c_page", "home");
         return view('dashboard.layouts.index');
     }
@@ -21,18 +20,14 @@ class HomeController extends Controller
         }
 
         if (request()->isMethod("post")) {
-            request()->validate([
+            $inputs = request()->validate([
                 "email" => "required|email",
                 "password" => "required",
             ]);
 
-            if (auth()->attempt([
-                "email" => request("email"),
-                "password" => request("password"),
-            ])) {
+            if (auth()->attempt($inputs)) {
 
-                
-                session()->put("privileges",login_user()->privileges());
+                session()->put("privileges", login_user()->privileges());
 
                 return redirect("dashboard/home");
             } else {

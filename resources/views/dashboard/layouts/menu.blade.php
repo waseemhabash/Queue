@@ -1,5 +1,5 @@
 @php
-	$login_user = login_user();
+$login_user = login_user();
 @endphp
 
 <body class="rtl">
@@ -19,7 +19,7 @@
                     <li class="dropdown current-user">
                         <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
                             href="#">
-                            
+
                             <span class="username">{{ auth()->user()->name }}</span>
                             <i class="clip-chevron-down"></i>
                         </a>
@@ -54,20 +54,25 @@
                     <i class="clip-chevron-right"></i>
                 </div>
                 <ul class="main-navigation-menu">
-                    <li class="active open">
-                        <a href="index.html"><i class="clip-home-3"></i>
-                            <span class="title"> Dashboard </span>
+                <li class="{{ c_page('home') }}">
+                        <a href="{{ url('dashboard/home') }}"><i class="clip-home-3"></i>
+                            <span class="title"> {{ __("dashboard.home") }} </span>
                         </a>
                     </li>
-                    <li>
+                <li class="{{ c_page(['role_management','admin_management']) }}">
                         <a href="javascript:void(0)"><i class="clip-screen"></i>
-                            <span class="title"> Layouts </span><i class="icon-arrow"></i>
-
+                            <span class="title"> {{ __("dashboard.admin_management") }} </span><i class="icon-arrow"></i>
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="layouts_horizontal_menu1.html">
-                                    <span class="title"> Horizontal Menu </span>
+                            <a href="{{ url('/dashboard/admins') }}">
+                                    <span class="title"> {{ __("dashboard.admins") }} </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('/dashboard/roles') }}">
+                                    <span class="title"> {{ __("dashboard.role_management") }} </span>
                                 </a>
                             </li>
 
@@ -85,9 +90,9 @@
 
                         <ol class="breadcrumb">
                             <li class="search-box">
-                                <form class="sidebar-search">
+                            <form class="sidebar-search" method="get" action="{{ url()->current() }}">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Start Searching...">
+                                        <input type="text" placeholder="{{ __('dashboard.search') }}" name="search">
                                         <button class="submit">
                                             <i class="clip-search-3"></i>
                                         </button>

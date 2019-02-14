@@ -174,12 +174,14 @@ function alert_box($type,$value,$with_circle = false)
 ?>
 
 <div class="alert alert-<?= $type?>">
-    <?php if($with_circle):?>
     <button data-dismiss="alert" class="close">
         ×
     </button>
+
+    <?php if($with_circle):?>
+
+    <i class="fa fa-info-circle"></i> &nbsp;
     <?php endif;?>
-    <i class="fa fa-check-circle"></i>
     <?= $value?>
 </div>
 

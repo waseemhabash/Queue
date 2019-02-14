@@ -3,6 +3,11 @@ use App\Models\User;
 
 function c_page($pages)
 {
+
+    if (is_string($pages)) {
+        $pages = [$pages];
+    }
+
     $bool = false;
     foreach ($pages as $page) {
         $bool = $bool || session("c_page") == $page;

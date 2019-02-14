@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     public function roles()
     {
-        return $this->belongsToMany("App\Models\Role","role_users","user_id","role_id");
+        return $this->belongsToMany("App\Models\Role", "role_users", "user_id", "role_id");
     }
 
     public function privileges()
@@ -18,12 +16,9 @@ class User extends Authenticatable
         $roles = $this->roles;
         $privileges = [];
 
-        foreach($roles as $role)
-        {
-            foreach($role->privileges as $priv)
-            {
-                if(!in_array($priv->name, $privileges))
-                {
+        foreach ($roles as $role) {
+            foreach ($role->privileges as $priv) {
+                if (!in_array($priv->name, $privileges)) {
                     $privileges[] = $priv->name;
                 }
             }
@@ -36,10 +31,15 @@ class User extends Authenticatable
         $bool = false;
         $user_privileges = session("privileges");
 
-        foreach($privileges as $priv)
-        {
-            $bool = $bool || in_array($priv,$user_privileges);
+        if (is_string($privileges)) {
+            $bool = $bool || in_array($privileges, $user_privileges);
+
+        } else {
+            foreach ($privileges as $priv) {
+                $bool = $bool || in_array($priv, $user_privileges);
+            }
         }
+
         return $bool;
     }
 }

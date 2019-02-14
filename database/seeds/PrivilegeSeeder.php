@@ -14,10 +14,11 @@ class PrivilegeSeeder extends Seeder
     {
         $privileges = [
             "admin_management",
+            "role_management"
         ];
 
         $user = new User();
-        $user->name = "Super_admin";
+        $user->name = "Super Admin";
         $user->email = "admin@admin.com";
         $user->phone = "0949042001";
         $user->password = bcrypt("password");

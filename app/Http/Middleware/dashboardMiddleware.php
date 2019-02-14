@@ -7,20 +7,20 @@ use Closure;
 class dashboardMiddleware
 {
 
-    public function handle($request, Closure $next,$privilege = null)
+    public function handle($request, Closure $next, $privilege = null)
     {
 
-        if(!auth()->check())
-        {
-            return redirect("dashboard/login")->with("error",__("dashboard.access_denied"));
+        if (!auth()->check()) {
+            return redirect("dashboard/login")->with("error", __("dashboard.access_denied"));
         }
 
+        if ($privilege) {
 
+            if (!login_user()->has_priv($privilege)) {
+                return redirect("dashboard/home")->with("error", __("dashboard.access_denied"));
+            }
 
-
-        if($privilege)
-        {
-            session()->put("c_page",$privilege);
+            session()->put("c_page", $privilege);
         }
 
         return $next($request);
