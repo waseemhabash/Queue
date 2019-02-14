@@ -31,7 +31,7 @@ class HomeController extends Controller
 
                 return redirect("dashboard/home");
             } else {
-                return redirect("dashboard/home", __("dashboard.invalid_access_informations"));
+                return redirect("dashboard/home")->with("error",__("dashboard.invalid_access_informations"));
             }
         }
 

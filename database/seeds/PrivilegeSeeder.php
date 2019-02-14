@@ -14,7 +14,7 @@ class PrivilegeSeeder extends Seeder
     {
         $privileges = [
             "admin_management",
-            "role_management"
+            "role_management",
         ];
 
         $user = new User();

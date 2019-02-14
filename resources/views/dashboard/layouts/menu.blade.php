@@ -1,4 +1,5 @@
 @php
+
 $login_user = login_user();
 @endphp
 
@@ -63,14 +64,20 @@ $login_user = login_user();
                         <a href="javascript:void(0)"><i class="clip-screen"></i>
                             <span class="title"> {{ __("dashboard.admin_management") }} </span><i class="icon-arrow"></i>
                         </a>
-                        <ul class="sub-menu">
-                            <li>
-                            <a href="{{ url('/dashboard/admins') }}">
-                                    <span class="title"> {{ __("dashboard.admins") }} </span>
-                                </a>
-                            </li>
 
-                            <li>
+                        <ul class="sub-menu">
+
+                            @if ($login_user->has_priv("admin_management"))
+
+                        <li class="{{ c_page('admin_management') }}">
+                                    <a href="{{ url('/dashboard/admins') }}">
+                                            <span class="title"> {{ __("dashboard.admins") }} </span>
+                                        </a>
+                                    </li>                                
+                            @endif
+
+
+                                <li class="{{ c_page('role_management') }}">
                                 <a href="{{ url('/dashboard/roles') }}">
                                     <span class="title"> {{ __("dashboard.role_management") }} </span>
                                 </a>
