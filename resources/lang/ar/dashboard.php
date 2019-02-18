@@ -21,5 +21,12 @@ return [
     "addX" => "إضافة :X",
     "role" => "دور",
     "name" => "الاسم",
+    "save" => "حفظ",
+    "privileges" => "الصلاحيات",
+
+    "added_successfully" => "تمت الإضافة بنجاح",
+    "updated_successfully" => "تم التعديل بنجاح",
+    "deleted_successfully" => "تم الحذف بنجاح",
+    "related_data_error" => "لا يمكنك الحذف !! هناك بيانات مرتبطة",
 
 ];

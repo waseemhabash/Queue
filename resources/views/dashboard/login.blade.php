@@ -33,6 +33,24 @@
         <div class="box-login">
             <h3>{{ __("dashboard.logIn") }}</h3>
             <h6>{{ __("dashboard.enterLoginInformation") }}</h6>
+
+
+            @if (session("error"))
+            {{ alert_box("danger",session("error")) }}
+            @endif
+
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+
             <form class="form-login" action="{{ url('/dashboard/login') }}" method="POST">
                 @csrf
                 <fieldset>

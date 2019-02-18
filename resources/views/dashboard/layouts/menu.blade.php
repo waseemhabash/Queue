@@ -55,13 +55,13 @@ $login_user = login_user();
                     <i class="clip-chevron-right"></i>
                 </div>
                 <ul class="main-navigation-menu">
-                <li class="{{ c_page('home') }}">
+                    <li class="{{ c_page('home') }}">
                         <a href="{{ url('dashboard/home') }}"><i class="clip-home-3"></i>
                             <span class="title"> {{ __("dashboard.home") }} </span>
                         </a>
                     </li>
-                <li class="{{ c_page(['role_management','admin_management']) }}">
-                        <a href="javascript:void(0)"><i class="clip-screen"></i>
+                    <li class="{{ c_page(['role_management','admin_management']) }}">
+                        <a href="javascript:void(0)"><i class="fa fa-users"></i>
                             <span class="title"> {{ __("dashboard.admin_management") }} </span><i class="icon-arrow"></i>
                         </a>
 
@@ -69,20 +69,21 @@ $login_user = login_user();
 
                             @if ($login_user->has_priv("admin_management"))
 
-                        <li class="{{ c_page('admin_management') }}">
-                                    <a href="{{ url('/dashboard/admins') }}">
-                                            <span class="title"> {{ __("dashboard.admins") }} </span>
-                                        </a>
-                                    </li>                                
+                            <li class="{{ c_page('admin_management') }}">
+                                <a href="{{ url('/dashboard/admins') }}">
+                                    <span class="title"> {{ __("dashboard.admins") }} </span>
+                                </a>
+                            </li>
                             @endif
 
-
-                                <li class="{{ c_page('role_management') }}">
+                            @if ($login_user->has_priv("role_management"))
+                            <li class="{{ c_page('role_management') }}">
                                 <a href="{{ url('/dashboard/roles') }}">
                                     <span class="title"> {{ __("dashboard.role_management") }} </span>
                                 </a>
                             </li>
-
+                            @endif
+                            
                         </ul>
                     </li>
 
@@ -97,7 +98,7 @@ $login_user = login_user();
 
                         <ol class="breadcrumb">
                             <li class="search-box">
-                            <form class="sidebar-search" method="get" action="{{ url()->current() }}">
+                                <form class="sidebar-search" method="get" action="{{ url()->current() }}">
                                     <div class="form-group">
                                         <input type="text" placeholder="{{ __('dashboard.search') }}" name="search">
                                         <button class="submit">

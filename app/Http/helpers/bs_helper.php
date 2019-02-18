@@ -10,8 +10,7 @@ function bs_input($name,$value = null,$required = false)
     </label>
     <div class="col-sm-6">
         <input type="text" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control"
-            <?=$required ? 'required' : '' ?> value="
-        <?= old($name) ?? $value ?? ''  ?>">
+            <?=$required ? 'required' : '' ?> value="<?= old($name) ?? $value ?? ''  ?>">
     </div>
 </div>
 
@@ -30,8 +29,7 @@ function bs_date($name,$value = null,$required = false)
     </label>
     <div class="col-sm-6">
         <input type="date" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control"
-            <?=$required ? 'required' : '' ?> value='
-        <?= old($name) ?? $value ?? ""  ?>'>
+            <?=$required ? 'required' : '' ?> value='<?= old($name) ?? $value ?? ""  ?>'>
     </div>
 </div>
 
@@ -49,8 +47,7 @@ function bs_number($name,$value = null,$required = false)
     </label>
     <div class="col-sm-6">
         <input type="number" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control"
-            <?=$required ? 'required' : '' ?> value='
-        <?= old($name) ?? $value ?? ""  ?>'>
+            <?=$required ? 'required' : '' ?> value='<?= old($name) ?? $value ?? ""  ?>'>
     </div>
 </div>
 
@@ -71,8 +68,7 @@ function bs_text($name,$value = null,$required = false)
         <?= __("dashboard.$name") ?>
     </label>
     <div class="col-sm-6">
-        <textarea name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' class="form-control ckeditor" <?=$required
-            ? 'required' : '' ?> ><?= old($name) ?? $value ?? ""  ?></textarea>
+        <textarea name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' class="form-control ckeditor" <?=$required ? 'required' : '' ?> ><?= old($name) ?? $value ?? ""  ?></textarea>
     </div>
 </div>
 
@@ -166,6 +162,22 @@ function bs_multiple_files($name,$value = null,$required = false)
 <?php    
 }
 
+function bs_save($name)
+{
+?>
+<div class="form-group">
+    <label class="col-sm-1 control-label" for="<?= $name ?>" style="text-align:right">
+
+    </label>
+    <div class="col-sm-6">
+        <button class="btn btn-info" type="submit">
+            <?= __("dashboard.$name")?></button>
+    </div>
+</div>
+
+<?php    
+}
+
 
 
 
@@ -174,7 +186,7 @@ function alert_box($type,$value,$with_circle = false)
 ?>
 
 <div class="alert alert-<?= $type?>">
-    <button data-dismiss="alert" class="close">
+    <button data-dismiss="alert" class="close" style="float:left">
         ×
     </button>
 
