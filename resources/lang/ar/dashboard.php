@@ -27,4 +27,10 @@ return [
     "admin"=>"مسؤول",
     "rePassword"=>"تأكيد كلمة المرور",
     "phone"=>"رقم الهاتف",
+    "companies_management"=>" ادارة الشركات",
+	"owner"=>"المالك",
+	"description"=>"الوصف",
+	"company"=>"شركة",
+	"service"=>"خدمة",
+	"services_management"=>"إدارة الخدمات"
 ];

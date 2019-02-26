@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
-<form action="{{ url('dashboard/admins/'.$admin->id) }}" method="post" >
+<form action="{{ url('dashboard/admins/'.$admin->id) }}" class="form-horizontal" method="post" >
 	@csrf
 	@method('PATCH')
 	@php

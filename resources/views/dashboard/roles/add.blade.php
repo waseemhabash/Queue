@@ -10,7 +10,7 @@
     {{ bs_input("name",null,true) }}
 
     <div class="form-group">
-        <label class="col-sm-1 control-label" style='text-align:right'>
+        <label class="col-sm-1 form-field-select-4" >
             {{ __("dashboard.privileges") }}
         </label>
         <div class="col-sm-6">

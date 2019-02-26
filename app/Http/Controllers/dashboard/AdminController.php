@@ -52,7 +52,7 @@ class AdminController extends Controller
         }
         $admin->save();
         
-        /*foreach ($request->roles as $role) {
+        foreach ($request->roles as $role) {
           $role_user = new Role_user();
           $role_user->user_id = $admin->id;
           $role_user->role_id = $role;
@@ -60,7 +60,7 @@ class AdminController extends Controller
       }
 
       $role_user->save();
-*/
+
       return redirect('dashboard/admins');
   }
 
@@ -110,14 +110,14 @@ class AdminController extends Controller
 
         $admin->update();
 
-        /*foreach ($request->roles as $role) {
+        foreach ($request->roles as $role) {
           $role_user = new Role_user();
           $role_user->user_id = $admin->id;
           $role_user->role_id = $role;
-          $role_user->save();
+          $role_user->update();
       }
-      $role_user->save();
-*/
+      $role_user->update();
+
 
       return redirect('dashboard/admins');    
   }
