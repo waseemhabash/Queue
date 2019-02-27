@@ -60,6 +60,12 @@ $login_user = login_user();
                             <span class="title"> {{ __("dashboard.home") }} </span>
                         </a>
                     </li>
+
+
+
+                    @if ($login_user->has_priv(["admin_management","role_management"]))
+
+
                     <li class="{{ c_page(['role_management','admin_management']) }}">
                         <a href="javascript:void(0)"><i class="fa fa-users"></i>
                             <span class="title"> {{ __("dashboard.admin_management") }} </span><i class="icon-arrow"></i>
@@ -83,9 +89,38 @@ $login_user = login_user();
                                 </a>
                             </li>
                             @endif
-                            
+
                         </ul>
                     </li>
+
+                    @endif
+
+
+                    @if ($login_user->has_priv(["constant_management"]))
+
+
+                    <li class="{{ c_page(['constant_management']) }}">
+                        <a href="javascript:void(0)"><i class="clip-cogs"></i>
+                            <span class="title"> {{ __("dashboard.settings") }} </span><i class="icon-arrow"></i>
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            @if ($login_user->has_priv("constant_management"))
+
+                            <li class="{{ c_page('constant_management') }}">
+                                <a href="{{ url('/dashboard/constants') }}">
+                                    <span class="title"> {{ __("dashboard.constant_management") }} </span>
+                                </a>
+                            </li>
+                            @endif
+
+
+
+                        </ul>
+                    </li>
+
+                    @endif
 
                 </ul>
             </div>

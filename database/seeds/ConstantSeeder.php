@@ -17,13 +17,16 @@ class ConstantSeeder extends Seeder
                 'type' => "string",
                 "indexx" => "facebook",
             ],
-            
+            [
+                "type" => "file",
+                "indexx" => "logo",
+            ],
         ];
 
-        foreach ($constants as $constant) {
+        foreach ($constants as $const) {
             $constant = new Constant();
-            $constant->indexx = $constant["indexx"];
-            $constant->type = $constant['type'];
+            $constant->indexx = $const["indexx"];
+            $constant->type = $const['type'];
             $constant->value = "";
             $constant->save();
         }

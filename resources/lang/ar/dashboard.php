@@ -12,6 +12,8 @@ return [
     "home" => "الصفحة الرئيسية",
     "role_management" => "إدارة الأدوار",
     "admin_management" => "إدارة المسؤولين",
+    "constant_management" => "إدارة الثوابت",
+    "settings" => "الإعدادات",
     "role_management" => "إدارة الأدوار",
     "admins" => "المسؤولين",
     "search" => "بحث",
