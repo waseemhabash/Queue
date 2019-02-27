@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
-<a href="{{ url('dashboard/services/create') }}">
+<a href="{{ url('dashboard/services/create') }}"  style="margin-bottom: 25px;">
 	<button class="btn btn-success">
 		<i class="fa fa-plus "></i>{{__("dashboard.addX",["X"=>__("dashboard.service")])}}
 	</button>

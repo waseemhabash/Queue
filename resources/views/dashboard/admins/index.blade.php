@@ -2,12 +2,12 @@
 
 @section('content')
 <a href="{{ url('dashboard/admins/create') }}">
-	<button class="btn btn-success">
+	<button class="btn btn-success" style="margin-bottom: 25px;">
 		<i class="fa fa-plus">{{__("dashboard.addX",["X"=>__("dashboard.admin")])}}</i>
 	</button>
 </a>
 
-<table class="table table-hover" id="sample-table-1">
+<table class="table table-hover">
 	<thead>
 		<tr>
 			<th class="center">#</th>

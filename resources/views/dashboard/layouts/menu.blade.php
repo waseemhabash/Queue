@@ -19,33 +19,35 @@ $login_user = login_user();
 
                     <li class="dropdown current-user">
                         <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                        href="#">
+                            href="#">
 
-                        <span class="username">{{ auth()->user()->name }}</span>
-                        <i class="clip-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="pages_user_profile.html">
-                                <i class="clip-user-2"></i>
-                                &nbsp;My Profile
-                            </a>
-                        </li>
+                            <span class="username">{{ auth()->user()->name }}</span>
+                            <i class="clip-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="pages_user_profile.html">
+                                    <i class="clip-user-2"></i>
+                                    &nbsp;My Profile
+                                </a>
+                            </li>
 
 
-                        <li class="divider"></li>
+                            <li class="divider"></li>
 
-                        <li>
-                            <a href="{{ url('dashboard/logout') }}">
-                                <i class="clip-exit"></i>
-                                &nbsp;Log Out
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                            <li>
+                                <a href="{{ url('dashboard/logout') }}">
+                                    <i class="clip-exit"></i>
+                                    &nbsp;Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+
     <div class="main-container">
         <div class="navbar-content">
             <div class="main-navigation navbar-collapse collapse">
@@ -60,11 +62,7 @@ $login_user = login_user();
                         </a>
                     </li>
 
-
-
                     @if ($login_user->has_priv(["admin_management","role_management"]))
-
-
                     <li class="{{ c_page(['role_management','admin_management']) }}">
                         <a href="javascript:void(0)"><i class="fa fa-users"></i>
                             <span class="title"> {{ __("dashboard.admin_management") }} </span><i class="icon-arrow"></i>
@@ -91,13 +89,21 @@ $login_user = login_user();
 
                         </ul>
                     </li>
-
                     @endif
 
+                    <li class="{{ c_page('companies') }}">
+                        <a href="{{ url('dashboard/companies') }}"><i class="clip-stumbleupon"></i>
+                            <span class="title"> {{ __("dashboard.companies_management") }} </span>
+                        </a>
+                    </li>
+
+                    <li class="{{ c_page('services') }}">
+                        <a href="{{ url('dashboard/services') }}"><i class="clip-stumbleupon"></i>
+                            <span class="title"> {{ __("dashboard.services_management") }} </span>
+                        </a>
+                    </li>
 
                     @if ($login_user->has_priv(["constant_management"]))
-
-
                     <li class="{{ c_page(['constant_management']) }}">
                         <a href="javascript:void(0)"><i class="clip-cogs"></i>
                             <span class="title"> {{ __("dashboard.settings") }} </span><i class="icon-arrow"></i>
@@ -118,58 +124,15 @@ $login_user = login_user();
 
                         </ul>
                     </li>
-
                     @endif
 
                 </ul>
             </div>
-            <ul class="main-navigation-menu">
-                <li class="{{ c_page('home') }}">
-                    <a href="{{ url('dashboard/home') }}"><i class="clip-home-3"></i>
-                        <span class="title"> {{ __("dashboard.home") }} </span>
-                    </a>
-                </li>
-                <li class="{{ c_page(['role_management','admin_management']) }}">
-                    <a href="javascript:void(0)"><i class="fa fa-users"></i>
-                        <span class="title"> {{ __("dashboard.admin_management") }} </span><i class="icon-arrow"></i>
-                    </a>
 
-                    <ul class="sub-menu">
-
-                        @if ($login_user->has_priv("admin_management"))
-
-                        <li class="{{ c_page('admin_management') }}">
-                            <a href="{{ url('/dashboard/admins') }}">
-                                <span class="title"> {{ __("dashboard.admins") }} </span>
-                            </a>
-                        </li>
-                        @endif
-
-                        @if ($login_user->has_priv("role_management"))
-                        <li class="{{ c_page('role_management') }}">
-                            <a href="{{ url('/dashboard/roles') }}">
-                                <span class="title"> {{ __("dashboard.role_management") }} </span>
-                            </a>
-                        </li>
-                        @endif
-
-                    </ul>
-                </li>
-                <li class="{{ c_page('companies') }}">
-                    <a href="{{ url('dashboard/companies') }}"><i class="clip-stumbleupon"></i>
-                        <span class="title"> {{ __("dashboard.companies_management") }} </span>
-                    </a>
-                </li>
-                <li class="{{ c_page('services') }}">
-                    <a href="{{ url('dashboard/services') }}"><i class="clip-stumbleupon"></i>
-                        <span class="title"> {{ __("dashboard.services_management") }} </span>
-                    </a>
-                </li>
-            </ul>
         </div>
     </div>
-    <div class="main-content">
 
+    <div class="main-content">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
