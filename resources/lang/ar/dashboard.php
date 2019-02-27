@@ -26,13 +26,18 @@ return [
     "save" => "حفظ",
     "privileges" => "الصلاحيات",
 
-    "admin"=>"مسؤول",
-    "rePassword"=>"تأكيد كلمة المرور",
-    "phone"=>"رقم الهاتف",
-    "companies_management"=>" ادارة الشركات",
-	"owner"=>"المالك",
-	"description"=>"الوصف",
-	"company"=>"شركة",
-	"service"=>"خدمة",
-	"services_management"=>"إدارة الخدمات"
+    "admin" => "مسؤول",
+    "rePassword" => "تأكيد كلمة المرور",
+    "phone" => "رقم الهاتف",
+    "companies_management" => " ادارة الشركات",
+    "owner" => "المالك",
+    "description" => "الوصف",
+    "company" => "شركة",
+    "service" => "خدمة",
+    "services_management" => "إدارة الخدمات",
+
+    "facebook" => "فيسبوك",
+    "logo" => "Logo",
+    "added_successfully" => "تمت الإضافة بنجاح",
+    "updated_successfully" => "تم التعديل بنجاح",
 ];

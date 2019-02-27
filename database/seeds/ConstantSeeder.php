@@ -18,9 +18,10 @@ class ConstantSeeder extends Seeder
                 "indexx" => "facebook",
             ],
             [
-                "type" => "file",
+                "type" => "image",
                 "indexx" => "logo",
             ],
+            
         ];
 
         foreach ($constants as $const) {

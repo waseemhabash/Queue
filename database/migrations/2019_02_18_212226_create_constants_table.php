@@ -17,7 +17,7 @@ class CreateConstantsTable extends Migration
             $table->increments('id');
             $table->string("indexx");
             $table->string("value");
-            $table->enum("type", ["file", "string"]);
+            $table->enum("type", ["image", "string","text"]);
             $table->timestamps();
         });
     }

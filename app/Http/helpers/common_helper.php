@@ -23,7 +23,7 @@ function login_user()
     return $user;
 }
 
-function upload_file($file, $path)
+function upload_file($file, $path, $old_value = "")
 {
 
     if (is_string($file)) {
@@ -34,10 +34,21 @@ function upload_file($file, $path)
         }
     }
 
-    $file_name = str_random(4) . "_" . $file->getClientOriginalName();
+    $file_extension = $file->getClientOriginalExtension();
+    $file_name = "QueueLines_" . str_random(4) . "." . $file_extension;
+    while (file_exists(public_path($path . $file_name))) {
+        $file_name = "QueueLines_" . str_random(4) . "." . $file_extension;
+    }
 
     $file->move(public_path($path), $file_name);
 
     return ($path . $file_name);
 
+}
+
+function del_file($path)
+{
+    if (file_exists(public_path($path))) {
+        @unlink(public_path($path));
+    }
 }
