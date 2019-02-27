@@ -26,9 +26,13 @@ return [
     "save" => "حفظ",
     "privileges" => "الصلاحيات",
 
-    "added_successfully" => "تمت الإضافة بنجاح",
-    "updated_successfully" => "تم التعديل بنجاح",
-    "deleted_successfully" => "تم الحذف بنجاح",
-    "related_data_error" => "لا يمكنك الحذف !! هناك بيانات مرتبطة",
-
+    "admin"=>"مسؤول",
+    "rePassword"=>"تأكيد كلمة المرور",
+    "phone"=>"رقم الهاتف",
+    "companies_management"=>" ادارة الشركات",
+	"owner"=>"المالك",
+	"description"=>"الوصف",
+	"company"=>"شركة",
+	"service"=>"خدمة",
+	"services_management"=>"إدارة الخدمات"
 ];

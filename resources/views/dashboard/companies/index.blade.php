@@ -1,9 +1,9 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
-<a href="{{ url('dashboard/admins/create') }}">
+<a href="{{ url('dashboard/companies/create') }}">
 	<button class="btn btn-success">
-		<i class="fa fa-plus">{{__("dashboard.addX",["X"=>__("dashboard.admin")])}}</i>
+		<i class="fa fa-plus "></i>{{__("dashboard.addX",["X"=>__("dashboard.company")])}}
 	</button>
 </a>
 
@@ -11,24 +11,29 @@
 	<thead>
 		<tr>
 			<th class="center">#</th>
+			
+
 			<th>{{__("dashboard.name")}}</th>
-			<th class="hidden-xs">{{__("dashboard.email")}}</th>
-			<th>{{__("dashboard.role")}}</th>
+			<th >{{__("dashboard.owner")}}</th>
+			<th >{{__("dashboard.phone")}}</th>
+			<th>{{__("dashboard.description")}}</th>
 
 			<th>{{ __("dashboard.options") }}</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach ($admins as $admin)
+		@foreach ($companies as $company)
 		<tr>
-			<td>{{$admin->id}}</td>
-			<td>{{$admin->name}}</td>
-			<td>{{$admin->email}}</td>
-			<td>{{$admin->role}}</td>
+			<td class="center">{{$company->id}}</td>
+			<td>{{$company->name}}</td>
+			
+			<td>{{$company->owner($company->user_id)}}</td>
+			<td>{{$company->phone}}</td>
+			<td>{!!$company->description!!}</td>
 			<td>
-				<a href='{{ url("dashboard/admins/$admin->id/edit") }}' class="btn btn-xs btn-teal tooltips"
+				<a href='{{ url("dashboard/companies/$company->id/edit") }}' class="btn btn-xs btn-teal tooltips"
 					data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i></a>
-					<form class="delete-admin" action='{{ url("/dashboard/admins/$admin->id") }}' method="POST" style="display:inline">
+					<form class="delete-company" action='{{ url("/dashboard/companies/$company->id") }}' method="POST" style="display:inline">
 						@csrf
 						@method("delete")
 						<button class="btn btn-xs btn-bricky tooltips" data-placement="top" 
@@ -47,11 +52,11 @@
 	@section('assets')
 
 	<script type="text/javascript">
-		$('.delete-admin').on('submit',function (e) {
+		$('.delete-company').on('submit',function (e) {
 
 			if(confirm('Are You Sure?') == true)
 			{
-				$('.delete-admin').on('submit');
+				$('.delete-company').on('submit');
 			}
 			else{
 				e.preventDefault();

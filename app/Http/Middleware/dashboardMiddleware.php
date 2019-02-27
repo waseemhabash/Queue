@@ -22,7 +22,7 @@ class dashboardMiddleware
 
             session()->put("c_page", $privilege);
         }
-
+        
         return $next($request);
     }
 }

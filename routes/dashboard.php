@@ -21,6 +21,17 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
      */
 
     Route::resource("constants", "dashboard\ConstantController")->middleware("dashboardMiddleware:constant_management");
+    /*
+     * Companies
+     */
+
+    Route::resource("companies", "dashboard\CompanyController");
+
+    /**
+     * Services
+     */
+
+    Route::resource("services", "dashboard\ServiceController");
 
 });
 

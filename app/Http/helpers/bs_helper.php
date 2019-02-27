@@ -1,6 +1,4 @@
 <?php
-
-
 function bs_input($name,$value = null,$required = false)
 {
 ?>
@@ -16,9 +14,21 @@ function bs_input($name,$value = null,$required = false)
 
 <?php    
 }
+function bs_password($name,$value = null,$required = false)
+{
+?>
+<div class="form-group">
+    <label class="col-sm-1 control-label" for="<?= $name ?>" style="text-align:right">
+        <?= __("dashboard.$name") ?>
+    </label>
+    <div class="col-sm-6">
+        <input type="password" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control"
+            <?=$required ? 'required' : '' ?> value="<?= old($name) ?? $value ?? ''  ?>">
+    </div>
+</div>
 
-
-
+<?php    
+}
 function bs_date($name,$value = null,$required = false)
 {
 ?>
@@ -35,8 +45,6 @@ function bs_date($name,$value = null,$required = false)
 
 <?php    
 }
-
-
 function bs_number($name,$value = null,$required = false)
 {
 ?>
@@ -53,12 +61,6 @@ function bs_number($name,$value = null,$required = false)
 
 <?php    
 }
-
-
-
-
-
-
 function bs_text($name,$value = null,$required = false)
 {
 ?>
@@ -74,13 +76,22 @@ function bs_text($name,$value = null,$required = false)
 
 <?php    
 }
+function bs_email($name,$value = null,$required = false)
+{
+?>
 
+<div class="form-group">
+    <label class="col-sm-1 control-label" for="<?= $name ?>" style="text-align:right">
+        <?= __("dashboard.$name") ?>
+    </label>
+    <div class="col-sm-6">
+        <input type="email" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control"
+            <?=$required ? 'required' : '' ?> value="<?= old($name) ?? $value ?? ''  ?>">
+    </div>
+</div>
 
-
-
-
-
-
+<?php    
+}
 function bs_image($name,$value = null,$required = false)
 {
 ?>
@@ -107,10 +118,6 @@ function bs_image($name,$value = null,$required = false)
 
 <?php    
 }
-
-
-
-
 function bs_video($name,$value = null,$required = false)
 {
 ?>
@@ -139,10 +146,6 @@ function bs_video($name,$value = null,$required = false)
 
 <?php    
 }
-
-
-
-
 function bs_multiple_files($name,$value = null,$required = false)
 {
 ?>
@@ -177,10 +180,6 @@ function bs_save($name)
 
 <?php    
 }
-
-
-
-
 function alert_box($type,$value,$with_circle = false)
 {
 ?>

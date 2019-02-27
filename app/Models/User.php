@@ -42,4 +42,9 @@ class User extends Authenticatable
 
         return $bool;
     }
+
+    public function company()
+    {
+     return $this->hasOne('App\Models\Company');
+    }
 }
