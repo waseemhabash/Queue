@@ -1,3 +1,5 @@
+
+
 @extends('dashboard.layouts.index')
 
 @section('content')
@@ -5,17 +7,17 @@
     @csrf
     @method("POST")
 
-    {{bs_input("name",null,true)}}
+    {{bs_input("username",null,true)}}
 
 	{{bs_email("email",null,true)}}
 	
-    {{bs_number("phone",null,false)}}
+    {{bs_input("phone",null,true)}}
 
     <div class="form-group">
-        <label for="col-sm-1">
-            <?= __("dashboard.role") ?>
+        <label class="col-sm-1 control-label" style="text-align:right">
+            {{ __("dashboard.roles") }}
         </label>
-        <div class="col-sm-6" style="    margin-right: 100px;">
+        <div class="col-sm-6">
             <select name="roles[]" multiple class="form-control search-select">
                 @foreach ($roles as $role)
                 <option value="{{$role->id}}">{{$role->name}}</option>
@@ -26,7 +28,7 @@
 
 	{{bs_password("password",null,true)}}
 	
-    {{bs_password("rePassword",null,true)}}
+    {{bs_password("password_confirmation",null,true)}}
 
     {{bs_save("save")}}
 </form>

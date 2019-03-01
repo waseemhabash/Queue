@@ -16,7 +16,8 @@ class PrivilegeSeeder extends Seeder
             "admin_management",
             "role_management",
             "constant_management",
-
+            "companies_management",
+            "branches_management",
         ];
 
         $user = new User();
@@ -24,6 +25,7 @@ class PrivilegeSeeder extends Seeder
         $user->email = "admin@admin.com";
         $user->phone = "0949042001";
         $user->password = bcrypt("password");
+        $user->type = "admin";
         $user->save();
 
         $role = new Role();

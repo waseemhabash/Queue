@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Company_manger extends Model
+class Branch_manger extends Model
 {
     public function user()
     {

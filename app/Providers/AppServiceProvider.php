@@ -2,27 +2,23 @@
 
 namespace App\Providers;
 
+use App\Models\Constant;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
+
     public function register()
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        //
+
+        $c = Constant::get_consts();
+
+        view()->share(compact(["c"]));
+
     }
 }

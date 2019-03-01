@@ -91,11 +91,18 @@ $login_user = login_user();
                     </li>
                     @endif
 
-                    <li class="{{ c_page('companies') }}">
+
+                    @if ($login_user->has_priv("companies_management"))
+                        
+
+                    <li class="{{ c_page('companies_management') }}">
                         <a href="{{ url('dashboard/companies') }}"><i class="clip-stumbleupon"></i>
                             <span class="title"> {{ __("dashboard.companies_management") }} </span>
                         </a>
                     </li>
+
+                    @endif
+
 
                     <li class="{{ c_page('services') }}">
                         <a href="{{ url('dashboard/services') }}"><i class="clip-stumbleupon"></i>

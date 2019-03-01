@@ -7,6 +7,16 @@ use Illuminate\Support\Arr;
 
 class Constant extends Model
 {
+
+    public static function get_consts()
+    {
+        $constants = Constant::all();
+
+        $constants = Arr::pluck($constants, 'value', 'indexx');
+
+        return $constants;
+    }
+
     public static function update_constant()
     {
         $inputs = request()->input();

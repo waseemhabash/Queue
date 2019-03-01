@@ -14,6 +14,10 @@ class dashboardMiddleware
             return redirect("dashboard/login")->with("error", __("dashboard.access_denied"));
         }
 
+        if (auth()->user()->type == "user") {
+            return redirect("dashboard/login")->with("error", __("dashboard.access_denied"));
+        }
+
         if ($privilege) {
 
             if (!login_user()->has_priv($privilege)) {
@@ -22,7 +26,7 @@ class dashboardMiddleware
 
             session()->put("c_page", $privilege);
         }
-        
+
         return $next($request);
     }
 }

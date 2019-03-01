@@ -21,7 +21,6 @@ class ConstantSeeder extends Seeder
                 "type" => "image",
                 "indexx" => "logo",
             ],
-            
         ];
 
         foreach ($constants as $const) {

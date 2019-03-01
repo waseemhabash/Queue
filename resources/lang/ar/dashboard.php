@@ -4,6 +4,7 @@ return [
 
     "access_denied" => "غير مسموح لك بالدخول",
     "invalid_access_informations" => "معلومات الدخول غير صحيحة !",
+
     "brand" => "Queue Lines",
     "logIn" => "تسجيل الدخول",
     "enterLoginInformation" => "أدخل المعلومات لتسجيل الدخول",
@@ -15,21 +16,34 @@ return [
     "constant_management" => "إدارة الثوابت",
     "settings" => "الإعدادات",
     "role_management" => "إدارة الأدوار",
+    "address" => "العنوان",
     "admins" => "المسؤولين",
     "search" => "بحث",
     "options" => "خيارت",
     "edit" => "تعديل",
+    "role" => "الدور",
     "delete" => "حذف",
     "addX" => "إضافة :X",
-    "role" => "دور",
+    "roles" => "الأدوار",
     "name" => "الاسم",
     "save" => "حفظ",
     "privileges" => "الصلاحيات",
+    "ownerInfo" => "معلومات المالك",
+    "username" => "اسم المستخدم",
+    "related_data_error" => "هناك بيانات مرتبطة , لا يمكن الحذف !",
+
+    "branch" => "فرع",
+    "branches_management" => "إدارة الفروع",
+
+    "show" => "عرض",
+    "generalInfo" => "معلومات عامة",
+    "created_at" => "تاريخ الإنشاء",
+    "branches" => "الفروع",
 
     "admin" => "مسؤول",
-    "rePassword" => "تأكيد كلمة المرور",
+    "password_confirmation" => "تأكيد كلمة المرور",
     "phone" => "رقم الهاتف",
-    "companies_management" => " ادارة الشركات",
+    "companies_management" => " إدارة الشركات",
     "owner" => "المالك",
     "description" => "الوصف",
     "company" => "شركة",
@@ -40,4 +54,7 @@ return [
     "logo" => "Logo",
     "added_successfully" => "تمت الإضافة بنجاح",
     "updated_successfully" => "تم التعديل بنجاح",
+    "deleted_successfully" => "تم الحذف بنجاح",
+    "ownerName" => "اسم المالك",
+
 ];

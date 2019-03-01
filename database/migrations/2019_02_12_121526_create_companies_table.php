@@ -18,7 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->unsignedInteger('company_manger_id');
             $table->string("name");
             $table->text("description");
-            $table->string("phone");
+            $table->string("logo");
             $table->foreign('company_manger_id')->references('id')->on('company_mangers')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });

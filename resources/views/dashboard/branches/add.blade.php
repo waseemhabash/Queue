@@ -1,14 +1,18 @@
+
+
 @extends('dashboard.layouts.index')
 
 @section('content')
-<form action="{{ url('dashboard/companies') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form role="form" action="{{ url('dashboard/branches') }}" class="form-horizontal" method="post">
     @csrf
     @method("POST")
 
-
     {{ bs_input("name",null,true) }}
+    {{ bs_input("address",null,true) }}
     {{ bs_text("description",null,true) }}
-    {{ bs_image("logo",null,true) }}
+
+    <input hidden name="lng" value="1.5">
+    <input hidden name="lat" value="1.5">
 
 
 

@@ -25,7 +25,13 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
      * Companies
      */
 
-    Route::resource("companies", "dashboard\CompanyController");
+    Route::resource("companies", "dashboard\CompanyController")->middleware("dashboardMiddleware:companies_management");
+
+    /**
+     * Branches
+     */
+
+    Route::resource("branches", "dashboard\BranchController")->middleware("dashboardMiddleware:branches_management");
 
     /**
      * Services
@@ -37,8 +43,8 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
 
 Route::prefix("dashboard")->group(function () {
 
-    Route::get('/logout', "dashboard\HomeController@logout");
+    Route::get('/logout', "dashboard\UserController@logout");
 
-    Route::any('/login', "dashboard\HomeController@login");
+    Route::any('/login', "dashboard\UserController@login");
 
 });
