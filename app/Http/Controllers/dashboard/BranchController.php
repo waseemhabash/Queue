@@ -9,6 +9,7 @@ use App\Models\Company;
 class BranchController extends Controller
 {
 
+
     public function index()
     {
 

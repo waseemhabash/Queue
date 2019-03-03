@@ -1,24 +1,27 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
+@php
+$currentTap=session('tapId');
+ $iid=str_replace("#","",$currentTap);
+@endphp
 
 <div class="tabbable">
     <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
-        <li class="active">
+        <li @if($currentTap=='#generalInfo') class="active" @endif>
             <a data-toggle="tab" href="#generalInfo">
-                {{ __("dashboard.generalInfo") }}
+                {{ __("dashboard.generalInfo") }} 
             </a>
         </li>
 
-        <li class="">
+        <li @if($currentTap=='#branches') class="active" @endif>
             <a data-toggle="tab" href="#branches">
                 {{ __("dashboard.branches") }}
             </a>
         </li>
-
     </ul>
     <div class="tab-content">
-        <div id="generalInfo" class="tab-pane in active">
+        <div id="generalInfo" @if($currentTap=='#generalInfo') class="tab-pane in active" @else class="tab-pane" @endif>
             <div class="row">
                 <div class="col-sm-5 col-md-4">
                     <div class="user-left">
@@ -91,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div id="branches" class="tab-pane">
+        <div id="branches"  @if($currentTap=='#branches') class="tab-pane in active" @else class="tab-pane" @endif >
 
             <a href="{{ url('dashboard/branches/create') }}">
                 <button class="btn btn-success" style="margin-bottom: 25px;">
@@ -139,5 +142,34 @@
         </div>
     </div>
 </div>
+
+@endsection
+@section('assets')
+<script type="text/javascript">
+    var tapId;
+    $(document).ready(function(){
+        $("ul li a").click(function(){
+           var href=$(this).attr("href");
+           
+           $.ajax({
+            type:'POST',
+            url:'/dashboard/tap',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            data: { "href":href},
+            success: function(data){
+                if(data.data.success){
+                    tapId=data.data.success;
+                    $(data.data.success).class('active');
+                }
+            },
+            error:function(result){
+                alert(result.responseText);
+            }
+
+        });
+       });
+    });
+
+</script>
 
 @endsection
