@@ -1,12 +1,16 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
+@php
+$currentTap=session('tapId');
+ $iid=str_replace("#","",$currentTap);
+@endphp
 
 <div class="tabbable">
     <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
     <li class="{{ hash_page('generalInfo') }}">
             <a data-toggle="tab" href="#generalInfo">
-                {{ __("dashboard.generalInfo") }}
+                {{ __("dashboard.generalInfo") }} 
             </a>
         </li>
 
@@ -15,7 +19,6 @@
                 {{ __("dashboard.branches") }}
             </a>
         </li>
-
     </ul>
     <div class="tab-content">
         <div id="generalInfo" class="tab-pane {{ hash_page('generalInfo') }}">

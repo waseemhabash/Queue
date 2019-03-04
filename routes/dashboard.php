@@ -1,5 +1,9 @@
 <?php
 
+
+
+
+
 Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function () {
 
     Route::get('/home', "dashboard\HomeController@index");
@@ -39,6 +43,10 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
 
     Route::resource("services", "dashboard\ServiceController");
 
+    /**
+    * Store Tap Id In Session
+    */
+    Route::post('/tap', "dashboard\CompanyController@storeTapId");
 });
 
 Route::prefix("dashboard")->group(function () {
