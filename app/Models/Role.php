@@ -16,6 +16,11 @@ class Role extends Model
         return $this->privileges->find($privilege_id);
     }
 
+    public static function get_by_name($role_name)
+    {
+        return Role::where("name",$role_name)->first();
+    }
+
     public static function store_role()
     {
         request()->validate([

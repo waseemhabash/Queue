@@ -4,33 +4,24 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
-use App\Models\Company;
 
 class BranchController extends Controller
 {
 
-
-    public function index()
+    public function index($company_id)
     {
 
     }
 
-    public function create()
+    public function create($company_id)
     {
-        if (auth()->user()->type == "admin" && session("company_id")) {
-            $company_id = session("company_id");
-            Company::findOrFail($company_id);
-        } else {
-            return redirect("dashboard/home")->with("error", __("dashboard.access_denied"));
-        }
-
         return view("dashboard.branches.add", compact("company_id"));
     }
 
-    public function store()
+    public function store($company_id)
     {
-        Branch::create_branch();
-        return redirect("dashboard/companies/" . session("company_id"))->with("success", __("dashboard.added_successfully"));
+        Branch::create_branch($company_id);
+        return redirect("dashboard/companies/$company_id")->with("success", __("dashboard.added_successfully"));
     }
 
     public function show()
@@ -40,19 +31,29 @@ class BranchController extends Controller
 
     public function edit(Branch $branch)
     {
-
-        
-
-        return view("dashboard.branches.edit",compact("branch"));
+        return view("dashboard.branches.edit", compact("branch"));
     }
 
-    public function update()
+    public function update(Branch $branch)
     {
-        //
+        Branch::update_branch($branch);
+        return redirect("dashboard/companies/" . $branch->company->id)->with("success", __("dashboard.updated_successfully"));
+
     }
 
-    public function destroy($id)
+    public function destroy(Branch $branch)
     {
-        //
+        \DB::beginTransaction();
+
+        try {
+            $branch->delete();
+            $branch->user->delete();
+        } catch (\Throwable $th) {
+            return back()->with("error", __("dashboard.related_data_error"));
+        }
+
+        \DB::commit();
+
+        return redirect("dashboard/companies/" . $branch->company->id)->with("success", __("dashboard.deleted_successfully"));
     }
 }

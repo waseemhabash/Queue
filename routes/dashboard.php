@@ -1,10 +1,6 @@
 <?php
 
-
-
-
-
-Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function () {
+Route::prefix("dashboard")->middleware("dashboard")->group(function () {
 
     Route::get('/home', "dashboard\HomeController@index");
 
@@ -12,31 +8,37 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
      * Admins
      */
 
-    Route::resource("admins", "dashboard\AdminController")->middleware("dashboardMiddleware:admin_management");
+    Route::resource("admins", "dashboard\AdminController")->middleware("privilege:admin_management");
 
     /**
      * Roles
      */
 
-    Route::resource("roles", "dashboard\RoleController")->middleware("dashboardMiddleware:role_management");
+    Route::resource("roles", "dashboard\RoleController")->middleware("privilege:role_management");
 
     /**
      * constants
      */
 
-    Route::resource("constants", "dashboard\ConstantController")->middleware("dashboardMiddleware:constant_management");
+    Route::resource("constants", "dashboard\ConstantController")->middleware("privilege:constant_management");
     /*
      * Companies
      */
 
-    Route::resource("companies", "dashboard\CompanyController")->middleware("dashboardMiddleware:companies_management");
+    Route::resource("companies", "dashboard\CompanyController")->middleware("privilege:companies_management");
 
     /**
      * Branches
      */
 
-    Route::resource("branches", "dashboard\BranchController")->middleware("dashboardMiddleware:branches_management");
+    Route::middleware(["privilege:branches_management,branch", "branch"])->group(function () {
 
+        Route::get("companies/{company_id}/branches/create", "dashboard\BranchController@create");
+        Route::post("companies/{company_id?}/branches", "dashboard\BranchController@store");
+
+        Route::resource("companies/branches", "dashboard\BranchController")->except(["index", "create", "store"]);
+
+    });
     /**
      * Services
      */
@@ -44,15 +46,15 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
     Route::resource("services", "dashboard\ServiceController");
 
     /**
-    * Store Tap Id In Session
-    */
+     * Store Tap Id In Session
+     */
     Route::post('/tap', "dashboard\CompanyController@storeTapId");
 });
 
 Route::prefix("dashboard")->group(function () {
-    
-    Route::get("/change_hash_tab/{hash}",function($hash){
-        session()->put("hash",$hash);
+
+    Route::get("/change_hash_tab/{hash}", function ($hash) {
+        session()->put("hash", $hash);
     });
 
     Route::get('/logout', "dashboard\UserController@logout");

@@ -21,8 +21,8 @@
         @foreach ($companies as $company)
         <tr>
             <td>{{$company->name}}</td>
-            <td>{{$company->user()->phone}}</td>
-            <td>{{ $company->user()->name }}</td>
+            <td>{{$company->user->phone}}</td>
+            <td>{{ $company->user->name }}</td>
             <td>
                 <a href='{{ url("dashboard/companies/$company->id") }}' class="btn btn-xs btn-purple tooltips"
                     data-placement="top" data-original-title="{{ __('dashboard.show') }}"><i class="fa fa-eye"></i>

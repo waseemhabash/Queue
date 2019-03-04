@@ -14,7 +14,8 @@ function bs_input($name,$value = null,$required = false)
 
 <?php    
 }
-function bs_password($name,$value = null,$required = false)
+
+function bs_disabled($name,$value = null,$required = false)
 {
 ?>
 <div class="form-group">
@@ -22,7 +23,23 @@ function bs_password($name,$value = null,$required = false)
         <?= __("dashboard.$name") ?>
     </label>
     <div class="col-sm-6">
-        <input type="password" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control"
+        <input type="text" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control" disabled
+            <?=$required ? 'required' : '' ?> value="<?= old($name) ?? $value ?? ''  ?>">
+    </div>
+</div>
+
+<?php    
+}
+
+function bs_password($name,$value = null,$required = false,$leave_empty = false)
+{
+?>
+<div class="form-group "  >
+    <label class="col-sm-1 control-label" for="<?= $name ?>" style="text-align:right">
+        <?= __("dashboard.$name") ?>
+    </label>
+    <div class="col-sm-6">
+        <input type="password" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="<?= $name ?>" class="form-control tooltips" <?= $leave_empty ? 'data-placement="top" data-original-title="' .__("dashboard.leaveItEmpty").'"' : ""?>
             <?=$required ? 'required' : '' ?> value="<?= old($name) ?? $value ?? ''  ?>">
     </div>
 </div>

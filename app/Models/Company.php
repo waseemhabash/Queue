@@ -8,14 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
 
-    public function manger()
-    {
-        return $this->belongsTo("App\Models\Company_manger", "company_manger_id")->with("user");
-    }
+
 
     public function user()
     {
-        return $this->manger->user;
+        return $this->belongsTo("App\Models\user", "user_id");
     }
     public function branches()
     {
@@ -24,11 +21,12 @@ class Company extends Model
 
     public static function create_company()
     {
-        $user = User::create_user("company_manger");
+        
+        $role = Role::get_by_name("شركة");
+        request()->request->add(["roles" => [$role->id]]);
+        $user = User::create_user("company_manager");
 
-        $company_manger = new Company_manger();
-        $company_manger->user_id = $user->id;
-        $company_manger->save();
+
 
         request()->validate([
             "name" => "required",
@@ -40,7 +38,7 @@ class Company extends Model
         $company->name = request("name");
         $company->description = request("description");
         $company->logo = upload_file("logo", "uploads/companies/$user->id/");
-        $company->company_manger_id = $company_manger->id;
+        $company->user_id = $user->id;
         $company->save();
 
         return $company;
@@ -48,7 +46,7 @@ class Company extends Model
 
     public static function update_company($company)
     {
-        $user = User::update_user($company->user());
+        $user = User::update_user($company->user);
 
         request()->validate([
             "name" => "required",

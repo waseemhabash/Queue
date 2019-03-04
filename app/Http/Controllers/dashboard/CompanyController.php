@@ -1,29 +1,17 @@
 <?php
 
-
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function storeTapId(Request $request){
-        session(['tapId' => $request->href]);
-        
-               return response()->json([
-          'data' => [
-            'success' => $request->href,
-        ]
-    ]);
-    }
-
 
     public function index()
     {
-        $companies = Company::with(["manger"])->get();
+        $companies = Company::with(["user"])->get();
 
         return view('dashboard.companies.index', compact('companies'));
     }
@@ -74,8 +62,7 @@ class CompanyController extends Controller
 
         try {
             $company->delete();
-            $company->manger->delete();
-            $company->manger->user->delete();
+            $company->user->delete();
         } catch (\Throwable $th) {
             return back()->with("error", __("dashboard.related_data_error"));
         }

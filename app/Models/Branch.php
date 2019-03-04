@@ -7,20 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
 
-    public function manger()
-    {
-        return $this->belongsTo("App\Models\Branch_manger", "branch_manger_id")->with("user");
-    }
-
     public function user()
     {
-        return $this->manger->user;
+        return $this->belongsTo("App\Models\User", "user_id");
     }
 
-    public static function create_branch()
+    public function company()
     {
+        return $this->belongsTo("App\Models\Company", "company_id");
 
-        $user = User::create_user("branch_manger");
+    }
+
+    public static function create_branch($company_id)
+    {
 
         request()->validate([
             "name" => "required",
@@ -30,9 +29,7 @@ class Branch extends Model
             "lat" => "required|numeric",
         ]);
 
-        $branch_manger = new Branch_manger();
-        $branch_manger->user_id = $user->id;
-        $branch_manger->save();
+        $user = User::create_user("branch_manager");
 
         $branch = new Branch();
         $branch->name = request("name");
@@ -40,10 +37,31 @@ class Branch extends Model
         $branch->description = request("description");
         $branch->lng = request("lng");
         $branch->lat = request("lat");
-        $branch->company_id = session("company_id");
-        $branch->branch_manger_id = $branch_manger->id;
+        $branch->company_id = $company_id;
+        $branch->user_id = $user->id;
         $branch->save();
 
         return $branch;
+    }
+
+    public static function update_branch($branch)
+    {
+
+        request()->validate([
+            "name" => "required",
+            "address" => "required",
+            "description" => "required",
+            "lng" => "required|numeric",
+            "lat" => "required|numeric",
+        ]);
+
+        $user = User::update_user($branch->user);
+
+        $branch->name = request("name");
+        $branch->address = request("address");
+        $branch->description = request("description");
+        $branch->lng = request("lng");
+        $branch->lat = request("lat");
+        $branch->update();
     }
 }

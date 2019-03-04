@@ -422,6 +422,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
     );
 
     public static $classMap = array (
+        'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -443,11 +444,9 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Middleware\\dashboardMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/dashboardMiddleware.php',
         'App\\Models\\Branch' => __DIR__ . '/../..' . '/app/Models/Branch.php',
-        'App\\Models\\Branch_manger' => __DIR__ . '/../..' . '/app/Models/Branch_manger.php',
         'App\\Models\\Branch_service' => __DIR__ . '/../..' . '/app/Models/Branch_service.php',
         'App\\Models\\Branch_service_serviceEmloyee' => __DIR__ . '/../..' . '/app/Models/Branch_service_serviceEmloyee.php',
         'App\\Models\\Company' => __DIR__ . '/../..' . '/app/Models/Company.php',
-        'App\\Models\\Company_manger' => __DIR__ . '/../..' . '/app/Models/Company_manger.php',
         'App\\Models\\Constant' => __DIR__ . '/../..' . '/app/Models/Constant.php',
         'App\\Models\\Privilege' => __DIR__ . '/../..' . '/app/Models/Privilege.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
@@ -471,6 +470,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Laravel\\ServiceProvider' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CompanySeeder' => __DIR__ . '/../..' . '/database/seeds/CompanySeeder.php',
         'ConstantSeeder' => __DIR__ . '/../..' . '/database/seeds/ConstantSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

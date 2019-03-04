@@ -60,15 +60,15 @@ $currentTap=session('tapId');
                             <tbody>
                                 <tr>
                                     <td>{{ __("dashboard.name") }}</td>
-                                    <td>{{ $company->user()->name }}</td>
+                                    <td>{{ $company->user->name }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ __("dashboard.email") }}</td>
-                                    <td>{{ $company->user()->email }}</td>
+                                    <td>{{ $company->user->email }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ __("dashboard.phone") }}</td>
-                                    <td>{{ $company->user()->phone }}</td>
+                                    <td>{{ $company->user->phone }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -96,7 +96,7 @@ $currentTap=session('tapId');
         </div>
         <div id="branches" class="tab-pane {{ hash_page('branches') }}">
 
-            <a href="{{ url('dashboard/branches/create') }}">
+            <a href='{{ url("dashboard/companies/$company->id/branches/create") }}'>
                 <button class="btn btn-success" style="margin-bottom: 25px;">
                     <i class="fa fa-plus "></i>{{__("dashboard.addX",["X"=>__("dashboard.branch")])}}
                 </button>
@@ -115,18 +115,18 @@ $currentTap=session('tapId');
                     @foreach ($company->branches as $branch)
                     <tr>
                         <td>{{$branch->name}}</td>
-                        <td>{{$branch->user()->phone}}</td>
-                        <td>{{ $branch->user()->name }}</td>
+                        <td>{{$branch->user->phone}}</td>
+                        <td>{{ $branch->user->name }}</td>
                         <td>
 
-                            <a href='{{ url("dashboard/branches/$branch->id") }}' class="btn btn-xs btn-purple tooltips"
+                            <a href='{{ url("dashboard/companies/$company->id/branches/$branch->id") }}' class="btn btn-xs btn-purple tooltips"
                                 data-placement="top" data-original-title="{{ __('dashboard.show') }}"><i class="fa fa-eye"></i>
                             </a>
 
-                            <a href='{{ url("dashboard/branches/$branch->id/edit") }}' class="btn btn-xs btn-teal tooltips"
+                            <a href='{{ url("dashboard/companies/branches/$branch->id/edit") }}' class="btn btn-xs btn-teal tooltips"
                                 data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
                             </a>
-                            <form action='{{ url("/dashboard/branches/$branch->id") }}' method="POST" style="display:inline">
+                            <form action='{{ url("/dashboard/companies/branches/$branch->id") }}' method="POST" style="display:inline">
                                 @csrf
                                 @method("delete")
                                 <button class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="{{__('dashboard.delete')}}">

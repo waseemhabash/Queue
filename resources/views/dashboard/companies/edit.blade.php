@@ -15,10 +15,10 @@
         <h1>{{ __("dashboard.ownerInfo") }}</h1>
     </div>
 
-    {{ bs_input("username",$company->user()->name,true) }}
-    {{ bs_email("email",$company->user()->email,true) }}
-    {{ bs_input("phone",$company->user()->phone,true) }}
-    {{ bs_password("password",null,false) }}
+    {{ bs_input("username",$company->user->name,true) }}
+    {{ bs_email("email",$company->user->email,true) }}
+    {{ bs_input("phone",$company->user->phone,true) }}
+    {{ bs_password("password",null,false,true) }}
 	{{ bs_password("password_confirmation",null,false) }}
 	
 	{{ bs_save("save") }}

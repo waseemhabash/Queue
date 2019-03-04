@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
@@ -27,11 +28,9 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Middleware\\dashboardMiddleware' => $baseDir . '/app/Http/Middleware/dashboardMiddleware.php',
     'App\\Models\\Branch' => $baseDir . '/app/Models/Branch.php',
-    'App\\Models\\Branch_manger' => $baseDir . '/app/Models/Branch_manger.php',
     'App\\Models\\Branch_service' => $baseDir . '/app/Models/Branch_service.php',
     'App\\Models\\Branch_service_serviceEmloyee' => $baseDir . '/app/Models/Branch_service_serviceEmloyee.php',
     'App\\Models\\Company' => $baseDir . '/app/Models/Company.php',
-    'App\\Models\\Company_manger' => $baseDir . '/app/Models/Company_manger.php',
     'App\\Models\\Constant' => $baseDir . '/app/Models/Constant.php',
     'App\\Models\\Privilege' => $baseDir . '/app/Models/Privilege.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
@@ -55,6 +54,7 @@ return array(
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
     'Carbon\\Laravel\\ServiceProvider' => $vendorDir . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
+    'CompanySeeder' => $baseDir . '/database/seeds/CompanySeeder.php',
     'ConstantSeeder' => $baseDir . '/database/seeds/ConstantSeeder.php',
     'Cron\\AbstractField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

@@ -16,12 +16,7 @@ function c_page($pages)
     return $bool ? "active open" : "";
 }
 
-function login_user()
-{
-    $user_id = auth()->id();
-    $user = User::find($user_id);
-    return $user;
-}
+
 
 function upload_file($file, $path, $old_value = "")
 {

@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="{{ url('/dashboard') }}/assets/plugins/summernote/build/summernote.css">
     <link rel="stylesheet" href="{{ url('/dashboard') }}/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
+    <link rel="stylesheet" href="{{ url('/dashboard') }}/assets/css/map-box.css" />
 
-<link rel="shortcut icon" href="{{ url('/'.$c['logo']) }}" />
+    <link rel="shortcut icon" href="{{ url('/'.$c['logo']) }}" />
 </head>
-

@@ -12,7 +12,7 @@ class CreateBranchesTable extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('company_id');
-            $table->unsignedInteger('branch_manger_id');
+            $table->unsignedInteger('user_id');
 
             $table->string("name");
             $table->text("description");
@@ -22,12 +22,12 @@ class CreateBranchesTable extends Migration
             $table->double("lat");
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('branch_manger_id')->references('id')->on('branch_mangers')->onDelete('restrict')->onUpdate('restrict');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
 
             $table->timestamps();
         });
     }
-
 
     public function down()
     {

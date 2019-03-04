@@ -6,6 +6,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    public function company()
+    {
+        return $this->hasOne("App\Models\Company","user_id");
+    }
+
     public function roles()
     {
         return $this->belongsToMany("App\Models\Role", "role_users", "user_id", "role_id");
