@@ -30,6 +30,7 @@ class CompanyController extends Controller
 
     public function show(Company $company)
     {
+
         $canAccess = auth()->user()->type == "admin";
 
         if (!$canAccess) {
@@ -37,6 +38,9 @@ class CompanyController extends Controller
         }
 
         session()->put("company_id", $company->id);
+
+        session()->put("hash", session("hash") ?? "generalInfo");
+
         return view("dashboard.companies.show", compact("company"));
     }
 

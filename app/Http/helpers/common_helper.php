@@ -52,3 +52,9 @@ function del_file($path)
         @unlink(public_path($path));
     }
 }
+
+
+function hash_page($hash)
+{
+    return session("hash") == $hash ? "active in" : "";
+}

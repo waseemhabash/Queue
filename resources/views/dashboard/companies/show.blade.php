@@ -4,13 +4,13 @@
 
 <div class="tabbable">
     <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
-        <li class="active">
+    <li class="{{ hash_page('generalInfo') }}">
             <a data-toggle="tab" href="#generalInfo">
                 {{ __("dashboard.generalInfo") }}
             </a>
         </li>
 
-        <li class="">
+        <li class="{{ hash_page('branches') }}">
             <a data-toggle="tab" href="#branches">
                 {{ __("dashboard.branches") }}
             </a>
@@ -18,7 +18,7 @@
 
     </ul>
     <div class="tab-content">
-        <div id="generalInfo" class="tab-pane in active">
+        <div id="generalInfo" class="tab-pane {{ hash_page('generalInfo') }}">
             <div class="row">
                 <div class="col-sm-5 col-md-4">
                     <div class="user-left">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <div id="branches" class="tab-pane">
+        <div id="branches" class="tab-pane {{ hash_page('branches') }}">
 
             <a href="{{ url('dashboard/branches/create') }}">
                 <button class="btn btn-success" style="margin-bottom: 25px;">
@@ -141,3 +141,4 @@
 </div>
 
 @endsection
+

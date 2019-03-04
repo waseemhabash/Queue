@@ -42,6 +42,10 @@ Route::prefix("dashboard")->middleware("dashboardMiddleware")->group(function ()
 });
 
 Route::prefix("dashboard")->group(function () {
+    
+    Route::get("/change_hash_tab/{hash}",function($hash){
+        session()->put("hash",$hash);
+    });
 
     Route::get('/logout', "dashboard\UserController@logout");
 

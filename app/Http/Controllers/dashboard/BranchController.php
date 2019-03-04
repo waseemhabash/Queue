@@ -37,9 +37,12 @@ class BranchController extends Controller
         //
     }
 
-    public function edit()
+    public function edit(Branch $branch)
     {
-        //
+
+        
+
+        return view("dashboard.branches.edit",compact("branch"));
     }
 
     public function update()

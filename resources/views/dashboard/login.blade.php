@@ -28,7 +28,7 @@
 <body class="login example2">
     <div class="main-login col-sm-4 col-sm-offset-4">
         <div class="logo">
-            {{ __("dashboard.brand") }}
+        <img src="{{ url($c['logo']) }}" width="150">
         </div>
         <div class="box-login">
             <h3>{{ __("dashboard.logIn") }}</h3>

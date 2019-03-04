@@ -173,7 +173,7 @@ function bs_save($name)
 
     </label>
     <div class="col-sm-6">
-        <button class="btn btn-info" type="submit">
+        <button class="btn btn-info" type="submit" style="background:#ECB08B;border: 1px solid #ECB08F">
             <?= __("dashboard.$name")?></button>
     </div>
 </div>

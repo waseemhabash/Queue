@@ -29,3 +29,20 @@
 
 </form>
 @endsection
+
+@section('assets')
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2FzZWVtYWxoYWJhc2giLCJhIjoiY2pzcWo3MmgyMTRlNTQ0bzQ1MWMyOGtzZSJ9.Hk7_kl2Oh9TH-i8513BV1g';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+center: [-74.50, 40], // starting position [lng, lat]
+zoom: 9 // starting zoom
+});
+</script>
+
+    
+@endsection
