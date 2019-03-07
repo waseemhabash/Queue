@@ -13,16 +13,16 @@ class PrivilegeMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, ...$privilege)
+    public function handle($request, Closure $next, ...$privileges)
     {
 
-        if ($privilege) {
+        if ($privileges) {
 
-            if (!auth()->user()->has_priv($privilege)) {
+            if (!auth()->user()->has_priv($privileges)) {
                 return redirect("dashboard")->with("error", __("dashboard.access_denied"));
             }
 
-            session()->put("c_page", $privilege[0]);
+            session()->put("c_page", $privileges[0]);
         }
 
         return $next($request);

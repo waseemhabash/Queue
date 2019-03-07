@@ -10,6 +10,10 @@
 
     {{ bs_number("timeInMinutes",null,true) }}
 
+    {{ bs_tag("requirements",null,true) }}
+
+
+
     {{ bs_save("save") }}
 
 

@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/rtl-version.css">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/jquery-ui.min.css">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/select2/select2.css">
+    <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
+
+
 
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/summernote/build/summernote.css">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">

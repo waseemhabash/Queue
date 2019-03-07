@@ -18,12 +18,18 @@ class BranchSeeder extends Seeder
             "name" => "فرع",
         ]);
 
+        Privilege::create([
+            "name" => "branch_management",
+        ]
+        );
+        
         $role = Role::get_by_name("فرع");
 
         $privileges = Privilege::whereIn("name", [
-            "branches_management",
+            "branch_management",
             "services_management",
             "employees_management",
+            "windows_management",
         ])->get();
 
         foreach ($privileges as $privilege) {
@@ -39,7 +45,7 @@ class BranchSeeder extends Seeder
 
         $user = new User();
         $user->name = "Branch owner Name";
-        $user->email = "Branh@email.com";
+        $user->email = "Branch@email.com";
         $user->phone = "0933242093";
         $user->password = bcrypt("password");
         $user->type = "branch_manager";

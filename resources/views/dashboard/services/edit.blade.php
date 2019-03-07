@@ -11,6 +11,8 @@
 
     {{ bs_number("timeInMinutes",$service->time,true) }}
 
+    {{ bs_tag("requirements",$service->requirements,true) }}
+
 
     {{ bs_save("save") }}
 

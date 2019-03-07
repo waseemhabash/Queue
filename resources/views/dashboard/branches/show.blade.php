@@ -68,7 +68,7 @@
                         <table class="table table-condensed table-hover">
                             <thead>
                                 <tr>
-                                    <th colspan="3">{{ __("dashboard.ownerInfo") }}</th>
+                                    <th colspan="3">{{ __("dashboard.userInfo") }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -130,7 +130,7 @@
 
                         <td>
 
-                            
+
 
                             <a href='{{ url("dashboard/branches/services/$service->id/edit") }}' class="btn btn-xs btn-teal tooltips"
                                 data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
@@ -167,7 +167,7 @@
                     @foreach ($branch->windows as $window)
                     <tr>
                         <td>{{ $window->prefix }}</td>
-                        
+
                         <td>
                             <a href='{{ url("dashboard/branches/windows/$window->id/edit") }}' class="btn btn-xs btn-teal tooltips"
                                 data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
@@ -198,18 +198,18 @@
                     <tr>
                         <th>{{__("dashboard.name")}}</th>
                         <th>{{__("dashboard.phone")}}</th>
-                        <th>{{__("dashboard.ownerName")}}</th>
+                        <th>{{__("dashboard.email")}}</th>
                         <th>{{ __("dashboard.options") }}</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach ($branch->employees as $employee)
                     <tr>
-                        <td>{{ $employee->name }}</td>
-                        <td>{{ $employee->user->phone }}</td>
                         <td>{{ $employee->user->name }}</td>
+                        <td>{{ $employee->user->phone }}</td>
+                        <td>{{ $employee->user->email }}</td>
                         <td>
-
                             <a href='{{ url("dashboard/branches/employees/$employee->id") }}' class="btn btn-xs btn-purple tooltips"
                                 data-placement="top" data-original-title="{{ __('dashboard.show') }}"><i class="fa fa-eye"></i>
                             </a>

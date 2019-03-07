@@ -22,6 +22,7 @@ class BranchMiddleware
 
         $can_access = (auth()->user()->type == "admin");
         $can_access = $can_access || (auth()->user()->type == "company_manager" && auth()->user()->company->id == $company->id);
+        $can_access = $can_access || (auth()->user()->type == "branch_manager" && auth()->user()->branch->company->id == $company->id);
 
         if (!$can_access) {
             return redirect("dashboard")->with("error", __("dashboard.access_denied"));

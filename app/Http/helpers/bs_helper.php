@@ -15,6 +15,24 @@ function bs_input($name,$value = null,$required = false)
 <?php    
 }
 
+function bs_tag($name,$value = null,$required = false)
+{
+?>
+<div class="form-group">
+    <label class="col-sm-1 control-label" for="<?= $name ?>" style="text-align:right">
+        <?= __("dashboard.$name") ?>
+    </label>
+    <div class="col-sm-6">
+        <input type="text" name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' id="tags_1" class="form-control tags"
+            <?=$required ? 'required' : '' ?> value="<?= old($name) ?? $value ?? ''  ?>">
+    </div>
+</div>
+
+<?php    
+}
+
+
+
 function bs_disabled($name,$value = null,$required = false)
 {
 ?>

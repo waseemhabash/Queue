@@ -17,12 +17,15 @@ class Service extends Model
             "name" => "required",
             "description" => "required",
             "timeInMinutes" => "required|numeric",
+            "requirements" => "required",
         ]);
+
 
         $service = new Service();
         $service->name = request("name");
-        $service->description = request("name");
+        $service->description = request("description");
         $service->time = request("timeInMinutes");
+        $service->requirements = request("requirements");
         $service->branch_id = $branch_id;
         $service->save();
         return $service;
@@ -40,6 +43,7 @@ class Service extends Model
         $service->name = request("name");
         $service->description = request("name");
         $service->time = request("timeInMinutes");
+        $service->requirements = request("requirements");
         $service->update();
 
         return $service;

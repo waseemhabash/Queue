@@ -18,14 +18,19 @@ class CompanySeeder extends Seeder
             "name" => "شركة",
         ]);
 
+        Privilege::create([
+            "name" => "company_management",
+        ]
+        );
+
         $role = Role::get_by_name("شركة");
 
-
-        $privileges = Privilege::whereIn("name",[
-            "companies_management",
+        $privileges = Privilege::whereIn("name", [
+            "company_management",
             "branches_management",
             "services_management",
             "employees_management",
+            "windows_management",
         ])->get();
 
         foreach ($privileges as $privilege) {
@@ -34,7 +39,6 @@ class CompanySeeder extends Seeder
             $role_privilege->privilege_id = $privilege->id;
             $role_privilege->save();
         }
-
 
         /**
          * Create Company

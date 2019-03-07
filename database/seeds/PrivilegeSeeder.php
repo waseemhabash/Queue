@@ -9,6 +9,7 @@ class PrivilegeSeeder extends Seeder
     public function run()
     {
         $privileges = [
+            
             "admin_management",
             "role_management",
             "constant_management",

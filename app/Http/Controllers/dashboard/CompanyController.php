@@ -11,6 +11,10 @@ class CompanyController extends Controller
 
     public function index()
     {
+        if (auth()->user()->type != "admin") {
+            abort(404);
+        }
+
         $companies = Company::with(["user"])->get();
 
         return view('dashboard.companies.index', compact('companies'));

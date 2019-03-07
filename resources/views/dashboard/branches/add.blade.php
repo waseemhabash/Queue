@@ -34,7 +34,7 @@
 
 
     <div class="page-header">
-        <h1>{{ __("dashboard.ownerInfo") }}</h1>
+        <h1>{{ __("dashboard.userInfo") }}</h1>
     </div>
 
     {{ bs_input("username",null,true) }}

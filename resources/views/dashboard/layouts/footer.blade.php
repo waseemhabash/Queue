@@ -30,6 +30,8 @@
 <script src="{{ url('/assets/dashboard') }}/assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 <script src="{{ url('/assets/dashboard') }}/assets/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
 <script src="{{ url('/assets/dashboard') }}/assets/plugins/select2/select2.min.js"></script>
+<script src="{{ url('/assets/dashboard') }}/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
+
 
 <script src="{{ url('/assets/dashboard') }}/assets/plugins/summernote/build/summernote.min.js"></script>
 

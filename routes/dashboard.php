@@ -25,13 +25,13 @@ Route::prefix("dashboard")->middleware("dashboard")->group(function () {
      * Companies
      */
 
-    Route::resource("companies", "dashboard\CompanyController")->middleware("privilege:companies_management");
+    Route::resource("companies", "dashboard\CompanyController")->middleware("privilege:companies_management,company_management");
 
     /**
      * Branches
      */
 
-    Route::middleware(["privilege:branches_management", "branch"])->group(function () {
+    Route::middleware(["privilege:branches_management,branch_management", "branch"])->group(function () {
         Route::get("companies/{company_id}/branches/create", "dashboard\BranchController@create");
         Route::post("companies/{company_id}/branches", "dashboard\BranchController@store");
         Route::resource("companies/branches", "dashboard\BranchController")->except(["index", "create", "store"]);
@@ -55,6 +55,16 @@ Route::prefix("dashboard")->middleware("dashboard")->group(function () {
         Route::get("branches/{branch_id}/windows/create", "dashboard\WindowController@create");
         Route::post("branches/{branch_id}/windows", "dashboard\WindowController@store");
         Route::resource("branches/windows", "dashboard\WindowController")->except(["index", "create", "store"]);
+    });
+
+    /**
+     * windows
+     */
+
+    Route::middleware(["privilege:employees_management", "branchPart:employee"])->group(function () {
+        Route::get("branches/{branch_id}/employees/create", "dashboard\EmployeeController@create");
+        Route::post("branches/{branch_id}/employees", "dashboard\EmployeeController@store");
+        Route::resource("branches/employees", "dashboard\EmployeeController")->except(["index", "create", "store"]);
     });
 
 });

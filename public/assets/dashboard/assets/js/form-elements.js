@@ -155,8 +155,7 @@ var FormElements = function () {
         //main function to initiate template pages
         init: function () {
             runSelect2();
-            runDatePicker();
-            runSummerNote();
+            runTagsInput();
             runCKEditor();
         }
     };

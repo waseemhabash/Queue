@@ -93,15 +93,29 @@ $login_user = auth()->user();
 
 
                     @if ($login_user->has_priv("companies_management"))
-                        
-
-                    <li class="{{ c_page(['companies_management','branches_management']) }}">
-                        <a href="{{ url('dashboard/companies') }}"><i class="clip-stumbleupon"></i>
+                    <li class="{{ c_page(['companies_management','branches_management','services_management','windows_management','employees_management']) }}">
+                        <a href="{{ url('dashboard/companies') }}"><i class="fa fa-flag"></i>
                             <span class="title"> {{ __("dashboard.companies_management") }} </span>
                         </a>
                     </li>
-
                     @endif
+                    
+                    @if ($login_user->has_priv("company_management"))
+                    <li class="{{ c_page(['companies_management','branches_management','services_management','windows_management','employees_management']) }}">
+                        <a href="{{ url('dashboard/companies/'.auth()->user()->company->id) }}"><i class="fa fa-flag"></i>
+                            <span class="title"> {{ __("dashboard.company_management") }} </span>
+                        </a>
+                    </li>
+                    @endif
+
+                    @if ($login_user->has_priv("branch_management"))
+                    <li class="{{ c_page(['branches_management','services_management','windows_management','employees_management']) }}">
+                        <a href="{{ url('dashboard/companies/branches/'.auth()->user()->branch->id) }}"><i class="fa fa-flag"></i>
+                            <span class="title"> {{ __("dashboard.branch_management") }} </span>
+                        </a>
+                    </li>
+                    @endif
+                    
 
 
 

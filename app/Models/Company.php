@@ -8,25 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
 
-
-
     public function user()
     {
         return $this->belongsTo("App\Models\user", "user_id");
     }
     public function branches()
     {
-        return $this->hasMany("App\Models\Branch");
+        return $this->hasMany("App\Models\Branch","company_id");
     }
 
     public static function create_company()
     {
-        
+
         $role = Role::get_by_name("شركة");
         request()->request->add(["roles" => [$role->id]]);
         $user = User::create_user("company_manager");
-
-
 
         request()->validate([
             "name" => "required",

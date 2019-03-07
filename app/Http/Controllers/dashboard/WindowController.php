@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Window;
 
 class WindowController extends Controller
 {
@@ -43,7 +44,16 @@ class WindowController extends Controller
 
     public function destroy(Window $window)
     {
-        $window->delete();
-        return redirect('dashboard/companies');
+        \DB::beginTransaction();
+
+        try {
+            $window->delete();
+        } catch (\Throwable $th) {
+            return back()->with("error", __("dashboard.related_data_error"));
+        }
+
+        \DB::commit();
+
+        return redirect("dashboard/companies/branches/$window->branch_id")->with("success", __("dashboard.deleted_successfully"));
     }
 }

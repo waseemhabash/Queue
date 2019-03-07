@@ -31,13 +31,17 @@ return [
     "roles" => "الأدوار",
     "name" => "الاسم",
     "save" => "حفظ",
+    "company_management" => "إدارة الشركة",
+    "branch_management" => "إدارة الفرع",
     "privileges" => "الصلاحيات",
-    "ownerInfo" => "معلومات المالك",
+    "userInfo" => "معلومات الحساب",
     "username" => "اسم المستخدم",
     "related_data_error" => "هناك بيانات مرتبطة , لا يمكن الحذف !",
 
+    "requirements" => "المتطلبات",
     "branch" => "فرع",
     "branches_management" => "إدارة الفروع",
+    "theCompany" => "الشركة",
 
     "show" => "عرض",
     "generalInfo" => "معلومات عامة",

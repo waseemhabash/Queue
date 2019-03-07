@@ -15,7 +15,7 @@ class ServiceController extends Controller
 
     public function store($branch_id)
     {
-
+        
         Service::store_service($branch_id);
 
         return redirect("dashboard/companies/branches/$branch_id")->with("success", __("dashboard.added_successfully"));
@@ -35,16 +35,23 @@ class ServiceController extends Controller
 
     public function update(Service $service)
     {
-
         Service::update_service($service);
 
         return redirect("dashboard/companies/branches/$service->branch_id")->with("success", __("dashboard.updated_successfully"));
-
     }
 
     public function destroy(Service $service)
     {
-        $service->delete();
-        return redirect('dashboard/companies');
+        \DB::beginTransaction();
+
+        try {
+            $service->delete();
+        } catch (\Throwable $th) {
+            return back()->with("error", __("dashboard.related_data_error"));
+        }
+
+        \DB::commit();
+
+        return redirect("dashboard/companies/branches/$service->branch_id")->with("success", __("dashboard.deleted_successfully"));
     }
 }

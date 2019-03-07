@@ -51,7 +51,7 @@
                         <table class="table table-condensed table-hover">
                             <thead>
                                 <tr>
-                                    <th colspan="3">{{ __("dashboard.ownerInfo") }}</th>
+                                    <th colspan="3">{{ __("dashboard.userInfo") }}</th>
                                 </tr>
                             </thead>
                             <tbody>
