@@ -19,7 +19,7 @@ class PrivilegeMiddleware
         if ($privilege) {
 
             if (!auth()->user()->has_priv($privilege)) {
-                return redirect("dashboard/home")->with("error", __("dashboard.access_denied"));
+                return redirect("dashboard")->with("error", __("dashboard.access_denied"));
             }
 
             session()->put("c_page", $privilege[0]);

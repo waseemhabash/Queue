@@ -37,7 +37,7 @@ class Company extends Model
         $company = new Company();
         $company->name = request("name");
         $company->description = request("description");
-        $company->logo = upload_file("logo", "uploads/companies/$user->id/");
+        $company->logo = upload_file("logo", "assets/uploads/companies/$user->id/");
         $company->user_id = $user->id;
         $company->save();
 
@@ -59,7 +59,7 @@ class Company extends Model
 
         if (request("logo")) {
             del_file($company->logo);
-            $company->logo = upload_file("logo", "uploads/companies/$user->id/");
+            $company->logo = upload_file("logo", "assets/uploads/companies/$user->id/");
         }
         $company->update();
 

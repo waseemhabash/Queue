@@ -9,7 +9,12 @@ class User extends Authenticatable
 
     public function company()
     {
-        return $this->hasOne("App\Models\Company","user_id");
+        return $this->hasOne("App\Models\Company", "user_id");
+    }
+
+    public function branch()
+    {
+        return $this->hasOne("App\Models\Branch", "user_id");
     }
 
     public function roles()
@@ -19,6 +24,7 @@ class User extends Authenticatable
 
     public function privileges()
     {
+
         $roles = $this->roles;
         $privileges = [];
 
@@ -34,6 +40,7 @@ class User extends Authenticatable
 
     public function has_priv($privileges)
     {
+
         $bool = false;
         $user_privileges = session("privileges");
 

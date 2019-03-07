@@ -63,6 +63,8 @@ class Kernel extends HttpKernel
         'dashboard' => \App\Http\Middleware\dashboardMiddleware::class,
         'privilege' => \App\Http\Middleware\PrivilegeMiddleware::class,
         'branch' => \App\Http\Middleware\BranchMiddleware::class,
+        'branchPart' => \App\Http\Middleware\BranchPartsMiddleware::class,
+        
     ];
 
     /**

@@ -29,7 +29,7 @@ class AdminSeeder extends Seeder
         $role_user->role_id = 1;
         $role_user->save();
 
-        $privileges = Privilege::whereNotIn("name", ['company', 'branch'])->get();
+        $privileges = Privilege::get();
 
         foreach ($privileges as $privilege) {
             $role_privilege = new Role_privilege();

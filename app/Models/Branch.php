@@ -15,6 +15,21 @@ class Branch extends Model
     public function company()
     {
         return $this->belongsTo("App\Models\Company", "company_id");
+    }
+
+    public function services()
+    {
+        return $this->hasMany("App\Models\Service", "branch_id");
+    }
+
+    public function windows()
+    {
+        return $this->hasMany("App\Models\Window", "branch_id");
+    }
+
+    public function employees()
+    {
+        return $this->hasMany("App\Models\Employee", "branch_id");
 
     }
 
@@ -29,6 +44,8 @@ class Branch extends Model
             "lat" => "required|numeric",
         ]);
 
+        $role = Role::get_by_name("فرع");
+        request()->request->add(["roles" => [$role->id]]);
         $user = User::create_user("branch_manager");
 
         $branch = new Branch();

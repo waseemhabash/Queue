@@ -9,7 +9,7 @@ class UserController extends Controller
     public function login()
     {
         if (auth()->check() && auth()->user()->type != "user") {
-            return redirect("dashboard/home");
+            return redirect("dashboard");
         }
 
         if (request()->isMethod("post")) {
@@ -20,11 +20,11 @@ class UserController extends Controller
 
             if (auth()->attempt($inputs)) {
 
-                session()->put("privileges", login_user()->privileges());
+                session()->put("privileges", auth()->user()->privileges());
 
-                return redirect("dashboard/home");
+                return redirect("dashboard");
             } else {
-                return redirect("dashboard/home")->with("error",__("dashboard.invalid_access_informations"));
+                return redirect("dashboard")->with("error", __("dashboard.invalid_access_informations"));
             }
         }
 

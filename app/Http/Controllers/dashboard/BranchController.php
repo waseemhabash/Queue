@@ -24,9 +24,11 @@ class BranchController extends Controller
         return redirect("dashboard/companies/$company_id")->with("success", __("dashboard.added_successfully"));
     }
 
-    public function show()
+    public function show(Branch $branch)
     {
-        //
+        session()->put("hash", session("hash") ?? "generalInfo");
+
+        return view("dashboard.branches.show", compact("branch"));
     }
 
     public function edit(Branch $branch)

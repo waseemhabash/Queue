@@ -13,16 +13,17 @@ class PrivilegeSeeder extends Seeder
             "role_management",
             "constant_management",
             "companies_management",
-            "company",
             "branches_management",
-            "branch",
+            "services_management",
+            "employees_management",
+            "windows_management"
+
         ];
 
         foreach ($privileges as $privilege) {
             $new_privilege = new Privilege();
             $new_privilege->name = $privilege;
             $new_privilege->save();
-
         }
 
     }

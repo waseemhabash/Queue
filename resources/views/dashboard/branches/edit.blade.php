@@ -1,9 +1,9 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
-<form action="{{ url('dashboard/companies/branches/'.$branch->id) }}" method="post" class="form-horizontal" >	
-	@csrf
-	@method('PATCH')
+<form action="{{ url('dashboard/companies/branches/'.$branch->id) }}" method="post" class="form-horizontal">
+    @csrf
+    @method('PATCH')
 
 
     {{ bs_input("name",$branch->name,true) }}
@@ -24,11 +24,13 @@
         <label class="col-sm-1 control-label" style="text-align:right">
         </label>
         <div class="col-sm-3">
-        <input type="text" id="lng" name="lng" value="{{ $branch->lng }}" placeholder='{{ __("dashboard.clickMap") }}'  class="form-control" readonly>
+            <input type="text" id="lng" name="lng" value="{{ $branch->lng }}" placeholder='{{ __("dashboard.clickMap") }}'
+                class="form-control" readonly>
         </div>
 
         <div class="col-sm-3">
-            <input type="text" id="lat" name="lat" value="{{ $branch->lat }}" placeholder='{{ __("dashboard.clickMap") }}'  class="form-control" readonly>
+            <input type="text" id="lat" name="lat" value="{{ $branch->lat }}" placeholder='{{ __("dashboard.clickMap") }}'
+                class="form-control" readonly>
         </div>
     </div>
 
@@ -40,13 +42,13 @@
     {{ bs_email("email",$branch->user->email,true) }}
     {{ bs_input("phone",$branch->user->phone,true) }}
     {{ bs_password("password",null,false,true) }}
-	{{ bs_password("password_confirmation",null,false) }}
-	
-	{{ bs_save("save") }}
-	
+    {{ bs_password("password_confirmation",null,false) }}
+
+    {{ bs_save("save") }}
+
 
 </form>
-@endsection 
+@endsection
 
 @section('assets')
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
@@ -54,8 +56,8 @@
     var lng = $("#lng").val();
     var lat = $("#lat").val();
 
-    
-            
+
+
     var markers = [];
     var loc = [lng, lat];
 
@@ -75,11 +77,11 @@
         map.setLayoutProperty('country-label-lg', 'text-field', ['get', 'name_en']);
 
 
-         var marker = new mapboxgl.Marker({
+        var marker = new mapboxgl.Marker({
             color: "rgb(0, 101, 92)"
         }).setLngLat([lng, lat]).addTo(map);
 
-        markers.push(marker); 
+        markers.push(marker);
 
 
 

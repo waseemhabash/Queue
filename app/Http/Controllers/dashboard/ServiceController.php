@@ -4,38 +4,22 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
-use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
 
-    public function index()
+    public function create($branch_id)
     {
-        $services = Service::all();
-
-        return view('dashboard.services.index', compact('services'));
+        return view('dashboard.services.add', compact("branch_id"));
     }
 
-    public function create()
+    public function store($branch_id)
     {
 
-        //$users=User::where("type","admin")->where('id',"!=",auth()->id())->get();
+        Service::store_service($branch_id);
 
-        return view('dashboard.services.add');
+        return redirect("dashboard/companies/branches/$branch_id")->with("success", __("dashboard.added_successfully"));
 
-    }
-
-    public function store(Request $request)
-    {
-        $service = new Service();
-
-        $service->name = $request->name;
-
-        $service->description = $request->description;
-
-        $service->save();
-
-        return redirect('dashboard/services');
     }
 
     public function show($id)
@@ -49,17 +33,13 @@ class ServiceController extends Controller
         return view('dashboard.services.edit', compact('service'));
     }
 
-    public function update(Request $request, Service $service)
+    public function update(Service $service)
     {
-        $service = new Service();
 
-        $service->name = $request->name;
+        Service::update_service($service);
 
-        $service->description = $request->description;
+        return redirect("dashboard/companies/branches/$service->branch_id")->with("success", __("dashboard.updated_successfully"));
 
-        $service->save();
-
-        return redirect('dashboard/services');
     }
 
     public function destroy(Service $service)

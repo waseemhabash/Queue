@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Branch_service extends Model
+class Employee extends Model
 {
     //
 }

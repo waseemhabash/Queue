@@ -31,14 +31,6 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
 
-        $canAccess = auth()->user()->type == "admin";
-
-        if (!$canAccess) {
-            return redirect("dashboard/home")->with("error", __("dashboard.access_denied"));
-        }
-
-        session()->put("company_id", $company->id);
-
         session()->put("hash", session("hash") ?? "generalInfo");
 
         return view("dashboard.companies.show", compact("company"));

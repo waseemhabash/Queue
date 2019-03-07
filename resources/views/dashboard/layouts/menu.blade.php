@@ -10,7 +10,7 @@ $login_user = auth()->user();
                 <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
                     <span class="clip-list-2"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/dashboard/home') }}">
+                <a class="navbar-brand" href="{{ url('/dashboard') }}">
                     {{ __("dashboard.brand") }}
                 </a>
             </div>
@@ -57,7 +57,7 @@ $login_user = auth()->user();
                 </div>
                 <ul class="main-navigation-menu">
                     <li class="{{ c_page('home') }}">
-                        <a href="{{ url('dashboard/home') }}"><i class="clip-home-3"></i>
+                        <a href="{{ url('dashboard') }}"><i class="clip-home-3"></i>
                             <span class="title"> {{ __("dashboard.home") }} </span>
                         </a>
                     </li>
@@ -104,11 +104,6 @@ $login_user = auth()->user();
                     @endif
 
 
-                    <li class="{{ c_page('services') }}">
-                        <a href="{{ url('dashboard/services') }}"><i class="clip-stumbleupon"></i>
-                            <span class="title"> {{ __("dashboard.services_management") }} </span>
-                        </a>
-                    </li>
 
                     @if ($login_user->has_priv(["constant_management"]))
                     <li class="{{ c_page(['constant_management']) }}">

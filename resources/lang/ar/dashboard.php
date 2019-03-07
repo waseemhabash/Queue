@@ -17,6 +17,7 @@ return [
     "settings" => "الإعدادات",
     "location" => "الموقع",
     "clickMap" => "اضغط على الخريطة",
+    "employees_management" => "إدارة الموظفين",
     "role_management" => "إدارة الأدوار",
     "leaveItEmpty" => "يمكنك ترك هذه الحقل",
     "address" => "العنوان",
@@ -50,8 +51,20 @@ return [
     "owner" => "المالك",
     "description" => "الوصف",
     "company" => "شركة",
+    "services" => "الخدمات",
     "service" => "خدمة",
+    "theCompany" => "الشركة",
     "services_management" => "إدارة الخدمات",
+
+    "windows" => "النوافذ",
+    "window" => "نافذة",
+
+    "employee" => "موظف",
+    "employees" => "الموظفين",
+    "windows_management" => "إدارة النوافذ",
+    "employees_management" => "إدارة الموظفين",
+
+    "timeInMinutes" => "الوقت في الدقائق",
 
     "facebook" => "فيسبوك",
     "logo" => "Logo",

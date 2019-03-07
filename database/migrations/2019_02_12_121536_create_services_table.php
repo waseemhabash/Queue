@@ -17,6 +17,11 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string("name");
             $table->text("description");
+            $table->integer("time");
+            
+            $table->unsignedInteger('branch_id');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('restrict')->onUpdate('restrict');
+
             $table->timestamps();
         });
     }

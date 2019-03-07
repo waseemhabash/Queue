@@ -1,10 +1,7 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
-@php
-$currentTap=session('tapId');
- $iid=str_replace("#","",$currentTap);
-@endphp
+
 
 <div class="tabbable">
     <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
@@ -119,7 +116,7 @@ $currentTap=session('tapId');
                         <td>{{ $branch->user->name }}</td>
                         <td>
 
-                            <a href='{{ url("dashboard/companies/$company->id/branches/$branch->id") }}' class="btn btn-xs btn-purple tooltips"
+                            <a href='{{ url("dashboard/companies/branches/$branch->id") }}' class="btn btn-xs btn-purple tooltips"
                                 data-placement="top" data-original-title="{{ __('dashboard.show') }}"><i class="fa fa-eye"></i>
                             </a>
 

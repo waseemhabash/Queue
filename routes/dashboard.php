@@ -2,7 +2,7 @@
 
 Route::prefix("dashboard")->middleware("dashboard")->group(function () {
 
-    Route::get('/home', "dashboard\HomeController@index");
+    Route::get('/', "dashboard\HomeController@index");
 
     /**
      * Admins
@@ -31,24 +31,32 @@ Route::prefix("dashboard")->middleware("dashboard")->group(function () {
      * Branches
      */
 
-    Route::middleware(["privilege:branches_management,branch", "branch"])->group(function () {
-
+    Route::middleware(["privilege:branches_management", "branch"])->group(function () {
         Route::get("companies/{company_id}/branches/create", "dashboard\BranchController@create");
-        Route::post("companies/{company_id?}/branches", "dashboard\BranchController@store");
-
+        Route::post("companies/{company_id}/branches", "dashboard\BranchController@store");
         Route::resource("companies/branches", "dashboard\BranchController")->except(["index", "create", "store"]);
-
     });
+
     /**
      * Services
      */
 
-    Route::resource("services", "dashboard\ServiceController");
+    Route::middleware(["privilege:services_management", "branchPart:service"])->group(function () {
+        Route::get("branches/{branch_id}/services/create", "dashboard\ServiceController@create");
+        Route::post("branches/{branch_id}/services", "dashboard\ServiceController@store");
+        Route::resource("branches/services", "dashboard\ServiceController")->except(["index", "create", "store"]);
+    });
 
     /**
-     * Store Tap Id In Session
+     * windows
      */
-    Route::post('/tap', "dashboard\CompanyController@storeTapId");
+
+    Route::middleware(["privilege:windows_management", "branchPart:window"])->group(function () {
+        Route::get("branches/{branch_id}/windows/create", "dashboard\WindowController@create");
+        Route::post("branches/{branch_id}/windows", "dashboard\WindowController@store");
+        Route::resource("branches/windows", "dashboard\WindowController")->except(["index", "create", "store"]);
+    });
+
 });
 
 Route::prefix("dashboard")->group(function () {
