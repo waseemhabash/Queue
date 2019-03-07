@@ -62,6 +62,7 @@ return [
 
     "windows" => "النوافذ",
     "window" => "نافذة",
+    "theWindow" => "النافذة",
 
     "employee" => "موظف",
     "employees" => "الموظفين",

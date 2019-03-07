@@ -20,11 +20,17 @@ class Employee extends Model
         return $this->belongsToMany("App\Models\Service", "employee_services", "employee_id", "service_id");
     }
 
+    public function window()
+    {
+        return $this->belongsTo("App\Models\Window", "window_id");
+    }
+
     public static function store_employee($branch_id)
     {
         request()->validate([
             "services" => "required",
             "services.*" => "exists:services,id",
+            "window" => "required|exists:windows,id",
         ]);
 
         $user = User::create_user("services_employee");
@@ -32,6 +38,7 @@ class Employee extends Model
         $employee = new Employee();
         $employee->branch_id = $branch_id;
         $employee->user_id = $user->id;
+        $employee->window_id = request("window");
         $employee->save();
 
         foreach (request("services") as $service_id) {
@@ -46,7 +53,14 @@ class Employee extends Model
 
     public static function update_employee($employee)
     {
+        request()->validate([
+            "window" => "required|exists:windows,id",
+        ]);
+
         $user = User::update_user($employee->user);
+
+        $employee->window_id = request("window");
+        $employee->update();
 
         return $employee;
     }

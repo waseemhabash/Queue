@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Employee;
-use App\Models\User;
 use App\Models\Employee_service;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class EmployeeSeeder extends Seeder
@@ -21,6 +21,7 @@ class EmployeeSeeder extends Seeder
         $employee = new Employee();
         $employee->branch_id = 1;
         $employee->user_id = $user->id;
+        $employee->window_id = 1;
         $employee->save();
 
         $employee_services = new Employee_service();

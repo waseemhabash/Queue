@@ -16,6 +16,11 @@ function c_page($pages)
     return $bool ? "active open" : "";
 }
 
+function selected($value1,$value2)
+{
+    return ( $value1 == $value2 ) ? "selected" : "";
+}
+
 
 
 function upload_file($file, $path, $old_value = "")
