@@ -8,6 +8,12 @@ use App\Models\Service;
 class ServiceController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware("c_page:services_management");
+        $this->middleware("branchPart:service");
+    }
+
     public function create($branch_id)
     {
         return view('dashboard.services.add', compact("branch_id"));
@@ -15,7 +21,7 @@ class ServiceController extends Controller
 
     public function store($branch_id)
     {
-        
+
         Service::store_service($branch_id);
 
         return redirect("dashboard/companies/branches/$branch_id")->with("success", __("dashboard.added_successfully"));

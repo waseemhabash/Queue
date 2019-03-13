@@ -1,9 +1,10 @@
 @extends('dashboard.layouts.index')
 
 @section('content')
+
 <a href="{{ url('dashboard/admins/create') }}">
     <button class="btn btn-success" style="margin-bottom: 25px;">
-        <i class="fa fa-plus">{{__("dashboard.addX",["X"=>__("dashboard.admin")])}}</i>
+        <i class="fa fa-plus"></i> {{__("dashboard.addX",["X"=>__("dashboard.admin")])}}
     </button>
 </a>
 

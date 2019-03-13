@@ -9,16 +9,10 @@ class dashboardMiddleware
 
     public function handle($request, Closure $next)
     {
-
-        if (!auth()->check()) {
+        if (!auth()->check() || is_type("user")) {
             return redirect("dashboard/login")->with("error", __("dashboard.access_denied"));
         }
 
-        if (auth()->user()->type == "user") {
-            return redirect("dashboard/login")->with("error", __("dashboard.access_denied"));
-        }
-
-        
 
         return $next($request);
     }

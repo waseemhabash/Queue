@@ -8,6 +8,15 @@ use App\Models\Constant;
 class ConstantController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware("c_page:constant_management");
+        $this->middleware("has_role:admin");
+    }
+
+
+    
+
     public function index()
     {
         $constants = Constant::all();

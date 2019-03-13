@@ -3,7 +3,7 @@
 @section('content')
 <a href="{{ url('dashboard/companies/create') }}">
     <button class="btn btn-success" style="margin-bottom: 25px;">
-        <i class="fa fa-plus "></i>{{__("dashboard.addX",["X"=>__("dashboard.company")])}}
+        <i class="fa fa-plus "></i> {{__("dashboard.addX",["X"=>__("dashboard.company")])}}
     </button>
 </a>
 

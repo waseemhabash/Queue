@@ -7,11 +7,14 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
 
-    public function index()
+    public function __construct()
     {
-        session()->put("c_page", "home");
-        return view('dashboard.layouts.index');
+        $this->middleware("c_page:home");
     }
 
+    public function index()
+    {
+        return view('dashboard.layouts.index');
+    }
 
 }

@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        $c = Constant::get_consts();
+        $c = Constant::get_constants();
 
         view()->share(compact(["c"]));
 

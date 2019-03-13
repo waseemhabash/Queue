@@ -10,6 +10,12 @@ use App\Models\User;
 class AdminController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware("c_page:admin_management");
+        $this->middleware("has_role:admin");
+    }
+
     public function index()
     {
         $admins = User::where("type", "admin")->where('id', "!=", auth()->id())->get();

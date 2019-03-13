@@ -1,10 +1,6 @@
 <?php
 
 use App\Models\Branch;
-use App\Models\Privilege;
-use App\Models\Role;
-use App\Models\Role_privilege;
-use App\Models\Role_user;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -13,35 +9,6 @@ class BranchSeeder extends Seeder
 
     public function run()
     {
-
-        Role::create([
-            "name" => "فرع",
-        ]);
-
-        Privilege::create([
-            "name" => "branch_management",
-        ]
-        );
-        
-        $role = Role::get_by_name("فرع");
-
-        $privileges = Privilege::whereIn("name", [
-            "branch_management",
-            "services_management",
-            "employees_management",
-            "windows_management",
-        ])->get();
-
-        foreach ($privileges as $privilege) {
-            $role_privilege = new Role_privilege();
-            $role_privilege->role_id = $role->id;
-            $role_privilege->privilege_id = $privilege->id;
-            $role_privilege->save();
-        }
-
-        /**
-         * Create Branch
-         */
 
         $user = new User();
         $user->name = "Branch owner Name";
@@ -61,9 +28,5 @@ class BranchSeeder extends Seeder
         $branch->user_id = $user->id;
         $branch->save();
 
-        $role_user = new Role_user();
-        $role_user->user_id = $user->id;
-        $role_user->role_id = $role->id;
-        $role_user->save();
     }
 }

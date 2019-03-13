@@ -1,8 +1,3 @@
-@php
-
-$login_user = auth()->user();
-@endphp
-
 <body class="rtl">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -62,89 +57,37 @@ $login_user = auth()->user();
                         </a>
                     </li>
 
-                    @if ($login_user->has_priv(["admin_management","role_management"]))
-                    <li class="{{ c_page(['role_management','admin_management']) }}">
-                        <a href="javascript:void(0)"><i class="fa fa-users"></i>
-                            <span class="title"> {{ __("dashboard.admin_management") }} </span><i class="icon-arrow"></i>
+
+                    @if (is_type("admin"))
+
+                    <li class="{{ c_page('admin_management') }}">
+                        <a href="{{ url('/dashboard/admins') }}">
+                            <span class="title"> <i class="fa fa-users"></i>
+                                {{ __("dashboard.admins") }} </span>
                         </a>
-
-                        <ul class="sub-menu">
-
-                            @if ($login_user->has_priv("admin_management"))
-
-                            <li class="{{ c_page('admin_management') }}">
-                                <a href="{{ url('/dashboard/admins') }}">
-                                    <span class="title"> {{ __("dashboard.admins") }} </span>
-                                </a>
-                            </li>
-                            @endif
-
-                            @if ($login_user->has_priv("role_management"))
-                            <li class="{{ c_page('role_management') }}">
-                                <a href="{{ url('/dashboard/roles') }}">
-                                    <span class="title"> {{ __("dashboard.role_management") }} </span>
-                                </a>
-                            </li>
-                            @endif
-
-                        </ul>
                     </li>
                     @endif
 
-
-                    @if ($login_user->has_priv("companies_management"))
+                    @if (is_type("admin"))
                     <li class="{{ c_page(['companies_management','branches_management','services_management','windows_management','employees_management']) }}">
                         <a href="{{ url('dashboard/companies') }}"><i class="fa fa-flag"></i>
                             <span class="title"> {{ __("dashboard.companies_management") }} </span>
                         </a>
                     </li>
                     @endif
-                    
-                    @if ($login_user->has_priv("company_management"))
-                    <li class="{{ c_page(['companies_management','branches_management','services_management','windows_management','employees_management']) }}">
-                        <a href="{{ url('dashboard/companies/'.auth()->user()->company->id) }}"><i class="fa fa-flag"></i>
-                            <span class="title"> {{ __("dashboard.company_management") }} </span>
+
+                    @if (is_type("admin"))
+
+                    <li class="{{ c_page('constant_management') }}">
+                        <a href="{{ url('/dashboard/constants') }}">
+                            <span class="title"> <i class="clip-cogs"></i>
+                                {{ __("dashboard.constant_management") }} </span>
                         </a>
-                    </li>
-                    @endif
-
-                    @if ($login_user->has_priv("branch_management"))
-                    <li class="{{ c_page(['branches_management','services_management','windows_management','employees_management']) }}">
-                        <a href="{{ url('dashboard/companies/branches/'.auth()->user()->branch->id) }}"><i class="fa fa-flag"></i>
-                            <span class="title"> {{ __("dashboard.branch_management") }} </span>
-                        </a>
-                    </li>
-                    @endif
-                    
-
-
-
-                    @if ($login_user->has_priv(["constant_management"]))
-                    <li class="{{ c_page(['constant_management']) }}">
-                        <a href="javascript:void(0)"><i class="clip-cogs"></i>
-                            <span class="title"> {{ __("dashboard.settings") }} </span><i class="icon-arrow"></i>
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            @if ($login_user->has_priv("constant_management"))
-
-                            <li class="{{ c_page('constant_management') }}">
-                                <a href="{{ url('/dashboard/constants') }}">
-                                    <span class="title"> {{ __("dashboard.constant_management") }} </span>
-                                </a>
-                            </li>
-                            @endif
-
-
-
-                        </ul>
                     </li>
                     @endif
 
                 </ul>
             </div>
-
         </div>
     </div>
 

@@ -8,6 +8,16 @@ use App\Models\Branch;
 class BranchController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->middleware("c_page:branches_management");
+        $this->middleware("branch");
+    }
+
+    
+
+
     public function index($company_id)
     {
 

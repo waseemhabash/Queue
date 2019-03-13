@@ -33,7 +33,6 @@ return [
     "save" => "حفظ",
     "company_management" => "إدارة الشركة",
     "branch_management" => "إدارة الفرع",
-    "privileges" => "الصلاحيات",
     "userInfo" => "معلومات الحساب",
     "username" => "اسم المستخدم",
     "related_data_error" => "هناك بيانات مرتبطة , لا يمكن الحذف !",

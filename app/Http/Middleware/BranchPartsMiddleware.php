@@ -20,11 +20,11 @@ class BranchPartsMiddleware
         $branch = Branch::findOrFail($branch_id);
 
         
-        $can_access = (auth()->user()->type == "admin");
+        $can_access = is_type("admin");
 
-        $can_access = $can_access || (auth()->user()->type == "company_manager" && auth()->user()->company->branches->find($branch->id));
+        $can_access = $can_access || (is_type("company_manager") && auth()->user()->company->branches->find($branch->id));
 
-        $can_access = $can_access || (auth()->user()->type == "branch_manager" && auth()->user()->branch->id == $branch->id);
+        $can_access = $can_access || (is_type("branch_manager") && auth()->user()->branch->id == $branch->id);
 
 
         if (!$can_access) {

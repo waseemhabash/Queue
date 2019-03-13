@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employee;
 use App\Models\Branch;
+use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("c_page:employees_management");
+        $this->middleware("branchPart:employee");
+    }
+
     public function create($branch_id)
     {
         $branch = Branch::with("services")->find($branch_id);

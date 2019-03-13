@@ -20,7 +20,6 @@ class UserController extends Controller
 
             if (auth()->attempt($inputs)) {
 
-                session()->put("privileges", auth()->user()->privileges());
 
                 return redirect("dashboard");
             } else {
@@ -33,7 +32,6 @@ class UserController extends Controller
 
     public function logout()
     {
-        session()->forget("privileges");
         auth()->logout();
 
         return redirect("dashboard/login");

@@ -8,6 +8,12 @@ use App\Models\Window;
 class WindowController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware("c_page:windows_management");
+        $this->middleware("branchPart:window");
+    }
+    
     public function create($branch_id)
     {
         return view('dashboard.windows.add', compact("branch_id"));

@@ -16,12 +16,10 @@ function c_page($pages)
     return $bool ? "active open" : "";
 }
 
-function selected($value1,$value2)
+function selected($value1, $value2)
 {
-    return ( $value1 == $value2 ) ? "selected" : "";
+    return ($value1 == $value2) ? "selected" : "";
 }
-
-
 
 function upload_file($file, $path, $old_value = "")
 {
@@ -53,8 +51,22 @@ function del_file($path)
     }
 }
 
-
 function hash_page($hash)
 {
     return session("hash") == $hash ? "active in" : "";
+}
+
+function u_type()
+{
+    return auth()->user()->type;
+}
+
+function is_type($types)
+{
+    if(is_string($types))
+    {
+        $types = [$types];
+    }
+
+    return in_array(u_type(), $types);
 }
