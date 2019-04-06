@@ -44,8 +44,7 @@ class Branch extends Model
             "lat" => "required|numeric",
         ]);
 
-        $role = Role::get_by_name("فرع");
-        request()->request->add(["roles" => [$role->id]]);
+        
         $user = User::create_user("branch_manager");
 
         $branch = new Branch();

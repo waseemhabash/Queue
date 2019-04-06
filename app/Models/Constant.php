@@ -14,7 +14,7 @@ class Constant extends Model
 
         $constants = Arr::pluck($constants, 'value', 'indexx');
 
-        return $constants;
+        return (Object) $constants;
     }
 
     public static function update_constant()
@@ -29,8 +29,7 @@ class Constant extends Model
         }
         foreach (request()->file() ?? [] as $indexx => $value) {
             $constant = Constant::where("indexx", $indexx)->first();
-            del_file($constant->value);
-            $constant->value = upload_file($value, "assets/uploads/constants/") ?? $constant->value;
+            $constant->value = upload_file($value, "assets/uploads/constants/", $constant->value) ?? $constant->value;
             $constant->update();
         }
 

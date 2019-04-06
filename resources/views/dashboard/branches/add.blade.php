@@ -9,6 +9,7 @@
     {{ bs_input("address",null,true) }}
     {{ bs_text("description",null,true) }}
 
+    
 
     <div class="form-group">
         <label class="col-sm-1 control-label" style="text-align:right">

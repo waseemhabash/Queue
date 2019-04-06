@@ -13,14 +13,13 @@ class UserController extends Controller
         }
 
         if (request()->isMethod("post")) {
+
             $inputs = request()->validate([
                 "email" => "required|email",
                 "password" => "required",
             ]);
 
             if (auth()->attempt($inputs)) {
-
-
                 return redirect("dashboard");
             } else {
                 return redirect("dashboard")->with("error", __("dashboard.invalid_access_informations"));

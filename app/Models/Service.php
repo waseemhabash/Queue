@@ -20,7 +20,6 @@ class Service extends Model
             "requirements" => "required",
         ]);
 
-
         $service = new Service();
         $service->name = request("name");
         $service->description = request("description");

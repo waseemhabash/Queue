@@ -10,15 +10,14 @@ class AppServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
     }
 
     public function boot()
     {
 
-        $c = Constant::get_constants();
+        
 
-        view()->share(compact(["c"]));
+        view()->share(["c" => Constant::get_constants()]);
 
     }
 }

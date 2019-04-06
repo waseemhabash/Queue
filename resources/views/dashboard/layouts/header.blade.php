@@ -30,5 +30,5 @@
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/map-box.css" />
 
-    <link rel="shortcut icon" href="{{ url('/'.$c['logo']) }}" />
+    <link rel="shortcut icon" href="{{ url('/'.$c->logo) }}" />
 </head>

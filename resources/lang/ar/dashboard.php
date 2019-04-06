@@ -36,6 +36,7 @@ return [
     "userInfo" => "معلومات الحساب",
     "username" => "اسم المستخدم",
     "related_data_error" => "هناك بيانات مرتبطة , لا يمكن الحذف !",
+    "sort" => "ترتيب",
 
     "requirements" => "المتطلبات",
     "branch" => "فرع",

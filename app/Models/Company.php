@@ -14,14 +14,12 @@ class Company extends Model
     }
     public function branches()
     {
-        return $this->hasMany("App\Models\Branch","company_id");
+        return $this->hasMany("App\Models\Branch", "company_id");
     }
 
     public static function create_company()
     {
 
-        $role = Role::get_by_name("شركة");
-        request()->request->add(["roles" => [$role->id]]);
         $user = User::create_user("company_manager");
 
         request()->validate([
@@ -53,10 +51,8 @@ class Company extends Model
         $company->name = request("name");
         $company->description = request("description");
 
-        if (request("logo")) {
-            del_file($company->logo);
-            $company->logo = upload_file("logo", "assets/uploads/companies/$user->id/");
-        }
+        $company->logo = upload_file("logo", "assets/uploads/companies/$user->id/", $company->logo)  ?? $company->logo;
+
         $company->update();
 
         return $company;

@@ -1,9 +1,7 @@
 <?php
-use App\Models\User;
 
 function c_page($pages)
 {
-
     if (is_string($pages)) {
         $pages = [$pages];
     }
@@ -21,15 +19,18 @@ function selected($value1, $value2)
     return ($value1 == $value2) ? "selected" : "";
 }
 
-function upload_file($file, $path, $old_value = "")
+function upload_file($file, $path, $old_file = false)
 {
-
     if (is_string($file)) {
         $file = request($file);
 
         if (is_null($file)) {
             return null;
         }
+    }
+
+    if ($old_file) {
+        del_file($old_file);
     }
 
     $file_extension = $file->getClientOriginalExtension();
@@ -56,17 +57,16 @@ function hash_page($hash)
     return session("hash") == $hash ? "active in" : "";
 }
 
-function u_type()
+function user_type()
 {
     return auth()->user()->type;
 }
 
 function is_type($types)
 {
-    if(is_string($types))
-    {
+    if (is_string($types)) {
         $types = [$types];
     }
 
-    return in_array(u_type(), $types);
+    return in_array(user_type(), $types);
 }

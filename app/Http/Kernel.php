@@ -65,7 +65,9 @@ class Kernel extends HttpKernel
         'c_page' => \App\Http\Middleware\CurrentPageMiddleware::class,
         'branch' => \App\Http\Middleware\BranchMiddleware::class,
         'branchPart' => \App\Http\Middleware\BranchPartsMiddleware::class,
-        
+        'apiAuth' => \App\Http\Middleware\ApiAuthMiddleware::class,
+        'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
     ];
 
     /**
