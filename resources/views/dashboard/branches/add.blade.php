@@ -9,7 +9,7 @@
     {{ bs_input("address",null,true) }}
     {{ bs_text("description",null,true) }}
 
-    
+
 
     <div class="form-group">
         <label class="col-sm-1 control-label" style="text-align:right">
@@ -25,11 +25,13 @@
         <label class="col-sm-1 control-label" style="text-align:right">
         </label>
         <div class="col-sm-3">
-            <input type="text" id="lng" name="lng" placeholder='{{ __("dashboard.clickMap") }}' class="form-control" readonly>
+            <input type="text" id="lng" name="lng" placeholder='{{ __("dashboard.clickMap") }}' class="form-control"
+                readonly>
         </div>
 
         <div class="col-sm-3">
-            <input type="text" id="lat" name="lat" placeholder='{{ __("dashboard.clickMap") }}' class="form-control" readonly>
+            <input type="text" id="lat" name="lat" placeholder='{{ __("dashboard.clickMap") }}' class="form-control"
+                readonly>
         </div>
     </div>
 
@@ -49,17 +51,13 @@
 @endsection
 
 @section('assets')
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+
 <script>
     var lng = 36.29636509318212;
     var lat = 33.51517910706413;
     var markers = [];
     var loc = [lng, lat];
 
-    mapboxgl.accessToken =
-        'pk.eyJ1Ijoid2FzZWVtYWxoYWJhc2giLCJhIjoiY2pzcWo3MmgyMTRlNTQ0bzQ1MWMyOGtzZSJ9.Hk7_kl2Oh9TH-i8513BV1g';
-    mapboxgl.setRTLTextPlugin(
-        'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.0/mapbox-gl-rtl-text.js');
 
     var map = new mapboxgl.Map({
         container: 'add_branch_map',
@@ -70,6 +68,16 @@
 
     map.on("load", function () {
         map.setLayoutProperty('country-label-lg', 'text-field', ['get', 'name_en']);
+
+        var gecoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            country: "SY",
+            language: "ar",
+            bbox: [35.641849, 32.757361, 36.941157, 37.395157],
+            placeholder:"اسم المحافظة"
+        });
+
+        map.addControl(gecoder);
 
         map.on("click", function (e) {
             markers.forEach(element => {
@@ -88,8 +96,6 @@
             markers.push(marker);
         });
     });
-
+    
 </script>
-
-
 @endsection

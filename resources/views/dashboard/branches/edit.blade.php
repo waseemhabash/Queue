@@ -51,20 +51,12 @@
 @endsection
 
 @section('assets')
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
 <script>
     var lng = $("#lng").val();
     var lat = $("#lat").val();
-
-
-
     var markers = [];
     var loc = [lng, lat];
 
-    mapboxgl.accessToken =
-        'pk.eyJ1Ijoid2FzZWVtYWxoYWJhc2giLCJhIjoiY2pzcWo3MmgyMTRlNTQ0bzQ1MWMyOGtzZSJ9.Hk7_kl2Oh9TH-i8513BV1g';
-    mapboxgl.setRTLTextPlugin(
-        'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.0/mapbox-gl-rtl-text.js');
 
     var map = new mapboxgl.Map({
         container: 'add_branch_map',
@@ -76,14 +68,22 @@
     map.on("load", function () {
         map.setLayoutProperty('country-label-lg', 'text-field', ['get', 'name_en']);
 
+        var gecoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            country: "SY",
+            language: "ar",
+            bbox: [35.641849, 32.757361, 36.941157, 37.395157],
+            placeholder:"اسم المحافظة"
+        });
+
+        map.addControl(gecoder);
+
 
         var marker = new mapboxgl.Marker({
             color: "rgb(0, 101, 92)"
         }).setLngLat([lng, lat]).addTo(map);
 
         markers.push(marker);
-
-
 
         map.on("click", function (e) {
             markers.forEach(element => {

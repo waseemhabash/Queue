@@ -32,6 +32,7 @@ return array(
     '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
     '0d8253363903f0ac7b0978dcde4e28a0' => $vendorDir . '/beyondcode/laravel-dump-server/helpers.php',
+    '1e298922c3e2134d42dcdb03e6d5f55a' => $vendorDir . '/torann/geoip/src/helpers.php',
     'd6115ccb6d181ea070494e32d4db20fe' => $baseDir . '/app/http/helpers/common_helper.php',
     '24b0759ab88333f4127fb815860c1479' => $baseDir . '/app/http/helpers/bs_helper.php',
     '866f24057b9fdc7871b13e3e24f49520' => $baseDir . '/app/http/helpers/api_helper.php',

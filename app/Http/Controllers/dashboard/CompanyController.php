@@ -20,7 +20,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::with(["user"])->get();
-
+        
         return view('dashboard.companies.index', compact('companies'));
     }
 

@@ -7,6 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
 
+    protected $appends = ['destination'];
+
+    public function getDestinationAttribute()
+    {
+        $lng = request("lng");
+        $lat = request("lat");
+        $transport = request("transport");
+
+        $url = "https://api.mapbox.com/directions/v5/mapbox/$transport/$lng,$lat;$this->lng,$this->lat?access_token=pk.eyJ1Ijoid2FzZWVtYWxoYWJhc2giLCJhIjoiY2pzcWo3MmgyMTRlNTQ0bzQ1MWMyOGtzZSJ9.Hk7_kl2Oh9TH-i8513BV1g";
+
+        $response = curl($url);
+
+        $time = $response['routes'][0]['duration'];
+        $dist = $response['routes'][0]['distance'];
+
+        return ['distance' => $dist, 'time' => $time];
+
+    }
+
     public function user()
     {
         return $this->belongsTo("App\Models\User", "user_id");
@@ -44,7 +63,6 @@ class Branch extends Model
             "lat" => "required|numeric",
         ]);
 
-        
         $user = User::create_user("branch_manager");
 
         $branch = new Branch();

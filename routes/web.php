@@ -1,11 +1,8 @@
 <?php
+use App\Models\Branch;
+Route::get("/tt", function () {
 
+    dd(Branch::all());
 
-
-
-
-Route::get("/tt",function(){
-    $position = Location::get("94.47.128.230");
-
-    dd($position);
+    
 });

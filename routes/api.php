@@ -16,6 +16,18 @@ Route::middleware('apiAuth:customer')->namespace('api\user')->group(function () 
 
     Route::get("companies", "CompanyController@get_companies");
 
+    /**
+     * Branches
+     */
+
+    Route::get("branches", "BranchController@get_branches");
+
+    /**
+     * services
+     */
+
+    Route::get("services", "ServiceController@get_services");
+
 });
 
 Route::post('signup', 'api\user\AuthController@signup');

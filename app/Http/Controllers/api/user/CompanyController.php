@@ -12,7 +12,9 @@ class CompanyController extends Controller
     {
         $companies = Company::paginate(10);
 
-        res($companies);
+        res([
+            "companies" => $companies,
+        ]);
 
     }
 
