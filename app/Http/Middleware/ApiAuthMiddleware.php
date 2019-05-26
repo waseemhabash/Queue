@@ -12,17 +12,6 @@ class ApiAuthMiddleware
     {
         try {
             $user = JWTAuth::parseToken()->authenticate();
-        } catch (TokenExpiredException $e) {
-            error_res(
-                [
-                    "errors" => [
-                        "1" => __("api.expiredTokenError"),
-                    ],
-                ], 401,
-                [
-                    'Authorization' => "Bearer " . JWTAuth::parseToken()->refresh(),
-                ]);
-            exit;
         } catch (\Throwable $th) {
             error_res([
                 "errors" => [

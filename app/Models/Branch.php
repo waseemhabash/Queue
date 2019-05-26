@@ -11,18 +11,17 @@ class Branch extends Model
 
     public function getDestinationAttribute()
     {
+
         $lng = request("lng");
         $lat = request("lat");
-        $transport = request("transport");
 
-        $url = "https://api.mapbox.com/directions/v5/mapbox/$transport/$lng,$lat;$this->lng,$this->lat?access_token=pk.eyJ1Ijoid2FzZWVtYWxoYWJhc2giLCJhIjoiY2pzcWo3MmgyMTRlNTQ0bzQ1MWMyOGtzZSJ9.Hk7_kl2Oh9TH-i8513BV1g";
+        if (!$lat || !$lng) {
+            return ["message" => "lat and lng is required"];
+        }
 
-        $response = curl($url);
+        $distance = calculate_distance($this->lat, $this->lng, $lat, $lng);
 
-        $time = $response['routes'][0]['duration'];
-        $dist = $response['routes'][0]['distance'];
-
-        return ['distance' => $dist, 'time' => $time];
+        return ['distance' => round($distance), 'time' => round($distance * 0.015)];
 
     }
 

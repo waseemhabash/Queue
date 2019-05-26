@@ -10,10 +10,9 @@ class BranchController extends Controller
     public function get_branches()
     {
         validate([
-            "lat" => "required|numeric",
-            "lng" => "required|numeric",
+            "lat" => "numeric",
+            "lng" => "numeric",
             "company_id" => "required|exists:companies,id",
-            "transport" => "required|in:walking,driving",
         ]) ?? exit;
 
         $company = Company::find(request("company_id"));
@@ -21,13 +20,13 @@ class BranchController extends Controller
         $lat = request("lat");
         $branches = $company
             ->branches()
-            ->orderBy(\DB::raw("( 6371 * ACOS( COS( RADIANS( '$lat' ) ) * COS( RADIANS( branches.lat ) ) * COS( RADIANS( branches.lng ) - RADIANS( '$lng' ) ) + SIN( RADIANS( '$lat' ) ) * SIN( RADIANS( branches.lat))))"))
+            ->orderBy(\DB::raw(order_by_distance($lat, $lng)))
             ->paginate(10);
 
         res([
             "branches" => $branches,
         ]);
-        
+
         exit;
     }
 }

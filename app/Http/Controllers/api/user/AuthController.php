@@ -14,7 +14,6 @@ class AuthController extends Controller
     {
         validate([
             "phone" => "required",
-            "name" => "required",
         ]) ?? exit;
 
         $user = User::where("phone", request("phone"))->first();
@@ -28,9 +27,7 @@ class AuthController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        res([], 200, [
-            'Authorization' => "Bearer " . $token,
-        ]);
+        res(['Authorization' => "Bearer " . $token], 200);
 
         exit;
     }
@@ -55,6 +52,7 @@ class AuthController extends Controller
         $user_device->save();
 
         res();
+        exit;
     }
 
     public function update_device()
@@ -71,6 +69,7 @@ class AuthController extends Controller
         $device->update();
 
         res();
+        exit;
     }
 
 }

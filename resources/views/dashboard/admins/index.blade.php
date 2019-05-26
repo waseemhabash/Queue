@@ -13,7 +13,6 @@
         <tr>
             <th>{{__("dashboard.name")}}</th>
             <th>{{__("dashboard.email")}}</th>
-            <th>{{__("dashboard.roles")}}</th>
 
             <th>{{ __("dashboard.options") }}</th>
         </tr>
@@ -23,12 +22,7 @@
         <tr>
             <td>{{$admin->name}}</td>
             <td>{{$admin->email}}</td>
-            <td style="width:60%">
-                @foreach ($admin->roles as $role)
-                <span class="label label-inverse" style="margin-left: 10px;margin-bottom: 10px;">
-                    {{ $role->name }}</span>
-                @endforeach
-            </td>
+            
             <td>
                 <a href='{{ url("dashboard/admins/$admin->id/edit") }}' class="btn btn-xs btn-teal tooltips"
                     data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i></a>

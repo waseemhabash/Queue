@@ -28,6 +28,13 @@ Route::middleware('apiAuth:customer')->namespace('api\user')->group(function () 
 
     Route::get("services", "ServiceController@get_services");
 
+    /**
+     * Profile
+     */
+
+    Route::get("profile", "ProfileController@get_profile");
+    Route::post("update_profile", "ProfileController@update_profile");
+
 });
 
 Route::post('signup', 'api\user\AuthController@signup');

@@ -67,7 +67,7 @@
     });
 
     map.on("load", function () {
-        map.setLayoutProperty('country-label-lg', 'text-field', ['get', 'name_en']);
+        map.setLayoutProperty('country-label-lg', 'text-field', ['get', 'name_ar']);
 
         var gecoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,

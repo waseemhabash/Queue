@@ -11,7 +11,6 @@ class CompanyController extends Controller
 
     public function __construct()
     {
-
         $this->middleware("c_page:companies_management");
         $this->middleware("has_role:admin", ['except' => ['show']]);
         $this->middleware("has_role:company_manager", ['only' => ['show']]);
@@ -20,7 +19,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::with(["user"])->get();
-        
+
         return view('dashboard.companies.index', compact('companies'));
     }
 

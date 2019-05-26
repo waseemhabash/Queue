@@ -13,7 +13,7 @@ class WindowController extends Controller
         $this->middleware("c_page:windows_management");
         $this->middleware("branchPart:window");
     }
-    
+
     public function create($branch_id)
     {
         return view('dashboard.windows.add', compact("branch_id"));
@@ -41,11 +41,8 @@ class WindowController extends Controller
 
     public function update(Window $window)
     {
-
         Window::update_window($window);
-
         return redirect("dashboard/companies/branches/$window->branch_id")->with("success", __("dashboard.updated_successfully"));
-
     }
 
     public function destroy(Window $window)
