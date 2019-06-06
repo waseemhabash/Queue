@@ -12,6 +12,21 @@
 
     <div class="form-group">
         <label class="col-sm-1 control-label" style="text-align:right">
+            {{ __("dashboard.window") }}
+        </label>
+        <div class="col-sm-6">
+            <select name="window" class="form-control search-select">
+                @foreach ($branch->windows as $window)
+                    <option value="{{$window->id}}">{{$window->prefix}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="col-sm-1 control-label" style="text-align:right">
             {{ __("dashboard.services") }}
         </label>
         <div class="col-sm-6">
@@ -23,18 +38,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-            <label class="col-sm-1 control-label" style="text-align:right">
-                {{ __("dashboard.theWindow") }}
-            </label>
-            <div class="col-sm-6">
-                <select name="window" class="form-control search-select">
-                    @foreach ($branch->windows as $window)
-                    <option value="{{$window->id}}">{{$window->prefix}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
 
 
     {{ bs_password("password",null,true) }}

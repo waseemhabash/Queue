@@ -11,19 +11,33 @@
     {{ bs_input("phone",$employee->user->phone,true) }}
 
 
+    <div class="form-group">
+        <label class="col-sm-1 control-label" style="text-align:right">
+            {{ __("dashboard.window") }}
+        </label>
+        <div class="col-sm-6">
+            <select name="window" class="form-control search-select">
+                @foreach ($employee->branch->windows as $window)
+                    <option value="{{$window->id}}" {{ selected($window->id,$employee->window_id) }}>{{$window->prefix}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
 
     <div class="form-group">
-            <label class="col-sm-1 control-label" style="text-align:right">
-                {{ __("dashboard.theWindow") }}
-            </label>
-            <div class="col-sm-6">
-                <select name="window" class="form-control search-select">
-                    @foreach ($employee->branch->windows as $window)
-                    <option value="{{$window->id}}" {{ selected($window->id,$employee->window->id) }}>{{$window->prefix}}</option>
-                    @endforeach
-                </select>
-            </div>
+        <label class="col-sm-1 control-label" style="text-align:right">
+            {{ __("dashboard.services") }}
+        </label>
+        <div class="col-sm-6">
+            <select name="services[]" multiple class="form-control search-select">
+                @foreach ($employee->branch->services as $service)
+                <option value="{{$service->id}}" {{ $employee->serve($service->id) ? "selected" : "" }}>{{$service->name}}</option>
+                @endforeach
+            </select>
         </div>
+    </div>
+
+ 
 
 
     {{ bs_password("password",null,false,true) }}

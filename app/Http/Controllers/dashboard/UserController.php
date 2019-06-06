@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function login()
     {
-        if (auth()->check() && auth()->user()->type != "user") {
+        if (auth()->check() && !is_type(["customer", "tickets_employee", "services_employee"])) {
             return redirect("dashboard");
         }
 

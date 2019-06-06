@@ -36,6 +36,15 @@
 
 
 <script src="{{ url('/assets/dashboard') }}/assets/plugins/summernote/build/summernote.min.js"></script>
+<script src="{{ url('/assets/dashboard') }}/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+
+<script src="{{ url('/assets/dashboard') }}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="{{ url('/assets/dashboard') }}/assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script src="{{ url('/assets/dashboard') }}/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+
+
 
 <script src="{{ url('/assets/dashboard') }}/assets/plugins/ckeditor/ckeditor.js"></script>
 

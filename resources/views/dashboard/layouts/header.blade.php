@@ -15,9 +15,12 @@
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/main.css">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
-    <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar-rtl.css">
-    <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/theme_light.css" type="text/css" id="skin_color">
+    <link rel="stylesheet"
+        href="{{ url('/assets//dashboard') }}/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+    <link rel="stylesheet"
+        href="{{ url('/assets//dashboard') }}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar-rtl.css">
+    <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/theme_light.css" type="text/css"
+        id="skin_color">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/print.css" type="text/css" media="print" />
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/rtl-version.css">
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/jquery-ui.min.css">
@@ -27,7 +30,20 @@
 
 
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/summernote/build/summernote.css">
-    <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
+    <link rel="stylesheet"
+        href="{{ url('/assets//dashboard') }}/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
+
+
+    <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/plugins/datepicker/css/datepicker.css">
+    <link rel="stylesheet"
+        href="{{ url('/assets//dashboard') }}/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+    <link rel="stylesheet"
+        href="{{ url('/assets//dashboard') }}/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
+
+
+
+
+
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/map-box.css" />
     <link rel="stylesheet" href="{{ url('/assets//dashboard') }}/assets/css/mapboxGECODER.css" />
 

@@ -71,7 +71,7 @@ function is_type($types)
     return in_array(user_type(), $types);
 }
 
-function calculate_distance($lat1, $lng1, $lat2, $lng2)
+function calculate_distance_time($lat1, $lng1, $lat2, $lng2)
 {
     $pi80 = M_PI / 180;
     $lat1 *= $pi80;
@@ -86,7 +86,7 @@ function calculate_distance($lat1, $lng1, $lat2, $lng2)
     $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
     $meters = $r * $c * 1000;
 
-    return $meters;
+    return ['distance' => round($meters), 'time' => round($meters * 0.015)];
 }
 
 function order_by_distance($lat,$lng)

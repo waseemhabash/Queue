@@ -53,6 +53,15 @@ Route::prefix("dashboard")->middleware("dashboard")->namespace("dashboard")->gro
     Route::post("branches/{branch_id}/employees", "EmployeeController@store");
     Route::resource("branches/employees", "EmployeeController")->except(["index", "create", "store"]);
 
+    /**
+     * 
+     */
+    Route::get("branches/{branch_id}/ticketsEmployees/create", "TicketsEmployeeController@create");
+    Route::post("branches/{branch_id}/ticketsEmployees", "TicketsEmployeeController@store");
+    Route::resource("branches/ticketsEmployees", "TicketsEmployeeController")->except(["index", "create", "store"]);
+
+
+    
 });
 
 Route::prefix("dashboard")->namespace("dashboard")->group(function () {

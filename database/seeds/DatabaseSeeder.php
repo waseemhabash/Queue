@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call("AdminSeeder");
         $this->call("CompanySeeder");
         $this->call("BranchSeeder");
-        $this->call("WindowsSeeder");
         $this->call("ServiceSeeder");
+        $this->call("WindowsSeeder");
         $this->call("EmployeeSeeder");
+        $this->call("TicketEmployeeSeeder");
     }
 }

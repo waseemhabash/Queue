@@ -14,7 +14,7 @@ class CreateConstantsTable extends Migration
     public function up()
     {
         Schema::create('constants', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string("indexx");
             $table->string("value");
             $table->enum("type", ["image", "string","text"]);

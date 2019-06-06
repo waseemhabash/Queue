@@ -10,9 +10,9 @@ class CreateBranchesTable extends Migration
     public function up()
     {
         Schema::create('branches', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('company_id');
-            $table->unsignedInteger('user_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('user_id');
 
             $table->string("name");
             $table->text("description");
@@ -20,6 +20,9 @@ class CreateBranchesTable extends Migration
 
             $table->double("lng");
             $table->double("lat");
+
+            $table->time("open_time");
+            $table->time("close_time");
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('restrict')->onUpdate('restrict');
 

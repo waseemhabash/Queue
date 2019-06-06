@@ -14,7 +14,7 @@ class CreateDevicesTable extends Migration
     public function up()
     {
         Schema::create('devices', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string("notify_token");
             $table->enum("system", ["IOS", "ANDROID"]);
             $table->timestamps();

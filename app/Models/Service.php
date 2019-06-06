@@ -11,6 +11,11 @@ class Service extends Model
         return $this->belongsTo("App\Models\Branch", "branch_id");
     }
 
+    public function employees()
+    {
+        return $this->belongsToMany("App\Models\Employee", "employee_services", "service_id", "employee_id");
+    }
+
     public static function store_service($branch_id)
     {
         request()->validate([

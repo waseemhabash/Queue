@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-
+use Carbon\Carbon;
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -16,10 +16,26 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne("App\Models\Company", "user_id");
     }
+    public function reservations()
+    {
+        return $this->hasMany("App\Models\Reservation")->whereDate("created_at",Carbon::today());
+    }
 
     public function branch()
     {
         return $this->hasOne("App\Models\Branch", "user_id");
+    }
+
+    public function ticketsEmployee()
+    {
+        return $this->hasOne("App\Models\TicketsEmployee", "user_id");
+
+    }
+
+    public function employee()
+    {
+        return $this->hasOne("App\Models\Employee", "user_id");
+
     }
 
     public static function create_user($type)

@@ -15,9 +15,15 @@ class Employee extends Model
     {
         return $this->belongsTo("App\Models\User", "user_id");
     }
+
     public function services()
     {
         return $this->belongsToMany("App\Models\Service", "employee_services", "employee_id", "service_id");
+    }
+
+    public function serve($service_id)
+    {
+        return $this->services->find($service_id);
     }
 
     public function window()
@@ -54,13 +60,27 @@ class Employee extends Model
     public static function update_employee($employee)
     {
         request()->validate([
+            "services" => "required",
+            "services.*" => "exists:services,id",
             "window" => "required|exists:windows,id",
         ]);
-
         $user = User::update_user($employee->user);
+
+        if (request("window") != $employee->window_id) {
+            $employee->active = 0;
+        }
 
         $employee->window_id = request("window");
         $employee->update();
+
+        $employee->services()->detach();
+
+        foreach (request("services") as $service_id) {
+            $employee_services = new Employee_service();
+            $employee_services->employee_id = $employee->id;
+            $employee_services->service_id = $service_id;
+            $employee_services->save();
+        }
 
         return $employee;
     }

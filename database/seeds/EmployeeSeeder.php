@@ -11,9 +11,9 @@ class EmployeeSeeder extends Seeder
     public function run()
     {
         $user = new User();
-        $user->name = "Employee Manager";
+        $user->name = "علي حمو";
         $user->email = "Employee@email.com";
-        $user->phone = "09888564232";
+        $user->phone = "09888564234";
         $user->password = bcrypt("password");
         $user->type = "services_employee";
         $user->save();

@@ -9,7 +9,26 @@
     {{ bs_input("address",null,true) }}
     {{ bs_text("description",null,true) }}
 
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="openTime" style="text-align:right">
+            {{ __("dashboard.openTime") }}
+        </label>
+        <div class="col-sm-6">
+            <input type="time" name="openTime" placeholder='{{ __("dashboard.openTime") }}' id="openTime" class="form-control"
+                required value="{{ old("openTime") }}">
+        </div>
+    </div>
 
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="closeTime" style="text-align:right">
+            {{ __("dashboard.closeTime") }}
+        </label>
+        <div class="col-sm-6">
+            <input type="time" name="closeTime" placeholder='{{ __("dashboard.closeTime") }}' id="closeTime" class="form-control"
+                required value="{{ old("closeTime") }}">
+        </div>
+    </div>
+    
 
     <div class="form-group">
         <label class="col-sm-1 control-label" style="text-align:right">

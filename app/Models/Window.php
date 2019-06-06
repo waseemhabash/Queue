@@ -11,6 +11,17 @@ class Window extends Model
         return $this->belongsTo("App\Models\Branch", "branch_id");
     }
 
+
+    public function employees()
+    {
+        return $this->hasMany("App\Models\Employee");
+    }
+
+    public function employee()
+    {
+        return $this->employees()->where("active",1)->first();
+    }
+
     public static function store_window($branch_id)
     {
         request()->validate([

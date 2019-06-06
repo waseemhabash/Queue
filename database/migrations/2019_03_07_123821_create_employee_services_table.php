@@ -14,9 +14,9 @@ class CreateEmployeeServicesTable extends Migration
     public function up()
     {
         Schema::create('employee_services', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('employee_id');
-            $table->unsignedInteger('service_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('service_id');
 
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict')->onUpdate('restrict');

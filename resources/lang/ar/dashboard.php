@@ -77,5 +77,8 @@ return [
     "updated_successfully" => "تم التعديل بنجاح",
     "deleted_successfully" => "تم الحذف بنجاح",
     "ownerName" => "اسم المالك",
-
+    "openTime" => "وقت الفتح",
+    "closeTime" => "وقت الإغلاق",
+    "ticketsEmployees" => "موظف القسائم",
+    "ticketsEmployees_management" => "موظفي القسائم",
 ];

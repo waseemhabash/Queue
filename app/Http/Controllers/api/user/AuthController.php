@@ -18,6 +18,13 @@ class AuthController extends Controller
 
         $user = User::where("phone", request("phone"))->first();
 
+        if ($user && $user->type != "customer") {
+            error_res([
+                "message" => "غير مسموح لك باستخدام هذا التابع",
+            ]);
+            exit;
+        }
+
         if (!$user) {
             $user = new User();
             $user->phone = request("phone");

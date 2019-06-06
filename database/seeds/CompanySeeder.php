@@ -11,16 +11,16 @@ class CompanySeeder extends Seeder
     {
 
         $user = new User();
-        $user->name = "Company Manager";
+        $user->name = "شركة الهرم";
         $user->email = "Company@email.com";
-        $user->phone = "0944438229";
+        $user->phone = "09888564232";
         $user->password = bcrypt("password");
         $user->type = "company_manager";
         $user->save();
 
         $company = new Company();
-        $company->name = "Company Name";
-        $company->description = "Company Description";
+        $company->name = "شركة الهرم";
+        $company->description = "شركة للقيام بالحوالات المالية";
         $company->logo = "logo";
         $company->user_id = $user->id;
         $company->save();

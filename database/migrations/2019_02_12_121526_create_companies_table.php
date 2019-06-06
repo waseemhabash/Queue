@@ -14,11 +14,11 @@ class CreateCompaniesTable extends Migration
     public function up()
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->increments('id');      
+            $table->bigIncrements('id');      
             $table->string("name");
             $table->text("description");
             $table->string("logo");
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();

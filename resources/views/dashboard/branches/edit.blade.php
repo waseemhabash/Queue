@@ -10,6 +10,35 @@
     {{ bs_input("address",$branch->address,true) }}
     {{ bs_text("description",$branch->description,true) }}
 
+
+
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="openTime" style="text-align:right">
+            {{ __("dashboard.openTime") }}
+        </label>
+        <div class="col-sm-6">
+            <input type="time" name="openTime" placeholder='{{ __("dashboard.openTime") }}' id="openTime" class="form-control"
+                required value="{{ old("openTime") ?? $branch->open_time }}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="closeTime" style="text-align:right">
+            {{ __("dashboard.closeTime") }}
+        </label>
+        <div class="col-sm-6">
+            <input type="time" name="closeTime" placeholder='{{ __("dashboard.closeTime") }}' id="closeTime" class="form-control"
+                required value="{{ old("closeTime") ?? $branch->close_time }}">
+        </div>
+    </div>
+
+
+
+
+
+
+
+
     <div class="form-group">
         <label class="col-sm-1 control-label" style="text-align:right">
             {{ __("dashboard.location") }}

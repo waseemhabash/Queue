@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Queue;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Branch extends Model
 {
 
-    protected $appends = ['destination'];
+    protected $appends = ['destination', "closed"];
 
     public function getDestinationAttribute()
     {
@@ -19,9 +21,45 @@ class Branch extends Model
             return ["message" => "lat and lng is required"];
         }
 
-        $distance = calculate_distance($this->lat, $this->lng, $lat, $lng);
+        return calculate_distance_time($this->lat, $this->lng, $lat, $lng);
 
-        return ['distance' => round($distance), 'time' => round($distance * 0.015)];
+    }
+
+    public function getClosedAttribute()
+    {
+        $close_time = Carbon::parse($this->close_time);
+
+        return Carbon::now()->gt($close_time);
+
+    }
+
+    public function current_queue()
+    {
+        $current_queue = Queue::whereHas("service", function ($service) {
+            $service->where("branch_id", $this->id);
+        })
+            ->whereDate('created_at', Carbon::today())
+            ->where("served", 0)
+            ->orderBy("priority")
+            ->orderBy("id")
+            ->get();
+
+        return $current_queue;
+    }
+
+    public function current_employees()
+    {
+        return $this->windows->map(function ($window) {
+            $employee = $window->employee();
+
+            if ($employee) {
+                $employee->servicing_time = 0;
+            }
+
+            return $employee;
+        })->reject(function ($employee) {
+            return !$employee;
+        });
 
     }
 
@@ -51,6 +89,11 @@ class Branch extends Model
 
     }
 
+    public function tickets_employees()
+    {
+        return $this->hasMany("App\Models\TicketsEmployee", "branch_id");
+    }
+
     public static function create_branch($company_id)
     {
 
@@ -60,6 +103,8 @@ class Branch extends Model
             "description" => "required",
             "lng" => "required|numeric",
             "lat" => "required|numeric",
+            "openTime" => "required",
+            "closeTime" => "required",
         ]);
 
         $user = User::create_user("branch_manager");
@@ -72,6 +117,8 @@ class Branch extends Model
         $branch->lat = request("lat");
         $branch->company_id = $company_id;
         $branch->user_id = $user->id;
+        $branch->close_time = request("closeTime");
+        $branch->open_time = request("openTime");
         $branch->save();
 
         return $branch;
@@ -86,6 +133,8 @@ class Branch extends Model
             "description" => "required",
             "lng" => "required|numeric",
             "lat" => "required|numeric",
+            "openTime" => "required",
+            "closeTime" => "required",
         ]);
 
         $user = User::update_user($branch->user);
@@ -95,6 +144,8 @@ class Branch extends Model
         $branch->description = request("description");
         $branch->lng = request("lng");
         $branch->lat = request("lat");
+        $branch->close_time = request("closeTime");
+        $branch->open_time = request("openTime");
         $branch->update();
     }
 }

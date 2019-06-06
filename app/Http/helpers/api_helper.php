@@ -1,9 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Token;
-
 function validate($rules)
 {
     $validation = Validator::make(request()->all(), $rules);
@@ -20,7 +20,8 @@ function validate($rules)
 }
 function userFromToken()
 {
-    return JWTAuth::parseToken()->authenticate();
+    $user = JWTAuth::parseToken()->authenticate();
+    return User::find($user->id);
 }
 
 function error_res($array = [], $state = 500, $headers = [])

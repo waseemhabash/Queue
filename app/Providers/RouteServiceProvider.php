@@ -40,6 +40,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapDashboardRoutes();
+        
+        $this->mapSiteRoutes();
 
 
         //
@@ -63,7 +65,13 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes\dashboard.php'));
+            ->group(base_path('routes/dashboard.php'));
+    }
+    protected function mapSiteRoutes()
+    {
+        Route::middleware('web')
+            ->namespace('App\Http\Controllers\site\employee')
+            ->group(base_path('routes/site.php'));
     }
 
 

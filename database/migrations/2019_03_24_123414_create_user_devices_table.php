@@ -14,9 +14,9 @@ class CreateUserDevicesTable extends Migration
     public function up()
     {
         Schema::create('user_devices', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('device_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('device_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('device_id')->references('id')->on('devices')->onDelete('restrict')->onUpdate('restrict');

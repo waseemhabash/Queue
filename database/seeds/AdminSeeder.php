@@ -9,9 +9,9 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $user = new User();
-        $user->name = "وسيم الحبش";
+        $user->name = "المسؤول العام";
         $user->email = "admin@admin.com";
-        $user->phone = "0949042001";
+        $user->phone = "09888564230";
         $user->password = bcrypt("password");
         $user->type = "admin";
         $user->save();

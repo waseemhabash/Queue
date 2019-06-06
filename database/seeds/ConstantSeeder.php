@@ -13,10 +13,7 @@ class ConstantSeeder extends Seeder
     public function run()
     {
         $constants = [
-            [
-                'type' => "string",
-                "indexx" => "facebook",
-            ],
+
             [
                 "type" => "image",
                 "indexx" => "logo",

@@ -26,6 +26,12 @@
             </a>
         </li>
 
+        <li class="{{ hash_page('ticketsEmployees') }}">
+            <a data-toggle="tab" href="#ticketsEmployees">
+                {{ __("dashboard.ticketsEmployees") }}
+            </a>
+        </li>
+
 
     </ul>
     <div class="tab-content">
@@ -132,13 +138,16 @@
 
 
 
-                            <a href='{{ url("dashboard/branches/services/$service->id/edit") }}' class="btn btn-xs btn-teal tooltips"
-                                data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
+                            <a href='{{ url("dashboard/branches/services/$service->id/edit") }}'
+                                class="btn btn-xs btn-teal tooltips" data-placement="top"
+                                data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
                             </a>
-                            <form action='{{ url("/dashboard/branches/services/$service->id") }}' method="POST" style="display:inline">
+                            <form action='{{ url("/dashboard/branches/services/$service->id") }}' method="POST"
+                                style="display:inline">
                                 @csrf
                                 @method("delete")
-                                <button class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="{{__('dashboard.delete')}}">
+                                <button class="btn btn-xs btn-bricky tooltips" data-placement="top"
+                                    data-original-title="{{__('dashboard.delete')}}">
                                     <i class="fa fa-times fa fa-white"></i>
                                 </button>
                             </form>
@@ -169,13 +178,16 @@
                         <td>{{ $window->prefix }}</td>
 
                         <td>
-                            <a href='{{ url("dashboard/branches/windows/$window->id/edit") }}' class="btn btn-xs btn-teal tooltips"
-                                data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
+                            <a href='{{ url("dashboard/branches/windows/$window->id/edit") }}'
+                                class="btn btn-xs btn-teal tooltips" data-placement="top"
+                                data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
                             </a>
-                            <form action='{{ url("/dashboard/branches/windows/$window->id") }}' method="POST" style="display:inline">
+                            <form action='{{ url("/dashboard/branches/windows/$window->id") }}' method="POST"
+                                style="display:inline">
                                 @csrf
                                 @method("delete")
-                                <button class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="{{__('dashboard.delete')}}">
+                                <button class="btn btn-xs btn-bricky tooltips" data-placement="top"
+                                    data-original-title="{{__('dashboard.delete')}}">
                                     <i class="fa fa-times fa fa-white"></i>
                                 </button>
                             </form>
@@ -210,17 +222,64 @@
                         <td>{{ $employee->user->phone }}</td>
                         <td>{{ $employee->user->email }}</td>
                         <td>
-                            <a href='{{ url("dashboard/branches/employees/$employee->id") }}' class="btn btn-xs btn-purple tooltips"
-                                data-placement="top" data-original-title="{{ __('dashboard.show') }}"><i class="fa fa-eye"></i>
-                            </a>
 
-                            <a href='{{ url("dashboard/branches/employees/$employee->id/edit") }}' class="btn btn-xs btn-teal tooltips"
-                                data-placement="top" data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
+
+                            <a href='{{ url("dashboard/branches/employees/$employee->id/edit") }}'
+                                class="btn btn-xs btn-teal tooltips" data-placement="top"
+                                data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
                             </a>
-                            <form action='{{ url("/dashboard/branches/employees/$employee->id") }}' method="POST" style="display:inline">
+                            <form action='{{ url("/dashboard/branches/employees/$employee->id") }}' method="POST"
+                                style="display:inline">
                                 @csrf
                                 @method("delete")
-                                <button class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="{{__('dashboard.delete')}}">
+                                <button class="btn btn-xs btn-bricky tooltips" data-placement="top"
+                                    data-original-title="{{__('dashboard.delete')}}">
+                                    <i class="fa fa-times fa fa-white"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="ticketsEmployees" class="tab-pane {{ hash_page('ticketsEmployees') }}">
+            <a href='{{ url("dashboard/branches/$branch->id/ticketsEmployees/create") }}'>
+                <button class="btn btn-success" style="margin-bottom: 25px;">
+                    <i class="fa fa-plus "></i>{{__("dashboard.addX",["X"=>__("dashboard.ticketsEmployees")])}}
+                </button>
+            </a>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>{{__("dashboard.name")}}</th>
+                        <th>{{__("dashboard.phone")}}</th>
+                        <th>{{__("dashboard.email")}}</th>
+                        <th>{{ __("dashboard.options") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($branch->tickets_employees as $tickets_employee)
+                    <tr>
+                        <td>{{ $tickets_employee->user->name }}</td>
+                        <td>{{ $tickets_employee->user->phone }}</td>
+                        <td>{{ $tickets_employee->user->email }}</td>
+                        <td>
+
+
+                            <a href='{{ url("dashboard/branches/ticketsEmployees/$tickets_employee->id/edit") }}'
+                                class="btn btn-xs btn-teal tooltips" data-placement="top"
+                                data-original-title="{{ __('dashboard.edit') }}"><i class="fa fa-edit"></i>
+                            </a>
+                            <form action='{{ url("/dashboard/branches/ticketsEmployees/$tickets_employee->id") }}'
+                                method="POST" style="display:inline">
+                                @csrf
+                                @method("delete")
+                                <button class="btn btn-xs btn-bricky tooltips" data-placement="top"
+                                    data-original-title="{{__('dashboard.delete')}}">
                                     <i class="fa fa-times fa fa-white"></i>
                                 </button>
                             </form>
