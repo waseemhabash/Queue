@@ -91,6 +91,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Prophecy\\' => 9,
             'PhpParser\\' => 10,
         ),
         'O' => 
@@ -144,6 +145,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
             'DeepCopy\\' => 9,
         ),
@@ -318,6 +320,10 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Prophecy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -410,6 +416,10 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Lexer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
+        ),
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
@@ -443,10 +453,6 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
     public static $prefixesPsr0 = array (
         'P' => 
         array (
-            'Prophecy\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
-            ),
             'PhpOption\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpoption/phpoption/src',
@@ -461,13 +467,6 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
             'Mockery' => 
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
-            ),
-        ),
-        'D' => 
-        array (
-            'Doctrine\\Common\\Lexer\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
             ),
         ),
     );
@@ -491,8 +490,10 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'App\\Http\\Controllers\\dashboard\\EmployeeController' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard/EmployeeController.php',
         'App\\Http\\Controllers\\dashboard\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard/HomeController.php',
         'App\\Http\\Controllers\\dashboard\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard/ServiceController.php',
+        'App\\Http\\Controllers\\dashboard\\TicketsEmployeeController' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard/TicketsEmployeeController.php',
         'App\\Http\\Controllers\\dashboard\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard/UserController.php',
         'App\\Http\\Controllers\\dashboard\\WindowController' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard/WindowController.php',
+        'App\\Http\\Controllers\\site\\branch\\ScreenController' => __DIR__ . '/../..' . '/app/Http/Controllers/site/branch/ScreenController.php',
         'App\\Http\\Controllers\\site\\employee\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/site/employee/AuthController.php',
         'App\\Http\\Controllers\\site\\employee\\QueueController' => __DIR__ . '/../..' . '/app/Http/Controllers/site/employee/QueueController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -519,6 +520,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'App\\Models\\Queue' => __DIR__ . '/../..' . '/app/Models/Queue.php',
         'App\\Models\\Reservation' => __DIR__ . '/../..' . '/app/Models/Reservation.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
+        'App\\Models\\Temp_calling' => __DIR__ . '/../..' . '/app/Models/Temp_calling.php',
         'App\\Models\\TicketsEmployee' => __DIR__ . '/../..' . '/app/Models/TicketsEmployee.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\User_device' => __DIR__ . '/../..' . '/app/Models/User_device.php',

@@ -1,4 +1,5 @@
 <?php
+use GuzzleHttp\Client;
 
 function c_page($pages)
 {
@@ -64,6 +65,10 @@ function user_type()
 
 function is_type($types)
 {
+
+    if (!auth()->check()) {
+        return false;
+    }
     if (is_string($types)) {
         $types = [$types];
     }
@@ -89,7 +94,53 @@ function calculate_distance_time($lat1, $lng1, $lat2, $lng2)
     return ['distance' => round($meters), 'time' => round($meters * 0.015)];
 }
 
-function order_by_distance($lat,$lng)
+function order_by_distance($lat, $lng)
 {
     return "( 6371 * ACOS( COS( RADIANS( '$lat' ) ) * COS( RADIANS( branches.lat ) ) * COS( RADIANS( branches.lng ) - RADIANS( '$lng' ) ) + SIN( RADIANS( '$lat' ) ) * SIN( RADIANS( branches.lat))))";
+}
+
+function update_queue($branch)
+{
+    try {
+        $client = new Client();
+        $client->post("localhost:3000/update_queue", [
+            "form_params" => [
+                "branch_id" => $branch->id,
+                "queue" => json_encode($branch->current_queue(10)),
+            ],
+        ]);
+    } catch (\Throwable $th) {
+
+    }
+
+}
+
+function get_voice($name)
+{
+    return file_get_contents(storage_path("voices/$name.mp3"));
+}
+
+function calling($queue_number, $window_number, $branch_id,$wait)
+{
+
+    $queue_number_voice = get_voice($queue_number);
+    $window_number_voice = get_voice($window_number);
+    $window_voice = get_voice("window");
+    $number_voice = get_voice("number");
+
+    $full_voice_file_data = $number_voice . $queue_number_voice . $window_voice . $window_number_voice;
+    $full_voice_file_link = public_path("calling/$queue_number-$window_number.mp3");
+    file_put_contents($full_voice_file_link, $full_voice_file_data);
+
+    $client = new Client();
+    $client->post("localhost:3000/calling", [
+        "form_params" => [
+            "full_voice_file_link" => url("calling/$queue_number-$window_number.mp3"),
+            "branch_id" => $branch_id,
+            "number" => $queue_number,
+            "window" => $window_number,
+            "wait" => $wait
+        ],
+    ]);
+
 }

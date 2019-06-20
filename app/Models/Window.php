@@ -25,11 +25,11 @@ class Window extends Model
     public static function store_window($branch_id)
     {
         request()->validate([
-            "name" => "required|alpha|max:1",
+            "name" => "required|integer|max:399",
         ]);
 
         $window = new Window();
-        $window->prefix = strtoupper(request("name"));
+        $window->prefix = request("name");
         $window->branch_id = $branch_id;
         $window->save();
     }
@@ -37,10 +37,10 @@ class Window extends Model
     public static function update_window($window)
     {
         request()->validate([
-            "name" => "required|alpha|max:1",
+            "name" => "required|integer|max:399",
         ]);
 
-        $window->prefix = strtoupper(request("name"));
+        $window->prefix = request("name");
         $window->update();
     }
 }

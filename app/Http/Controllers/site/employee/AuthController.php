@@ -39,6 +39,8 @@ class AuthController extends Controller
                 $employee->active = 1;
                 $employee->update();
 
+                $active_window->employees()->update(["active"=>0]);
+
                 return redirect("employee");
 
             } else {
@@ -53,5 +55,10 @@ class AuthController extends Controller
     public function logout()
     {
 
+        $employee = auth()->user()->employee;
+        $employee->active = 0;
+        $employee->update();
+        auth()->logout();
+        return redirect("employee/login");
     }
 }

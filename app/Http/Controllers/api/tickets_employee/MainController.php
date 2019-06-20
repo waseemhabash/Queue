@@ -12,13 +12,14 @@ use JWTAuth;
 class MainController extends Controller
 {
 
-    public function get_services(){
+    public function get_services()
+    {
         $user = userFromToken();
 
         res([
-        "services"=>$user->ticketsEmployee->branch->services
+            "services" => $user->ticketsEmployee->branch->services,
         ]);
-     exit;
+        exit;
     }
     public function online_queue()
     {
@@ -63,7 +64,9 @@ class MainController extends Controller
 
             $queue->save();
 
-            //$reservation->delete();
+            update_queue($reservation->service->branch);
+
+            $reservation->delete();
         } else {
             error_res([
                 "message" => "الباركود غير صحيح",
@@ -99,13 +102,15 @@ class MainController extends Controller
 
         $queue->save();
 
+        update_queue($service->branch);
+
         res([
             "message" => "تم الإضافة للدور بنجاح",
         ]);
 
+        
         exit;
 
-        //$reservation->delete();
     }
 
     public function login()

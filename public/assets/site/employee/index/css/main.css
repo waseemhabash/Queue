@@ -292,3 +292,11 @@ tbody tr:hover {
     padding-right: 15px;
   }
 }
+
+
+#skip-button
+{
+  position: absolute;
+  bottom: 2.5%;
+  left: 2.5%;
+}

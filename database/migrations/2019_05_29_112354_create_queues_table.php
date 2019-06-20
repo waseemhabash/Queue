@@ -21,11 +21,12 @@ class CreateQueuesTable extends Migration
             $table->unsignedBigInteger('employee_id')->nullable();
 
             $table->integer("priority");
-            $table->boolean("served")->default(0);
+            $table->time("start_served")->nullable();
+            $table->time("end_served")->nullable();
 
             $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('employee_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('restrict')->onUpdate('restrict');
 
             $table->timestamps();
         });

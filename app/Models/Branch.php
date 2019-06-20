@@ -25,6 +25,11 @@ class Branch extends Model
 
     }
 
+    public function temp_callings()
+    {
+        return $this->hasMany("App\Models\Temp_calling")->orderBy("id","asc");
+    }
+
     public function getClosedAttribute()
     {
         $close_time = Carbon::parse($this->close_time);
@@ -33,18 +38,21 @@ class Branch extends Model
 
     }
 
-    public function current_queue()
+    public function current_queue($limit = false)
     {
-        $current_queue = Queue::whereHas("service", function ($service) {
+        $current_queue = Queue::with(["service","employee.window"])->whereHas("service", function ($service) {
             $service->where("branch_id", $this->id);
         })
             ->whereDate('created_at', Carbon::today())
-            ->where("served", 0)
+            ->whereNull("start_served")
             ->orderBy("priority")
-            ->orderBy("id")
-            ->get();
+            ->orderBy("id");
 
-        return $current_queue;
+        if ($limit) {
+            $current_queue = $current_queue->limit($limit);
+        }
+
+        return $current_queue->get();
     }
 
     public function current_employees()

@@ -10,7 +10,7 @@ class WindowsSeeder extends Seeder
     {
         $window = new Window();
         $window->branch_id = 1;
-        $window->prefix = "A";
+        $window->prefix = 5;
         $window->save();
     }
 }

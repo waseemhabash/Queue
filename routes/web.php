@@ -1,5 +1,6 @@
 <?php
 
+
 Route::get("/migrateFreshSeed", function () {
     \Artisan::call('migrate:fresh --seed');
 });
@@ -7,3 +8,6 @@ Route::get("/migrateFreshSeed", function () {
 Route::get("/configCache", function () {
     \Artisan::call('config:cache');
 });
+
+
+

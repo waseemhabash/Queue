@@ -30,6 +30,24 @@ class Employee extends Model
     {
         return $this->belongsTo("App\Models\Window", "window_id");
     }
+    public function queue()
+    {
+        return $this->hasMany("App\Models\Queue")->orderByDesc("id");
+    }
+    public function temp_callings()
+    {
+        return $this->hasMany("App\Models\Temp_calling");
+    }
+
+    public function calledAndNotServed()
+    {
+        return $this->queue()->whereNull("start_served")->first();
+    }
+
+    public function startServedButNotFinished()
+    {
+        return $this->queue()->whereNotNull("start_served")->whereNull("end_served")->first();
+    }
 
     public static function store_employee($branch_id)
     {
@@ -84,4 +102,41 @@ class Employee extends Model
 
         return $employee;
     }
+
+    public function next_in_queue($current_queue = false)
+    {
+
+        if ($next = $this->calledAndNotServed()) {
+            return $next;
+        }
+
+        if (!$current_queue) {
+            $current_queue = $this->branch->current_queue();
+        }
+
+        $current_queue_services = $current_queue->pluck("service_id")->unique();
+
+        $next_service = $this->services->whereIn("id", $current_queue_services)->first();
+
+        $key = $current_queue->search(function ($queue) use ($next_service) {
+            return $queue->service_id == $next_service->id;
+        });
+
+        if (!is_numeric($key)) {
+            return null;
+        }
+
+        $next_in_queue = $current_queue[$key];
+
+        if (is_null($next_in_queue->employee_id)) {
+            return $next_in_queue;
+        } elseif ($next_in_queue->employee_id == $this->id) {
+            return $next_in_queue;
+        } else { // $next_in_queue->employee_id != $this->id
+            $current_queue->forget($key);
+            return $this->next_in_queue($current_queue);
+        }
+
+    }
+    
 }

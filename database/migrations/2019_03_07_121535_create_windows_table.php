@@ -11,7 +11,7 @@ class CreateWindowsTable extends Migration
     {
         Schema::create('windows', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("prefix");
+            $table->integer("prefix");
 
             $table->unsignedBigInteger('branch_id');
 

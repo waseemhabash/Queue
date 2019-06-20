@@ -10,6 +10,10 @@ class Queue extends Model
     {
         return $this->belongsTo("App\Models\Service");
     }
+    public function employee()
+    {
+        return $this->belongsTo("App\Models\Employee");
+    }
 
     public static function expected_time($branch, $service_id)
     {
