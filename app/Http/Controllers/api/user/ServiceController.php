@@ -4,9 +4,8 @@ namespace App\Http\Controllers\api\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
-use App\Models\Reservation;
+use App\Models\Rate;
 use App\Models\Service;
-use Carbon\Carbon;
 
 class ServiceController extends Controller
 {
@@ -39,8 +38,24 @@ class ServiceController extends Controller
         exit;
     }
 
-  
+    public function rate()
+    {
+        $user = userFromToken();
 
+        validate([
+            "queue_id" => "required|exists:services,id",
+            "rate" => "required|integer|between:1,5",
+        ]) ?? exit;
 
+        $rate = Rate::updateOrCreate([
+            "queue_id" => request("queue_id"),
+            "rate" => request("rate"),
+            "note" => request("note")
+        ]);
+
+        res();
+        exit;
+
+    }
 
 }

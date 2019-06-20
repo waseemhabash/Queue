@@ -34,6 +34,7 @@ class CreateTempCallingsTable extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('temp_callings');
     }
 }

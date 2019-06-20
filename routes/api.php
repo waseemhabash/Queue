@@ -8,7 +8,6 @@ Route::middleware('apiAuth:customer')->namespace('api\user')->group(function () 
 
     Route::post("register_device", 'AuthController@register_device');
 
-    Route::post("update_device", 'AuthController@update_device');
 
     /**
      * Companies
@@ -27,9 +26,11 @@ Route::middleware('apiAuth:customer')->namespace('api\user')->group(function () 
      */
 
     Route::get("services", "ServiceController@get_services");
+    Route::post("service/rate", "ServiceController@rate");
     Route::post("reservation", "ReservationController@reservation");
     Route::post("delete_reservation", "ReservationController@delete_reservation");
     Route::post("confirm_reservation", "ReservationController@confirm_reservation");
+    Route::post("extend_reservation", "ReservationController@extend_reservation");
 
     /**
      * Profile
@@ -37,6 +38,18 @@ Route::middleware('apiAuth:customer')->namespace('api\user')->group(function () 
 
     Route::get("profile", "ProfileController@get_profile");
 
+
+    /**
+     * Favorite
+     */
+
+    Route::get("favorites", "FavoriteController@favorites");
+    Route::post("make_favorite", "FavoriteController@make_favorite");
+    Route::post("unmake_favorite", "FavoriteController@unmake_favorite");
+
+    
+    
+    
 });
 
 Route::middleware('apiAuth:tickets_employee')->namespace('api\tickets_employee')->group(function () {

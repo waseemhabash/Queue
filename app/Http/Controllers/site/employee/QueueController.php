@@ -65,7 +65,7 @@ class QueueController extends Controller
                 "branch_id" => $branch->id,
                 "window" => $employee->window->prefix,
                 "number" => $next_in_queue->number,
-                "employee_id" => $employee->id
+                "employee_id" => $employee->id,
             ];
 
             if ($employee->temp_callings->isNotEmpty()) {

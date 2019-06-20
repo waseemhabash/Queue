@@ -108,7 +108,7 @@ class ReservationController extends Controller
             $reservation = new Reservation();
             $reservation->service_id = $service->id;
             $reservation->user_id = $user->id;
-            $reservation->barcode = str_random(8);
+            $reservation->barcode = str_random(15);
             $reservation->expectedTime = $expected_time->format("H:i");
             $reservation->save();
 
@@ -127,6 +127,46 @@ class ReservationController extends Controller
         exit;
 
     }
+
+    public function extend_reservation()
+    {
+        $user = userFromToken();
+        validate([
+            "reservation_id" => "required|exists:reservations,id",
+            "extra_minutes" => "required|integer",
+        ]) ?? exit;
+
+        $reservation = Reservation::find(request("reservation_id"));
+        $new_time = Carbon::parse($reservation->expectedTime)->addMinutes(request("extra_minutes"));
+        $close_time = Carbon::parse($reservation->service->branch->close_time);
+
+        if ($new_time->gt($close_time)) {
+            error_res([
+                "message" => "هذا الفرع مغلق الآن",
+            ]);
+            exit;
+        }
+
+        if ($new_time->lt($close_time->subMinute(30))) {
+
+            res([
+                "expected_time" => $new_time->format("H:i"),
+            ]);
+            exit;
+
+        } else {
+            error_res([
+                "message" => "تجاوز هذا الفرع الحد الأقصى",
+            ]);
+            exit;
+        }
+
+        res([
+            "message" => "تم الحذف بنجاح",
+        ]);
+        exit;
+    }
+
     public function delete_reservation()
     {
         $user = userFromToken();
@@ -136,7 +176,7 @@ class ReservationController extends Controller
 
         Reservation::destroy(request("reservation_id"));
         res([
-            "success" => "تم الحذف بنجاح",
+            "message" => "تم الحذف بنجاح",
         ]);
         exit;
     }

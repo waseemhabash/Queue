@@ -1,5 +1,61 @@
 [
     {
+        "name": "berkayk/onesignal-laravel",
+        "version": "0.9.9",
+        "version_normalized": "0.9.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/berkayk/laravel-onesignal.git",
+            "reference": "543f042a845569e26680b7204076240c8f61785a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/berkayk/laravel-onesignal/zipball/543f042a845569e26680b7204076240c8f61785a",
+            "reference": "543f042a845569e26680b7204076240c8f61785a",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "^6.2",
+            "illuminate/support": "4.*|5.*",
+            "php": ">=5.4.0",
+            "symfony/psr-http-message-bridge": "1.*"
+        },
+        "require-dev": {
+            "vlucas/phpdotenv": "^2.2"
+        },
+        "time": "2017-09-22T09:52:00+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Berkayk\\OneSignal\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Maykonn Welington Candido",
+                "email": "maykonn@outlook.com"
+            },
+            {
+                "name": "Berkay Kaya",
+                "email": "berkayk@gmail.com",
+                "homepage": "http://berkaykaya.com"
+            }
+        ],
+        "description": "OneSignal Push Wrapper Laravel",
+        "keywords": [
+            "WebPush",
+            "laravel",
+            "laravel 5",
+            "onesignal",
+            "push"
+        ]
+    },
+    {
         "name": "beyondcode/laravel-dump-server",
         "version": "1.2.2",
         "version_normalized": "1.2.2.0",
@@ -1065,18 +1121,88 @@
         "description": "Highlight PHP code in terminal"
     },
     {
-        "name": "laravel/framework",
-        "version": "v5.8.23",
-        "version_normalized": "5.8.23.0",
+        "name": "laravel-notification-channels/onesignal",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/laravel/framework.git",
-            "reference": "02d242212348bddd048702f5dee8dab693ac830b"
+            "url": "https://github.com/laravel-notification-channels/onesignal.git",
+            "reference": "aaae22ff27a8009ffe302105691b90f962ace5db"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/02d242212348bddd048702f5dee8dab693ac830b",
-            "reference": "02d242212348bddd048702f5dee8dab693ac830b",
+            "url": "https://api.github.com/repos/laravel-notification-channels/onesignal/zipball/aaae22ff27a8009ffe302105691b90f962ace5db",
+            "reference": "aaae22ff27a8009ffe302105691b90f962ace5db",
+            "shasum": ""
+        },
+        "require": {
+            "berkayk/onesignal-laravel": "^0.9.3",
+            "illuminate/notifications": "5.*",
+            "illuminate/support": "5.*",
+            "php": ">=7.0.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.0",
+            "orchestra/testbench": "^3.5",
+            "phpunit/phpunit": "^6.4"
+        },
+        "time": "2018-03-09T07:12:22+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "NotificationChannels\\OneSignal\\OneSignalServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "NotificationChannels\\OneSignal\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be"
+            },
+            {
+                "name": "Marcel Pociot",
+                "email": "hello@marcelpociot.com",
+                "homepage": "http://marcelpociot.com"
+            },
+            {
+                "name": "Lukas Kämmerling",
+                "email": "kontakt@lukas-kaemmerling.de",
+                "homepage": "https://lukas-kaemmerling.de"
+            },
+            {
+                "name": "David Llop",
+                "email": "hello@davidllop.com",
+                "homepage": "http://davidllop.com"
+            }
+        ],
+        "description": "OneSignal Notifications driver",
+        "homepage": "https://github.com/laravel-notification-channels/onesignal"
+    },
+    {
+        "name": "laravel/framework",
+        "version": "v5.8.24",
+        "version_normalized": "5.8.24.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/framework.git",
+            "reference": "bb2a0afef35f508f77c049c51f04087a14de0055"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/bb2a0afef35f508f77c049c51f04087a14de0055",
+            "reference": "bb2a0afef35f508f77c049c51f04087a14de0055",
             "shasum": ""
         },
         "require": {
@@ -1179,7 +1305,7 @@
             "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.1).",
             "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
         },
-        "time": "2019-06-13T21:08:56+00:00",
+        "time": "2019-06-19T16:40:24+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2725,17 +2851,17 @@
     },
     {
         "name": "phpunit/phpunit",
-        "version": "7.5.12",
-        "version_normalized": "7.5.12.0",
+        "version": "7.5.13",
+        "version_normalized": "7.5.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "9ba59817745b0fe0c1a5a3032dfd4a6d2994ad1c"
+            "reference": "b9278591caa8630127f96c63b598712b699e671c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9ba59817745b0fe0c1a5a3032dfd4a6d2994ad1c",
-            "reference": "9ba59817745b0fe0c1a5a3032dfd4a6d2994ad1c",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b9278591caa8630127f96c63b598712b699e671c",
+            "reference": "b9278591caa8630127f96c63b598712b699e671c",
             "shasum": ""
         },
         "require": {
@@ -2774,7 +2900,7 @@
             "ext-xdebug": "*",
             "phpunit/php-invoker": "^2.0"
         },
-        "time": "2019-05-28T11:59:40+00:00",
+        "time": "2019-06-19T12:01:51+00:00",
         "bin": [
             "phpunit"
         ],
@@ -4194,17 +4320,17 @@
     },
     {
         "name": "symfony/event-dispatcher-contracts",
-        "version": "v1.1.1",
-        "version_normalized": "1.1.1.0",
+        "version": "v1.1.5",
+        "version_normalized": "1.1.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-            "reference": "8fa2cf2177083dd59cf8e44ea4b6541764fbda69"
+            "reference": "c61766f4440ca687de1084a5c00b08e167a2575c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/8fa2cf2177083dd59cf8e44ea4b6541764fbda69",
-            "reference": "8fa2cf2177083dd59cf8e44ea4b6541764fbda69",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/c61766f4440ca687de1084a5c00b08e167a2575c",
+            "reference": "c61766f4440ca687de1084a5c00b08e167a2575c",
             "shasum": ""
         },
         "require": {
@@ -4214,7 +4340,7 @@
             "psr/event-dispatcher": "",
             "symfony/event-dispatcher-implementation": ""
         },
-        "time": "2019-05-22T12:23:29+00:00",
+        "time": "2019-06-20T06:46:26+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -5042,6 +5168,73 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "symfony/psr-http-message-bridge",
+        "version": "v1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/psr-http-message-bridge.git",
+            "reference": "9ab9d71f97d5c7d35a121a7fb69f74fee95cd0ad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/9ab9d71f97d5c7d35a121a7fb69f74fee95cd0ad",
+            "reference": "9ab9d71f97d5c7d35a121a7fb69f74fee95cd0ad",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1",
+            "psr/http-message": "^1.0",
+            "symfony/http-foundation": "^3.4 || ^4.0"
+        },
+        "require-dev": {
+            "nyholm/psr7": "^1.1",
+            "symfony/phpunit-bridge": "^3.4.20 || ^4.0",
+            "zendframework/zend-diactoros": "^1.4.1 || ^2.0"
+        },
+        "suggest": {
+            "nyholm/psr7": "For a super lightweight PSR-7/17 implementation"
+        },
+        "time": "2019-03-11T18:22:33+00:00",
+        "type": "symfony-bridge",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Bridge\\PsrHttpMessage\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "PSR HTTP message bridge",
+        "homepage": "http://symfony.com",
+        "keywords": [
+            "http",
+            "http-message",
+            "psr-17",
+            "psr-7"
+        ]
+    },
+    {
         "name": "symfony/routing",
         "version": "v4.3.1",
         "version_normalized": "4.3.1.0",
@@ -5121,27 +5314,27 @@
     },
     {
         "name": "symfony/service-contracts",
-        "version": "v1.1.2",
-        "version_normalized": "1.1.2.0",
+        "version": "v1.1.5",
+        "version_normalized": "1.1.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/service-contracts.git",
-            "reference": "191afdcb5804db960d26d8566b7e9a2843cab3a0"
+            "reference": "f391a00de78ec7ec8cf5cdcdae59ec7b883edb8d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/service-contracts/zipball/191afdcb5804db960d26d8566b7e9a2843cab3a0",
-            "reference": "191afdcb5804db960d26d8566b7e9a2843cab3a0",
+            "url": "https://api.github.com/repos/symfony/service-contracts/zipball/f391a00de78ec7ec8cf5cdcdae59ec7b883edb8d",
+            "reference": "f391a00de78ec7ec8cf5cdcdae59ec7b883edb8d",
             "shasum": ""
         },
         "require": {
-            "php": "^7.1.3"
+            "php": "^7.1.3",
+            "psr/container": "^1.0"
         },
         "suggest": {
-            "psr/container": "",
             "symfony/service-implementation": ""
         },
-        "time": "2019-05-28T07:50:59+00:00",
+        "time": "2019-06-13T11:15:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -5259,17 +5452,17 @@
     },
     {
         "name": "symfony/translation-contracts",
-        "version": "v1.1.2",
-        "version_normalized": "1.1.2.0",
+        "version": "v1.1.5",
+        "version_normalized": "1.1.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation-contracts.git",
-            "reference": "93597ce975d91c52ebfaca1253343cd9ccb7916d"
+            "reference": "cb4b18ad7b92a26e83b65dde940fab78339e6f3c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/93597ce975d91c52ebfaca1253343cd9ccb7916d",
-            "reference": "93597ce975d91c52ebfaca1253343cd9ccb7916d",
+            "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/cb4b18ad7b92a26e83b65dde940fab78339e6f3c",
+            "reference": "cb4b18ad7b92a26e83b65dde940fab78339e6f3c",
             "shasum": ""
         },
         "require": {
@@ -5278,7 +5471,7 @@
         "suggest": {
             "symfony/translation-implementation": ""
         },
-        "time": "2019-05-27T08:16:38+00:00",
+        "time": "2019-06-13T11:15:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

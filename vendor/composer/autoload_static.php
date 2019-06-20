@@ -13,11 +13,11 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
@@ -78,6 +78,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Stevebauman\\Location\\' => 21,
         ),
         'R' => 
@@ -101,6 +102,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'N' => 
         array (
             'NunoMaduro\\Collision\\' => 21,
+            'NotificationChannels\\OneSignal\\' => 31,
             'Namshi\\JOSE\\' => 12,
         ),
         'M' => 
@@ -158,6 +160,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'B' => 
         array (
             'BeyondCode\\DumpServer\\' => 22,
+            'Berkayk\\OneSignal\\' => 18,
         ),
         'A' => 
         array (
@@ -292,6 +295,10 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Symfony\\Bridge\\PsrHttpMessage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/psr-http-message-bridge',
+        ),
         'Stevebauman\\Location\\' => 
         array (
             0 => __DIR__ . '/..' . '/stevebauman/location/src',
@@ -335,6 +342,10 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'NunoMaduro\\Collision\\' => 
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
+        ),
+        'NotificationChannels\\OneSignal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src',
         ),
         'Namshi\\JOSE\\' => 
         array (
@@ -444,6 +455,10 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         array (
             0 => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src',
         ),
+        'Berkayk\\OneSignal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/berkayk/onesignal-laravel/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -480,6 +495,7 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'App\\Http\\Controllers\\api\\user\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/user/AuthController.php',
         'App\\Http\\Controllers\\api\\user\\BranchController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/user/BranchController.php',
         'App\\Http\\Controllers\\api\\user\\CompanyController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/user/CompanyController.php',
+        'App\\Http\\Controllers\\api\\user\\FavoriteController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/user/FavoriteController.php',
         'App\\Http\\Controllers\\api\\user\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/user/ProfileController.php',
         'App\\Http\\Controllers\\api\\user\\ReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/user/ReservationController.php',
         'App\\Http\\Controllers\\api\\user\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/user/ServiceController.php',
@@ -517,7 +533,9 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'App\\Models\\Device' => __DIR__ . '/../..' . '/app/Models/Device.php',
         'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
         'App\\Models\\Employee_service' => __DIR__ . '/../..' . '/app/Models/Employee_service.php',
+        'App\\Models\\Favorite' => __DIR__ . '/../..' . '/app/Models/Favorite.php',
         'App\\Models\\Queue' => __DIR__ . '/../..' . '/app/Models/Queue.php',
+        'App\\Models\\Rate' => __DIR__ . '/../..' . '/app/Models/Rate.php',
         'App\\Models\\Reservation' => __DIR__ . '/../..' . '/app/Models/Reservation.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
         'App\\Models\\Temp_calling' => __DIR__ . '/../..' . '/app/Models/Temp_calling.php',
@@ -525,11 +543,15 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\User_device' => __DIR__ . '/../..' . '/app/Models/User_device.php',
         'App\\Models\\Window' => __DIR__ . '/../..' . '/app/Models/Window.php',
+        'App\\Notifications\\users\\RateServiceNotification' => __DIR__ . '/../..' . '/app/Notifications/users/RateServiceNotification.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'Berkayk\\OneSignal\\OneSignalClient' => __DIR__ . '/..' . '/berkayk/onesignal-laravel/src/OneSignalClient.php',
+        'Berkayk\\OneSignal\\OneSignalFacade' => __DIR__ . '/..' . '/berkayk/onesignal-laravel/src/OneSignalFacade.php',
+        'Berkayk\\OneSignal\\OneSignalServiceProvider' => __DIR__ . '/..' . '/berkayk/onesignal-laravel/src/OneSignalServiceProvider.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
@@ -2446,6 +2468,14 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'Namshi\\JOSE\\Signer\\SecLib\\RSA' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/Signer/SecLib/RSA.php',
         'Namshi\\JOSE\\Signer\\SignerInterface' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/Signer/SignerInterface.php',
         'Namshi\\JOSE\\SimpleJWS' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/SimpleJWS.php',
+        'NotificationChannels\\OneSignal\\Exceptions\\CouldNotSendNotification' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/Exceptions/CouldNotSendNotification.php',
+        'NotificationChannels\\OneSignal\\Exceptions\\InvalidConfiguration' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/Exceptions/InvalidConfiguration.php',
+        'NotificationChannels\\OneSignal\\OneSignalButton' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/OneSignalButton.php',
+        'NotificationChannels\\OneSignal\\OneSignalChannel' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/OneSignalChannel.php',
+        'NotificationChannels\\OneSignal\\OneSignalMessage' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/OneSignalMessage.php',
+        'NotificationChannels\\OneSignal\\OneSignalPayloadFactory' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/OneSignalPayloadFactory.php',
+        'NotificationChannels\\OneSignal\\OneSignalServiceProvider' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/OneSignalServiceProvider.php',
+        'NotificationChannels\\OneSignal\\OneSignalWebButton' => __DIR__ . '/..' . '/laravel-notification-channels/onesignal/src/OneSignalWebButton.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/ExceptionHandler.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\Inspector' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/Inspector.php',
@@ -3539,6 +3569,11 @@ class ComposerStaticInit8cc3d164e068b4fd22af6bac204e725b
         'Stevebauman\\Location\\Location' => __DIR__ . '/..' . '/stevebauman/location/src/Location.php',
         'Stevebauman\\Location\\LocationServiceProvider' => __DIR__ . '/..' . '/stevebauman/location/src/LocationServiceProvider.php',
         'Stevebauman\\Location\\Position' => __DIR__ . '/..' . '/stevebauman/location/src/Position.php',
+        'Symfony\\Bridge\\PsrHttpMessage\\Factory\\DiactorosFactory' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/Factory/DiactorosFactory.php',
+        'Symfony\\Bridge\\PsrHttpMessage\\Factory\\HttpFoundationFactory' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/Factory/HttpFoundationFactory.php',
+        'Symfony\\Bridge\\PsrHttpMessage\\Factory\\PsrHttpFactory' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/Factory/PsrHttpFactory.php',
+        'Symfony\\Bridge\\PsrHttpMessage\\HttpFoundationFactoryInterface' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/HttpFoundationFactoryInterface.php',
+        'Symfony\\Bridge\\PsrHttpMessage\\HttpMessageFactoryInterface' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/HttpMessageFactoryInterface.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
