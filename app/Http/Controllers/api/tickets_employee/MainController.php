@@ -17,26 +17,29 @@ class MainController extends Controller
         $user = userFromToken();
 
         res([
-            "services" => $user->ticketsEmployee->branch->services,
+            "services" => $user->ticketsEmployee->branch->services()->with("images")->get(),
         ]);
+
         exit;
     }
     public function online_queue()
     {
 
         $user = userFromToken();
+
         validate([
             "barCode" => "required",
         ]) ?? exit;
 
         $reservation = Reservation::with("service")->where("barcode", request("barCode"))->whereDate('created_at', Carbon::today())->first();
-
+        $service = $reservation->service;
+        $branch = $service->branch;
         if ($reservation) {
 
-            if ($reservation->service->branch_id != $user->ticketsEmployee->branch_id) {
+            if ($service->branch_id != $user->ticketsEmployee->branch_id) {
                 error_res([
-                    "message" => "هذا الباركود يجب أن يمسح في غير مركز " . $reservation->service->branch->name,
-                ]);
+                    "message" => "هذا الباركود يجب أن يمسح في غير مركز " . $branch->name,
+                ], 502);
                 exit;
             }
 
@@ -64,13 +67,24 @@ class MainController extends Controller
 
             $queue->save();
 
-            update_queue($reservation->service->branch);
+            update_queue($branch);
 
             $reservation->delete();
+
+            $message = "*****************************\n";
+            $message .= "ً\tWelcome To QLines\n";
+            $message .= "*****************************\n";
+            $message .= "Your Number is : -- " . $queue->number . " -- \n";
+            $message .= "Date : " . Carbon::now() . "\n";
+            $message .= "*****************************";
+            res([
+                "message" => $message,
+            ]);
+
         } else {
             error_res([
                 "message" => "الباركود غير صحيح",
-            ]);
+            ], 503);
             exit;
         }
 
@@ -79,11 +93,14 @@ class MainController extends Controller
     {
 
         $user = userFromToken();
+
         validate([
             "service_id" => "required|exists:services,id",
         ]) ?? exit;
 
         $service = Service::find(request("service_id"));
+
+        $branch = $service->branch;
 
         $queue = new Queue();
         $queue->service_id = request("service_id");
@@ -104,11 +121,16 @@ class MainController extends Controller
 
         update_queue($service->branch);
 
+        $message = "*****************************\n";
+        $message .= "ً\tWelcome To QLines\n";
+        $message .= "*****************************\n";
+        $message .= "Your Number is : -- " . $queue->number . " -- \n";
+        $message .= "Date : " . Carbon::now() . "\n";
+        $message .= "*****************************";
         res([
-            "message" => "تم الإضافة للدور بنجاح",
+            "message" => $message,
         ]);
 
-        
         exit;
 
     }
@@ -125,7 +147,7 @@ class MainController extends Controller
             if (auth()->user()->type != "tickets_employee") {
                 error_res([
                     "message" => "غير مسموح لك باستخدام هذا التابع",
-                ]);
+                ], 501);
                 exit;
             }
 

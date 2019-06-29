@@ -11,6 +11,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
+app.get("ttt",function(req,res){
+res.send("ttt");
+});
+
 app.post("/update_queue", function (req, res) {
     var params = req.body;
 
@@ -24,6 +28,7 @@ app.post("/update_queue", function (req, res) {
 });
 
 app.post("/calling", function (req, res) {
+
     var params = req.body;
 
     if (params.branch_id in branches) {

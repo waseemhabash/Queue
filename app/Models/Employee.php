@@ -39,6 +39,23 @@ class Employee extends Model
         return $this->hasMany("App\Models\Temp_calling");
     }
 
+    public function rate_avg()
+    {
+        $rate = 0;
+        $count = 0;
+        $customers = $this->queue;
+
+        foreach ($customers as $customer) {
+            if ($customer->rate) {
+
+                $rate += $customer->rate->rate;
+                $count++;
+            }
+        }
+
+        return $rate == 0 ? 0 : $rate / $count;
+    }
+
     public function calledAndNotServed()
     {
         return $this->queue()->whereNull("start_served")->first();
@@ -49,8 +66,9 @@ class Employee extends Model
         return $this->queue()->whereNotNull("start_served")->whereNull("end_served")->first();
     }
 
-    public static function store_employee($branch_id)
+    public static function store_employee()
     {
+        $branch = myBranch();
         request()->validate([
             "services" => "required",
             "services.*" => "exists:services,id",
@@ -60,7 +78,7 @@ class Employee extends Model
         $user = User::create_user("services_employee");
 
         $employee = new Employee();
-        $employee->branch_id = $branch_id;
+        $employee->branch_id = $branch->id;
         $employee->user_id = $user->id;
         $employee->window_id = request("window");
         $employee->save();
@@ -118,6 +136,10 @@ class Employee extends Model
 
         $next_service = $this->services->whereIn("id", $current_queue_services)->first();
 
+        if (is_null($next_service)) {
+            return null;
+        }
+
         $key = $current_queue->search(function ($queue) use ($next_service) {
             return $queue->service_id == $next_service->id;
         });
@@ -138,5 +160,5 @@ class Employee extends Model
         }
 
     }
-    
+
 }

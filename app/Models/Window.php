@@ -11,7 +11,6 @@ class Window extends Model
         return $this->belongsTo("App\Models\Branch", "branch_id");
     }
 
-
     public function employees()
     {
         return $this->hasMany("App\Models\Employee");
@@ -19,18 +18,19 @@ class Window extends Model
 
     public function employee()
     {
-        return $this->employees()->where("active",1)->first();
+        return $this->employees()->where("active", 1)->first();
     }
 
-    public static function store_window($branch_id)
+    public static function store_window()
     {
+        $branch = myBranch();
         request()->validate([
             "name" => "required|integer|max:399",
         ]);
 
         $window = new Window();
         $window->prefix = request("name");
-        $window->branch_id = $branch_id;
+        $window->branch_id = $branch->id;
         $window->save();
     }
 

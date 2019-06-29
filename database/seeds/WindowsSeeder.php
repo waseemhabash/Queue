@@ -1,16 +1,88 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Window;
+use Illuminate\Database\Seeder;
 
 class WindowsSeeder extends Seeder
 {
-    
+
     public function run()
     {
-        $window = new Window();
-        $window->branch_id = 1;
-        $window->prefix = 5;
-        $window->save();
+
+        $branches =
+            [
+
+            [
+                "windows" =>
+                [
+
+                    [
+                        "branch_id" => 1,
+                        "prefix" => 1,
+
+                    ],
+                    [
+                        "branch_id" => 1,
+                        "prefix" => 2,
+                    ],
+                ],
+            ],
+            [
+                "windows" =>
+                [
+
+                    [
+                        "branch_id" => 2,
+                        "prefix" => 1,
+
+                    ],
+                    [
+                        "branch_id" => 2,
+                        "prefix" => 2,
+                    ],
+                ],
+            ],
+            [
+                "windows" =>
+                [
+
+                    [
+                        "branch_id" => 3,
+                        "prefix" => 1,
+
+                    ],
+                    [
+                        "branch_id" => 3,
+                        "prefix" => 2,
+                    ],
+                ],
+            ],
+            [
+                "windows" =>
+                [
+
+                    [
+                        "branch_id" => 4,
+                        "prefix" => 1,
+
+                    ],
+                    [
+                        "branch_id" => 4,
+                        "prefix" => 2,
+                    ],
+                ],
+            ],
+
+        ];
+        foreach ($branches as $branch) {
+            foreach ($branch["windows"] as $window) {
+                $newWindow = new Window();
+                $newWindow->branch_id = $window["branch_id"];
+                $newWindow->prefix = $window["prefix"];
+                $newWindow->save();
+            }
+
+        }
+
     }
 }

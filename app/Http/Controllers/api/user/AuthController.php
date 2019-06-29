@@ -20,7 +20,7 @@ class AuthController extends Controller
         if ($user && $user->type != "customer") {
             error_res([
                 "message" => "غير مسموح لك باستخدام هذا التابع",
-            ]);
+            ], 501);
             exit;
         }
 

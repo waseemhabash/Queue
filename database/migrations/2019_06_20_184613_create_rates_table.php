@@ -17,7 +17,6 @@ class CreateRatesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('queue_id');
             $table->integer("rate");
-            $table->text("note");
             $table->foreign('queue_id')->references('id')->on('queues')->onDelete('restrict')->onUpdate('restrict');
 
             $table->timestamps();

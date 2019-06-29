@@ -24,7 +24,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function favorites()
     {
-        return $this->belongsToMany("App\Models\Service", "favorites");
+        return $this->belongsToMany("App\Models\Service", "favorites")->with(["images","branch","branch.company"]);
     }
 
     public function branch()
@@ -41,7 +41,6 @@ class User extends Authenticatable implements JWTSubject
     public function employee()
     {
         return $this->hasOne("App\Models\Employee", "user_id");
-
     }
 
     public function devices()

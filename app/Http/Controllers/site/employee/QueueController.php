@@ -4,52 +4,26 @@ namespace App\Http\Controllers\site\employee;
 
 use App\Http\Controllers\Controller;
 use App\Models\Temp_calling;
+use App\Notifications\users\RateServiceNotification;
 use Carbon\Carbon;
 
 class QueueController extends Controller
 {
     public function index()
     {
-        $employee = auth()->user()->employee;
+        $employee = myEmployee();
 
         $branch = $employee->branch;
 
         return view("site.employee.queue", compact("branch", "employee"));
     }
 
-    public function start_service()
-    {
-        $employee = auth()->user()->employee;
-        $next_in_queue = $employee->next_in_queue();
-
-        if ($next_in_queue && $next_in_queue->employee_id && $next_in_queue->employee_id == $employee->id) {
-            $next_in_queue->start_served = Carbon::now();
-            $next_in_queue->update();
-        }
-
-        update_queue($employee->branch);
-
-        return back();
-    }
-
-    public function end_service()
-    {
-        $employee = auth()->user()->employee;
-        $next_in_queue = $employee->startServedButNotFinished();
-
-        if ($next_in_queue) {
-            $next_in_queue->end_served = Carbon::now();
-            $next_in_queue->update();
-        }
-
-        return back();
-    }
-
     public function check_call()
     {
 
-        $employee = auth()->user()->employee;
+        $employee = myEmployee();
         $branch = $employee->branch;
+        $window = $employee->window;
         $next_in_queue = $employee->next_in_queue();
 
         if ($next_in_queue) {
@@ -59,11 +33,11 @@ class QueueController extends Controller
 
             $temp_calls = $branch->temp_callings;
 
-            $wait = $temp_calls->count() * 5;
+            $wait = $temp_calls->count() * 5.25;
 
             $calling_data = [
                 "branch_id" => $branch->id,
-                "window" => $employee->window->prefix,
+                "window" => $window->prefix,
                 "number" => $next_in_queue->number,
                 "employee_id" => $employee->id,
             ];
@@ -81,7 +55,8 @@ class QueueController extends Controller
                 "wait" => $wait,
             ]);
 
-            calling($next_in_queue->number, $employee->window->prefix, $employee->branch->id, $wait);
+            calling($next_in_queue->number, $window->prefix, $branch->id, $wait);
+            update_queue($branch);
 
             exit;
 
@@ -95,6 +70,58 @@ class QueueController extends Controller
 
     }
 
+    public function start_service()
+    {
+        $employee = myEmployee();
+        $next_in_queue = $employee->calledAndNotServed();
+
+        if ($next_in_queue) {
+            $next_in_queue->start_served = Carbon::now();
+            $next_in_queue->update();
+        }
+
+        update_queue($employee->branch);
+
+        return back();
+    }
+
+    public function end_service()
+    {
+        $employee = myEmployee();
+        $next_in_queue = $employee->startServedButNotFinished();
+
+        if ($next_in_queue) {
+            $next_in_queue->end_served = Carbon::now();
+            $next_in_queue->update();
+
+            if ($next_in_queue->customer) {
+                try {
+                    $next_in_queue->customer->notify(new RateServiceNotification($next_in_queue));
+                } catch (\Throwable $th) {
+                    
+                }
+            }
+
+        }
+
+        return back();
+    }
+
+    public function skip()
+    {
+        $employee = myEmployee();
+        $next_in_queue = $employee->calledAndNotServed();
+
+        if ($next_in_queue) {
+
+            $next_in_queue->delete();
+
+            update_queue($employee->branch);
+        }
+
+        return back();
+    }
+
     public function delete_call()
     {
         Temp_calling::where([
@@ -105,28 +132,6 @@ class QueueController extends Controller
             ->orderby("id")
             ->first()
             ->delete();
-    }
-
-    public function skip()
-    {
-        $employee = auth()->user()->employee;
-        $next_in_queue = $employee->next_in_queue();
-
-        if ($next_in_queue && $next_in_queue->employee_id && $next_in_queue->employee_id == $employee->id) {
-
-            if ($next_in_queue->priority == 3) {
-                $next_in_queue->delete();
-            } else {
-                $next_in_queue->increment("priority");
-            }
-
-            $next_in_queue->employee_id = null;
-            $next_in_queue->update();
-
-            update_queue($employee->branch);
-        }
-
-        return back();
     }
 
 }

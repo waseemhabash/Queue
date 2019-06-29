@@ -20,7 +20,7 @@ class BranchController extends Controller
         $lat = request("lat");
         $branches = $company
             ->branches()
-            ->orderBy(\DB::raw(order_by_distance($lat, $lng)))
+            ->orderByRaw(order_by_distance($lat, $lng))
             ->paginate(10);
 
         res([

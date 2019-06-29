@@ -105,7 +105,7 @@ function bs_text($name,$value = null,$required = false)
         <?= __("dashboard.$name") ?>
     </label>
     <div class="col-sm-6">
-        <textarea name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' class="form-control ckeditor" <?=$required ? 'required' : '' ?> ><?= old($name) ?? $value ?? ""  ?></textarea>
+        <textarea name="<?= $name ?>" placeholder='<?= __("dashboard.$name") ?>' class="form-control" <?=$required ? 'required' : '' ?> ><?= old($name) ?? $value ?? ""  ?></textarea>
     </div>
 </div>
 
@@ -181,7 +181,7 @@ function bs_video($name,$value = null,$required = false)
 
 <?php    
 }
-function bs_multiple_files($name,$value = null,$required = false)
+function bs_multiple_files($name,$value = null,$required = false,$accept = "image/*")
 {
 ?>
 
@@ -190,7 +190,7 @@ function bs_multiple_files($name,$value = null,$required = false)
         <?= __("dashboard.$name") ?>
     </label>
     <div class="col-sm-6">
-        <input type="file" accept="video/*" name="<?= $name ?>" id="<?= $name ?>" class="form-control" <?=$required ?
+        <input type="file" multiple accept="<?= $accept?>" name="<?= $name ?>[]" id="<?= $name ?>" class="form-control" <?=$required ?
             'required' : '' ?> >
     </div>
 </div>
@@ -208,7 +208,7 @@ function bs_save($name)
 
     </label>
     <div class="col-sm-6">
-        <button class="btn btn-info" type="submit" style="background:#ECB08B;border: 1px solid #ECB08F">
+        <button class="btn btn-info" type="submit" style="background:#ecb08b;border: 1px solid #ecb08b">
             <?= __("dashboard.$name")?></button>
     </div>
 </div>

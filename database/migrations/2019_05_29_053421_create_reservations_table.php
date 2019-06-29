@@ -19,7 +19,8 @@ class CreateReservationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string("expectedTime");
             $table->string("barcode");
-            
+            $table->integer("notified")->nullable();
+
             $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
 

@@ -7,14 +7,19 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware("c_page:home");
-    }
-
     public function index()
     {
-        return view('dashboard.layouts.index');
-    }
+        $page = "الصفحة الرئيسية";
+        session()->put("c_page", "home");
 
+        if (is_type("admin")) {
+
+            return view('dashboard.admin.home', compact("page"));
+        } elseif (is_type("company_manager")) {
+            return view('dashboard.company.home', compact("page"));
+        } elseif (is_type("branch_manager")) {
+            return view('dashboard.branch.home', compact("page"));
+        }
+
+    }
 }

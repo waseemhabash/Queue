@@ -4,7 +4,7 @@ return [
 
     "access_denied" => "غير مسموح لك بالدخول",
     "invalid_access_informations" => "معلومات الدخول غير صحيحة !",
-
+"expectedTime" => "الوقت المتوقع",
     "brand" => "Queue Lines",
     "logIn" => "تسجيل الدخول",
     "enterLoginInformation" => "أدخل المعلومات لتسجيل الدخول",
@@ -17,7 +17,6 @@ return [
     "settings" => "الإعدادات",
     "location" => "الموقع",
     "clickMap" => "اضغط على الخريطة",
-    "employees_management" => "إدارة الموظفين",
     "role_management" => "إدارة الأدوار",
     "leaveItEmpty" => "يمكنك ترك هذه الحقل",
     "address" => "العنوان",
@@ -72,6 +71,9 @@ return [
     "timeInMinutes" => "الوقت في الدقائق",
 
     "facebook" => "فيسبوك",
+    "add_admin" => "إضافة مسؤول",
+    "edit_admin" => "تعديل المسؤول",
+    "add_company" => "إضافة شركة",
     "logo" => "Logo",
     "added_successfully" => "تمت الإضافة بنجاح",
     "updated_successfully" => "تم التعديل بنجاح",
@@ -81,4 +83,12 @@ return [
     "closeTime" => "وقت الإغلاق",
     "ticketsEmployees" => "موظف القسائم",
     "ticketsEmployees_management" => "موظفي القسائم",
+    "companyInfo" => "معلومات الشركة",
+    "branchInfo" => "معلومات الفرع",
+    "MyBranch" => "إدارة الفرع",
+    "openTime" => "وقت الفتح",
+    "minutes_before_closing" => "قبل كم من وقت الإغلاق لا يجب أن نستقبل زبائن",
+    "screen" => "الشاشة",
+    "image" => "الصورة",
+    "images" => "الصور",
 ];

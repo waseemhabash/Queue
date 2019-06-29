@@ -15,6 +15,16 @@ class Queue extends Model
         return $this->belongsTo("App\Models\Employee");
     }
 
+    public function customer()
+    {
+        return $this->belongsTo("App\Models\User", "customer_id");
+    }
+
+    public function rate()
+    {
+        return $this->hasOne("App\Models\Rate");
+    }
+
     public static function expected_time($branch, $service_id)
     {
         $current_employees = $branch->current_employees();

@@ -41,8 +41,8 @@ return [
     ],
 
     'onesignal' => [
-        'app_id' => env('ONESIGNAL_APP_ID'),
-        'rest_api_key' => env('ONESIGNAL_REST_API_KEY')
+        'app_id' => "35a0198c-40c2-42b1-9cec-f773c11851a4",
+        'rest_api_key' => "OGE1NTgyM2ItZmE3Ny00ZjM4LTk5MzktMTI0YjIzZWRhNDlm"
     ],
 
 ];

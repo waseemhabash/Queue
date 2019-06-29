@@ -9,7 +9,7 @@ class AuthController extends Controller
     public function login()
     {
 
-        if (auth()->check() && is_type("services_employee")) {
+        if (is_type("services_employee")) {
             return redirect("employee");
         }
 
@@ -25,7 +25,7 @@ class AuthController extends Controller
                     return back()->with("error", "غير مسموح لك بالدخول إلى هنا");
                 }
 
-                $employee = auth()->user()->employee;
+                $employee = myEmployee();
 
                 $active_window = $employee->window;
 
@@ -36,10 +36,11 @@ class AuthController extends Controller
                     return back()->with("error", $active_employee->user->name . " قام بتسجيل الدخول بالفعل على النافذة  <br>" . $active_window->prefix . "<br> اطلب منه تسجيل الخروج أولاً");
                 }
 
+                $active_window->employees()->update(["active" => 0]);
+
                 $employee->active = 1;
                 $employee->update();
 
-                $active_window->employees()->update(["active"=>0]);
 
                 return redirect("employee");
 
@@ -55,7 +56,7 @@ class AuthController extends Controller
     public function logout()
     {
 
-        $employee = auth()->user()->employee;
+        $employee = myEmployee();
         $employee->active = 0;
         $employee->update();
         auth()->logout();

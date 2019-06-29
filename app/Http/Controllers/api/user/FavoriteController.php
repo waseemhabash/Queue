@@ -42,5 +42,7 @@ class FavoriteController extends Controller
         $user = userFromToken();
 
         Favorite::where("service_id",request("service_id"))->where("user_id",$user->id)->delete();
+
+        res([]);
     }
 }

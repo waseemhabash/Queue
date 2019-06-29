@@ -9,17 +9,17 @@
 
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/fonts/style.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/css/main.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/css/main-responsive.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/css/theme_light.css" type="text/css" id="skin_color">
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/css/print.css" type="text/css" media="print" />
-    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/assets/css/login.css" type="text/css" />
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/fonts/style.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/css/main.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/css/main-responsive.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/plugins/iCheck/skins/all.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/css/theme_light.css" type="text/css" id="skin_color">
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="{{ url('/assets/dashboard') }}/css/login.css" type="text/css" />
 
 
 
@@ -28,7 +28,7 @@
 <body class="login example2">
     <div class="main-login col-sm-4 col-sm-offset-4">
         <div class="logo">
-        <img src="{{ url($c->logo) }}" width="150">
+        <img src="{{ url("/logo.png") }}" width="150">
         </div>
         <div class="box-login">
             <h3>{{ __("dashboard.logIn") }}</h3>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-actions">
 
-                        <button type="submit" class="btn btn-bricky pull-right">
+                        <button type="submit" class="btn btn-bricky pull-right" style="background:#9651ec;border:#9651ec">
                             {{ __("dashboard.logIn") }} <i class="fa fa-arrow-circle-left"></i>
                         </button>
                     </div>

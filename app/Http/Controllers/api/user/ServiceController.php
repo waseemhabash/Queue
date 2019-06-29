@@ -11,13 +11,12 @@ class ServiceController extends Controller
 {
     public function get_services()
     {
-
         if (request("service_id")) {
             validate([
                 "service_id" => "required|exists:services,id",
             ]) ?? exit;
 
-            $service = Service::find(request("service_id"));
+            $service = Service::with("images")->find(request("service_id"));
 
             res([
                 "service" => $service,
@@ -30,8 +29,7 @@ class ServiceController extends Controller
         ]) ?? exit;
 
         $branch = Branch::find(request("branch_id"));
-        $services = $branch->services()->paginate(10);
-
+        $services = $branch->services()->with("images")->paginate(10);
         res([
             "services" => $services,
         ]);
@@ -43,14 +41,13 @@ class ServiceController extends Controller
         $user = userFromToken();
 
         validate([
-            "queue_id" => "required|exists:services,id",
+            "queue_id" => "required|exists:queues,id",
             "rate" => "required|integer|between:1,5",
         ]) ?? exit;
 
         $rate = Rate::updateOrCreate([
             "queue_id" => request("queue_id"),
             "rate" => request("rate"),
-            "note" => request("note")
         ]);
 
         res();

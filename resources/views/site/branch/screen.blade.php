@@ -16,6 +16,8 @@
         href="{{ url('/') }}/assets/site/employee/index/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/css/util.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/css/main.css">
+    <link rel="shortcut icon" href="{{ url("/favicon.png") }}" />
+
 </head>
 
 <body>
@@ -67,9 +69,7 @@
     <script src="{{ url('/') }}/assets/site/employee/index/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ url('/') }}/assets/site/employee/index/vendor/select2/select2.min.js"></script>
     <script src="{{ url('/') }}/assets/site/employee/index/js/main.js"></script>
-    <script src="{{ url('/') }}/assets/site/js/socketio.js"></script>
-
-
+    <script src="{{ url('/') }}/js/socketio.js"></script>
     <script>
         var socket = io.connect("localhost:3000");
         var branch = JSON.parse($("#branch").val());
@@ -97,25 +97,18 @@
         socket.on("calling", function (data) {
             var link = data.full_voice_file_link;
 
-            navigator.mediaDevices.getUserMedia({
-                audio: true
-            }).then(function () {
-                var wait = parseInt(data.wait);
-                setTimeout(function () {
-                    var audio = new Audio(link);
-                    audio.play();
+            var wait = parseInt(data.wait);
+            setTimeout(function () {
+                var audio = new Audio(link);
+                audio.play();
+            }, wait * 1000)
 
-                    
-                }, wait * 1000)
-
-
-                setTimeout(function(){
-                    $.ajax({
-                        url: "{{ url('screen/delete_call') }}",
-                        data: data
-                    });
-                },(wait +4) * 1000);
-            });
+            setTimeout(function () {
+                $.ajax({
+                    url: "{{ url('screen/delete_call') }}",
+                    data: data
+                });
+            }, (wait + 5.25) * 1000);
         });
 
     </script>

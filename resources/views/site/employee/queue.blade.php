@@ -2,20 +2,18 @@
 <html lang="en">
 
 <head>
-    <title> {{ auth()->user()->employee->branch->name }} - الطابور</title>
+    <title> {{ $branch->name }} - الطابور</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css"
-        href="{{ url('/') }}/assets/site/employee/index/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="{{ url('/') }}/assets/site/employee/index/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css"
-        href="{{ url('/') }}/assets/site/employee/index/vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="{{ url('/') }}/assets/site/employee/index/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/css/util.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/index/css/main.css">
+    <link rel="shortcut icon" href="{{ url("/favicon.png") }}" />
+
 </head>
 
 <body>
@@ -63,13 +61,13 @@
                     <a href="{{ url('/employee/start_service') }}">
                         <button class="btn btn-info text-center ">
                             بدء الخدمة <i class="fa fa-arrow-left"></i>
-                            ({{ $employee->next_in_queue()->number ?? "لا يوجد" }})
+                            ({{ $employee->calledAndNotServed()->number ?? "لا يوجد" }})
                         </button>
                     </a>
 
                     <a href="{{ url('/employee/skip') }}">
                         <button class="btn btn-danger text-center" id="skip-button">
-                            تخطي <i class="fa fa-ban"></i> ({{ $employee->next_in_queue()->number ?? "لا يوجد" }})
+                            تخطي <i class="fa fa-ban"></i> ({{ $employee->calledAndNotServed()->number ?? "لا يوجد" }})
                         </button>
                     </a>
                     @endif
@@ -96,7 +94,7 @@
     <script src="{{ url('/') }}/assets/site/employee/index/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ url('/') }}/assets/site/employee/index/vendor/select2/select2.min.js"></script>
     <script src="{{ url('/') }}/assets/site/employee/index/js/main.js"></script>
-    <script src="{{ url('/') }}/assets/site/js/socketio.js"></script>
+    <script src="{{ url('/') }}/js/socketio.js"></script>
 
 
     <script>
@@ -113,36 +111,32 @@
             $(this).attr("disabled", "true");
             $("#call_icon").removeClass("fa-volume-up").addClass("fa-spinner").addClass("fa-spin");
             var wait = 0;
-            var state = 0;
 
             $.ajax({
                 url: "{{ url('employee/check_call') }}",
                 success: function (res) {
 
                     if (res.state) {
-                        
-                        wait = (res.wait + 5 ) * 1000;
-                        state = 1;
+
+                        wait = (res.wait + 5.25) * 1000;
+
                     } else {
-                        if(res.code == 2)
-                        {
+                        if (res.code == 2) {
                             alert("لا يوجد أحد يمكنك تخدميه في المركز");
-                        state = 2;
-                        }else if(res.code == 3)
-                        {
+                            window.location.reload();
+                        } else if (res.code == 3) {
                             alert("لقد قمت بالفعل بطلب الزبون التالي !!");
                             window.location.reload();
                         }
-                        
+
 
                     }
                 },
             }).then(function () {
-                if (state == 1) {
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, wait);
-                }
+                setTimeout(function () {
+                    window.location.reload();
+                }, wait);
+
 
             });
         });

@@ -17,6 +17,16 @@ class Company extends Model
         return $this->hasMany("App\Models\Branch", "company_id");
     }
 
+    public function all_customers()
+    {
+        $customers = Queue::whereHas("service", function ($branch) {
+            $branch->whereIn("branch_id", $this->branches->pluck("id"));
+        })->get();
+
+        return $customers;
+
+    }
+
     public static function create_company()
     {
 
@@ -51,7 +61,7 @@ class Company extends Model
         $company->name = request("name");
         $company->description = request("description");
 
-        $company->logo = upload_file("logo", "assets/uploads/companies/$user->id/", $company->logo)  ?? $company->logo;
+        $company->logo = upload_file("logo", "assets/uploads/companies/$user->id/", $company->logo) ?? $company->logo;
 
         $company->update();
 

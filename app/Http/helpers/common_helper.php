@@ -110,7 +110,6 @@ function update_queue($branch)
             ],
         ]);
     } catch (\Throwable $th) {
-
     }
 
 }
@@ -143,4 +142,20 @@ function calling($queue_number, $window_number, $branch_id,$wait)
         ],
     ]);
 
+}
+
+
+function myCompany()
+{
+    return auth()->user()->company;
+}
+
+function myBranch()
+{
+    return auth()->user()->branch;
+}
+
+function myEmployee()
+{
+    return auth()->user()->employee;
 }

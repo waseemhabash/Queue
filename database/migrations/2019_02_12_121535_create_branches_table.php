@@ -15,7 +15,6 @@ class CreateBranchesTable extends Migration
             $table->unsignedBigInteger('user_id');
 
             $table->string("name");
-            $table->text("description");
             $table->string("address");
 
             $table->double("lng");
@@ -23,6 +22,9 @@ class CreateBranchesTable extends Migration
 
             $table->time("open_time");
             $table->time("close_time");
+            $table->integer("minutes_before_closing");
+
+            $table->string("image");
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('restrict')->onUpdate('restrict');
 

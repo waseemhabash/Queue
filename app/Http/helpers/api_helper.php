@@ -20,8 +20,13 @@ function validate($rules)
 }
 function userFromToken()
 {
-    $user = JWTAuth::parseToken()->authenticate();
-    return User::find($user->id);
+    try {
+        $user = JWTAuth::parseToken()->authenticate();
+        return User::find($user->id);
+    } catch (\Throwable $th) {
+        return 0;
+    }
+
 }
 
 function error_res($array = [], $state = 500, $headers = [])

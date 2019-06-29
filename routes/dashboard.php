@@ -1,8 +1,16 @@
 <?php
 
-Route::prefix("dashboard")->middleware("dashboard")->namespace("dashboard")->group(function () {
+/**
+ * Admin
+ */
 
-    Route::get('/', "HomeController@index");
+Route::prefix("dashboard")->middleware("dashboard")->namespace("dashboard\admin")->group(function () {
+
+    /**
+     * Home
+     */
+
+    Route::get("admin/homeStatistic", "StatisticsController@adminHomeStatistic");
 
     /**
      * Admins
@@ -10,11 +18,6 @@ Route::prefix("dashboard")->middleware("dashboard")->namespace("dashboard")->gro
 
     Route::resource("admins", "AdminController");
 
-    /**
-     * constants
-     */
-
-    Route::resource("constants", "ConstantController");
     /*
      * Companies
      */
@@ -22,49 +25,62 @@ Route::prefix("dashboard")->middleware("dashboard")->namespace("dashboard")->gro
     Route::resource("companies", "CompanyController");
 
     /**
-     * Branches
+     * constants
      */
 
-    Route::get("companies/{company_id}/branches/create", "BranchController@create");
-    Route::post("companies/{company_id}/branches", "BranchController@store");
-    Route::resource("companies/branches", "BranchController")->except(["index", "create", "store"]);
+    Route::get("constants", "ConstantController@index");
+    Route::post("constants/update", "ConstantController@update");
+
+});
+
+/**
+ * Company
+ */
+
+Route::prefix("dashboard")->middleware("dashboard")->namespace("dashboard\company")->group(function () {
 
     /**
-     * Services
+     * Home
      */
-
-    Route::get("branches/{branch_id}/services/create", "ServiceController@create");
-    Route::post("branches/{branch_id}/services", "ServiceController@store");
-    Route::resource("branches/services", "ServiceController")->except(["index", "create", "store"]);
+    Route::get("company/customerBranchStatistic", "StatisticsController@customerBranchStatistic");
+    Route::get("company/customerBranchPieStatistic", "StatisticsController@customerBranchPieStatistic");
+    Route::get("company/rateBranchStatistic", "StatisticsController@rateBranchStatistic");
+    Route::get("company", "CompanyController@index");
 
     /**
-     * windows
+     * branches
      */
 
-    Route::get("branches/{branch_id}/windows/create", "WindowController@create");
-    Route::post("branches/{branch_id}/windows", "WindowController@store");
-    Route::resource("branches/windows", "WindowController")->except(["index", "create", "store"]);
+    Route::resource("branches", "BranchController");
 
+});
+
+/**
+ * Branch
+ */
+
+Route::prefix("dashboard")->middleware("dashboard")->namespace("dashboard\branch")->group(function () {
+
+    Route::get("branch", "BranchController@index");
+
+    Route::get("branch/mostOrderedService","StatisticsController@mostOrderedService");
+    Route::get("branch/CustomerServiced","StatisticsController@CustomerServiced");
+    Route::get("branch/customerRated","StatisticsController@customerRated");
+    Route::get("branch/avgTimeService","StatisticsController@avgTimeService");
     /**
-     * Employees
+     * branches
      */
 
-    Route::get("branches/{branch_id}/employees/create", "EmployeeController@create");
-    Route::post("branches/{branch_id}/employees", "EmployeeController@store");
-    Route::resource("branches/employees", "EmployeeController")->except(["index", "create", "store"]);
+    Route::resource("services", "ServiceController");
+    Route::get("delete_service_image/{image_id}", "ServiceController@delete_service_image");
+    Route::resource("windows", "WindowController");
+    Route::resource("employees", "EmployeeController");
+    Route::resource("tickets-employees", "TicketsEmployeeController");
 
-    /**
-     * 
-     */
-    Route::get("branches/{branch_id}/ticketsEmployees/create", "TicketsEmployeeController@create");
-    Route::post("branches/{branch_id}/ticketsEmployees", "TicketsEmployeeController@store");
-    Route::resource("branches/ticketsEmployees", "TicketsEmployeeController")->except(["index", "create", "store"]);
-
-
-    
 });
 
 Route::prefix("dashboard")->namespace("dashboard")->group(function () {
+    Route::get('/', "HomeController@index")->middleware("dashboard");
 
     Route::get("/change_hash_tab/{hash}", function ($hash) {
         session()->put("hash", $hash);

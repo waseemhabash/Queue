@@ -17,6 +17,7 @@
         href="{{ url('/') }}/assets/site/employee/login/vendor/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/site/employee/login/css/main.css">
+    <link rel="shortcut icon" href="{{ url("/favicon.png") }}" />
 
 </head>
 

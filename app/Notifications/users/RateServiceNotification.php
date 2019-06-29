@@ -4,23 +4,18 @@ namespace App\Notifications\users;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
-use NotificationChannels\OneSignal\OneSignalWebButton;
 
 class RateServiceNotification extends Notification
 {
     use Queueable;
 
-   
-    public function __construct($service)
+    public function __construct($queue)
     {
-        $this->service = $service;
+        $this->queue = $queue;
     }
 
-    
     public function via($notifiable)
     {
         return [OneSignalChannel::class];
@@ -28,11 +23,12 @@ class RateServiceNotification extends Notification
 
     public function toOneSignal($notifiable)
     {
-        $subject = "subject";
-        $body = "Body";
+        $subject = "تقييم الخدمة";
+        $body = "تم إنجاز الخدمة ( " . $this->queue->service->name . " )";
         return OneSignalMessage::create()
             ->subject($subject)
-            ->body($body);
+            ->body($body)
+            ->setData("queue_id", $this->queue->id);
     }
 
 }

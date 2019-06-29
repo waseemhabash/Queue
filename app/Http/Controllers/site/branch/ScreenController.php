@@ -14,7 +14,7 @@ class ScreenController extends Controller
             return redirect("dashboard/login");
         }
 
-        $branch = auth()->user()->branch;
+        $branch = myBranch();
         $branch->temp_callings()->delete();
         return view("site.branch.screen", compact("branch"));
     }
